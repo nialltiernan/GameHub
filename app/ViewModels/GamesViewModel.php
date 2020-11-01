@@ -6,7 +6,7 @@ use Illuminate\Contracts\Support\Arrayable;
 use Illuminate\Support\Str;
 use Spatie\ViewModels\ViewModel;
 
-class GameViewModel extends ViewModel implements Arrayable
+class GamesViewModel extends ViewModel implements Arrayable
 {
     private $games;
 
@@ -15,7 +15,7 @@ class GameViewModel extends ViewModel implements Arrayable
         $this->games = $games;
     }
 
-    public function games()
+    public function data()
     {
         return collect($this->games)->map(function ($game) {
             return collect($game)->merge([

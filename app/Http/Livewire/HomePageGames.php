@@ -4,7 +4,7 @@ namespace App\Http\Livewire;
 
 use App\Services\IGDB\GetApiHeaders;
 use App\Services\IGDB\GetEndpoint;
-use App\ViewModels\GameViewModel;
+use App\ViewModels\GamesViewModel;
 use Illuminate\Support\Facades\Cache;
 use Illuminate\Support\Facades\Http;
 use Livewire\Component;
@@ -32,8 +32,8 @@ class HomePageGames extends Component
                 ->post(GetEndpoint::fetch(self::ROUTE))
                 ->json();
 
-            $viewModel = new GameViewModel($gameData);
-            return $viewModel->games();
+            $viewModel = new GamesViewModel($gameData);
+            return $viewModel->data();
         });
     }
 
