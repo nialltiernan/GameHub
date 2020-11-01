@@ -30,4 +30,9 @@ return [
         'region' => env('AWS_DEFAULT_REGION', 'us-east-1'),
     ],
 
+    'igdb' => [
+        'api_endpoint' => env('IGDB_API_ENDPOINT'),
+        'client_id' => env('IGDB_CLIENT_ID'),
+        'authorization' => sprintf('Bearer %s', env('IGDB_ACCESS_TOKEN'))
+    ]
 ];
