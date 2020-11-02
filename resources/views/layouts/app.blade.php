@@ -7,7 +7,7 @@
     <link rel="stylesheet" href="/css/app.css">
     <livewire:styles />
 </head>
-<body class="bg-teal-800 text-white">
+<body class="bg-gray-900 text-white">
     <header class="border-b border-gray-800">
         <nav class="container mx-auto flex flex-col lg:flex-row  items-center justify-between px-4 py-6">
             <div class="flex flex-col lg:flex-row items-center">

@@ -6,6 +6,7 @@ use App\Services\IGDB\GetApiHeaders;
 use App\Services\IGDB\GetEndpoint;
 use App\ViewModels\GamesViewModel;
 use Illuminate\Support\Facades\Cache;
+use Illuminate\Support\Facades\Date;
 use Illuminate\Support\Facades\Http;
 use Livewire\Component;
 
@@ -13,11 +14,11 @@ class HomePageGames extends Component
 {
     private const ROUTE = 'games';
     private const QUERY = '
-        fields name, cover.url, rating;
+        fields name, cover.url, rating, platforms.abbreviation;
         where
-            rating >= 90 &
-            release_dates.date > 1546300800 &
-            platforms = [48,49,6];
+            rating >= 80 &
+            release_dates.date > %s &
+            platforms = (48,49,5);
         sort rating desc; 
         limit 12;';
 
@@ -28,7 +29,7 @@ class HomePageGames extends Component
         $this->games = Cache::remember('home-page-games', 1440, function () use ($headers) {
 
             $gameData = Http::withHeaders($headers->fetch())
-                ->withBody(self::QUERY, 'raw')
+                ->withBody(sprintf(self::QUERY, Date::now()->subYear()->timestamp), 'raw')
                 ->post(GetEndpoint::fetch(self::ROUTE))
                 ->json();
 
