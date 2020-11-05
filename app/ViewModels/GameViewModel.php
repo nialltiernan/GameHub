@@ -50,7 +50,7 @@ class GameViewModel extends ViewModel
 
     private static function formatRating($game)
     {
-        return isset($game['rating']) ? round($game['rating'], 2) . '%' : '';
+        return isset($game['rating']) ? $game['rating'] / 100 : '';
     }
 
     private static function formatPlatforms($game)

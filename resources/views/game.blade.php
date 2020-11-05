@@ -19,11 +19,15 @@
                 <div class="flex flex-wrap items-center mt-8">
                     <div class="flex items-center">
                         @if ($game['rating'])
-                        <div class="w-16 h-16 bg-gray-800 rounded-full relative text-sm">
-                            <div class="font-semibold text-xs flex justify-center items-center h-full">
-                                {{ $game['rating'] }}
+                            <div id="ratingDiv" class="w-16 h-16 bg-gray-800 rounded-full relative text-sm">
+                                @push('scripts')
+                                    @include('partials._rating', [
+                                        'slug' => 'ratingDiv',
+                                        'rating' => $game['rating'],
+                                        'event' => null
+                                    ])
+                                @endpush
                             </div>
-                        </div>
                         @endif
                     </div>
 
@@ -71,10 +75,14 @@
                         <img src="{{ $similarGame['url'] }}" class="hover:opacity-75 transition ease-in-out duration-150" alt="similar game">
                     </a>
                     @if ($similarGame['rating'])
-                        <div class="absolute bottom-0 right-0 w-16 h-16 bg-gray-800 rounded-full" style="right: -20px; bottom: -20px">
-                            <div class="font-semibold text-xs flex justify-center items-center h-full">
-                                {{ $similarGame['rating'] }}
-                            </div>
+                        <div id="{{$similarGame['slug']}}" class="absolute bottom-0 right-0 w-16 h-16 bg-gray-800 rounded-full" style="right: -20px; bottom: -20px">
+                            @push('scripts')
+                                @include('partials._rating', [
+                                    'slug' => $similarGame['slug'],
+                                    'rating' => $game['rating'],
+                                    'event' => null
+                                ])
+                            @endpush
                         </div>
                     @endif
                 </div>
