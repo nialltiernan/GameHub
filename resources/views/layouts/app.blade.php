@@ -37,7 +37,8 @@
 
     <footer class="border-t border-gray-800">
         <div class="container mx-auto px-4 py-6">
-            Powered By <a target="_blank" href="https://api-docs.igdb.com/#about" class="underline hover:text-gray-400">IGDB API</a>, inspired by
+            Powered By
+            <a target="_blank" href="https://api-docs.igdb.com/#about" class="underline hover:text-gray-400">IGDB API</a>, inspired by
             <a target="_blank" href="https://laracasts.com/" class="underline hover:text-gray-400">Laracasts</a>
         </div>
     </footer>
