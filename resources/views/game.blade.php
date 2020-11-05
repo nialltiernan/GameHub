@@ -28,30 +28,36 @@
                     </div>
 
                     <div class="flex items-center space-x-4 mt-4 sm:mt-0 sm:ml-12">
-                        Social
+                        @foreach($game['social_links'] as $category => $link)
+                            <a href="{{ $link }}" target="_blank">{{ $category }}</a>
+                        @endforeach
                     </div>
 
                     <p class="mt-12">{{ $game['summary'] }}</p>
 
-                    <div class="mt-12">
-                        <a href="https://www.youtube.com/watch?v={{ $game['videos'][0]['video_id'] }}" class="inline-flex bg-blue-500 text-white font-semibold px-4 py-4 hover:bg-blue-600 rounded transition ease-in-out duration-150">
-                            <span>Play Trailer</span>
-                        </a>
-                    </div>
+                    @if (isset($game['videos'][0]['video_id']))
+                        <div class="mt-12">
+                            <a href="https://www.youtube.com/watch?v={{ $game['videos'][0]['video_id'] }}" class="inline-flex bg-blue-500 text-white font-semibold px-4 py-4 hover:bg-blue-600 rounded transition ease-in-out duration-150">
+                                <span>Play Trailer</span>
+                            </a>
+                        </div>
+                    @endif
                 </div>
             </div>
     </div>
 
     <div class="images-container border-b border-gray-800 pb-12 mt-8">
-            <h2 class="text-blue-500 uppercase tracking-wide font-semibold">Images</h2>
+            <h2 class="text-blue-500 uppercase tracking-wide font-semibold">Screenshots</h2>
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-12 mt-8">
-                @foreach($game['screenshots'] as $screenshot)
+                @forelse($game['screenshots'] as $screenshot)
                     <div>
                         <a href="{{ $screenshot['url'] }}">
                             <img src="{{ $screenshot['url'] }}" class="hover:opacity-75 transition ease-in-out duration-150" alt="screenshot">
                         </a>
                     </div>
-                @endforeach
+                @empty
+                    No screenshots available <p style="font-size:20px">&#129335;</p>
+                @endforelse
             </div>
         </div>
 
