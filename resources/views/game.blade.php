@@ -96,7 +96,7 @@
                             @push('scripts')
                                 @include('partials._rating', [
                                     'slug' => $similarGame['slug'],
-                                    'rating' => $game['rating'],
+                                    'rating' => $similarGame['rating'],
                                     'event' => null
                                 ])
                             @endpush
