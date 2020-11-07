@@ -104,7 +104,7 @@ class GameViewModel extends ViewModel
             if ($category === self::LINK_OFFICIAL) {
                 $links['home'] = $link;
             } elseif ($category === self::LINK_WIKIA) {
-                $links['wiki'] = $link;
+                $links['wikia'] = $link;
             } elseif ($category === self::LINK_WIKIPEDIA) {
                 $links['wikipedia'] = $link;
             } elseif ($category === self::LINK_FACEBOOK) {

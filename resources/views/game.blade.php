@@ -43,7 +43,7 @@
                         @endif
                     </div>
 
-                    <div class="flex items-center space-x-4 mt-4 sm:mt-0 sm:ml-12">
+                    <div class="flex items-center space-x-4 mt-4 sm:mt-0 sm:ml-6">
                         @foreach($game['social_links'] as $category => $link)
                             @if ($category === 'home')
                                 @continue
