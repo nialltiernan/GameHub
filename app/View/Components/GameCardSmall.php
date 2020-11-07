@@ -4,14 +4,14 @@ namespace App\View\Components;
 
 use Illuminate\View\Component;
 
-class GameCard extends Component
+class GameCardSmall extends Component
 {
     public $game;
 
     /**
      * Create a new component instance.
      *
-     * @return void
+     * @param $game
      */
     public function __construct($game)
     {
@@ -25,6 +25,6 @@ class GameCard extends Component
      */
     public function render()
     {
-        return view('components.game-card');
+        return view('components.game-card-small');
     }
 }
