@@ -25,7 +25,7 @@
                     <input type="text" class="bg-gray-800 text-sm rounded-full pl-4 px-3 py-1 w-64 focus:outline-none focus:shadow-outline" placeholder="Search...">
                 </div>
                 <div class="ml-6">
-                    <a href="#"><img src="images/avatar.jpg" alt="avatar" class="rounded-full w-8"></a>
+                    <a href="#"><img src="/images/avatar.jpg" alt="avatar" class="rounded-full w-8"></a>
                 </div>
             </div>
         </nav>

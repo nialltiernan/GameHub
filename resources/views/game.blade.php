@@ -4,10 +4,22 @@
     <div class="container mx-auto px-4">
         <div class="game-details border-b border-gray-800 pb-12 flex flex-col lg:flex-row">
             <div class="flex-none">
-                <img src="{{ $game['coverImageUrl'] }}" alt="cover">
+                @if (isset($game['social_links']['home']))
+                    <a href="{{ $game['social_links']['home'] }}" target="_blank">
+                        <img src="{{ $game['coverImageUrl'] }}" alt="cover">
+                    </a>
+                @else
+                    <img src="{{ $game['coverImageUrl'] }}" alt="cover">
+                @endif
             </div>
             <div class="lg:ml-12 xl:mr-64">
-                <h2 class="font-semibold text-4xl leading-tight mt-1">{{ $game['name'] }}</h2>
+                <h2 class="font-semibold text-4xl leading-tight mt-1">
+                    @if (isset($game['social_links']['home']))
+                        <a href="{{ $game['social_links']['home'] }}" target="_blank">{{ $game['name'] }}</a>
+                    @else
+                        {{ $game['name'] }}
+                    @endif
+                </h2>
                 <div class="text-gray-400">
                     <span>{{ $game['genres'] }}</span>
                     &middot;
@@ -33,7 +45,12 @@
 
                     <div class="flex items-center space-x-4 mt-4 sm:mt-0 sm:ml-12">
                         @foreach($game['social_links'] as $category => $link)
-                            <a href="{{ $link }}" target="_blank">{{ $category }}</a>
+                            @if ($category === 'home')
+                                @continue
+                            @endif
+                            <a href="{{ $link }}" target="_blank">
+                                <img class="h-8 transform hover:scale-150" src="/images/icons/{{ $category }}.svg" alt="{{ $category }}">
+                            </a>
                         @endforeach
                     </div>
 
