@@ -14,7 +14,7 @@ class HomePageGames extends Component
 {
     private const ROUTE = 'games';
     private const QUERY = '
-        fields name, cover.url, rating, platforms.abbreviation;
+        fields name, cover.url, rating, platforms.abbreviation, slug;
         where
             rating >= 80 &
             release_dates.date > %s &
@@ -26,8 +26,7 @@ class HomePageGames extends Component
 
     public function loadGames(GetApiHeaders $headers)
     {
-        $this->games = Cache::remember('home-page-games', 1440, function () use ($headers) {
-
+        $viewModelData = Cache::remember('home-page-games', 1440, function () use ($headers) {
             $gameData = Http::withHeaders($headers->fetch())
                 ->withBody(sprintf(self::QUERY, Date::now()->subYear()->timestamp), 'raw')
                 ->post(GetEndpoint::fetch(self::ROUTE))
@@ -35,6 +34,25 @@ class HomePageGames extends Component
 
             $viewModel = new GamesViewModel($gameData);
             return $viewModel->data();
+        });
+
+        $this->emitLivewireEvents($viewModelData);
+
+        $this->games = $viewModelData;
+    }
+
+    /**
+     * @param $viewModelData
+     */
+    private function emitLivewireEvents($viewModelData): void
+    {
+        collect($viewModelData)->filter(function ($game) {
+            return $game['rating'];
+        })->each(function ($game) {
+            $this->emit('gameWithRatingAdded', [
+                'slug' => $game['slug'],
+                'rating' => $game['rating'],
+            ]);
         });
     }
 

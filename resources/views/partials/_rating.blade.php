@@ -1,7 +1,5 @@
 <script>
     var progressBarContainer = document.getElementById('{{ $slug }}');
-    // progressbar.js@1.0.0 version is used
-    // Docs: http://progressbarjs.readthedocs.org/en/1.0.0/
 
     var bar = new ProgressBar.Circle(progressBarContainer, {
         color: 'white',
