@@ -7,8 +7,7 @@
 
         @if (isset($game['slug']))
             <div  class="absolute bottom-0 right-0 w-16 h-16 bg-gray-800 rounded-full" style="right:-20px; bottom:-20px">
-                <div id="{{ $game['slug'] }}" class="font-semibold text-xs flex justify-center items-center h-full">
-                </div>
+                <div id="{{ $game['slug'] }}" class="font-semibold text-xs flex justify-center items-center h-full"></div>
             </div>
         @endif
     </div>
@@ -17,7 +16,9 @@
         {{ $game['name'] }}
     </a>
 
-    <div class="text-gray-400 mt-1">
-        {{ $game['platforms'] }}
-    </div>
+    @if($game['platforms'] !== '')
+        <div class="text-gray-400 mt-1">
+            {{ $game['platforms'] }}
+        </div>
+    @endif
 </div>

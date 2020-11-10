@@ -11,10 +11,8 @@
     <header class="border-b border-gray-800">
         <nav class="container mx-auto flex flex-col lg:flex-row  items-center justify-between px-4 py-6">
             <div class="flex flex-col lg:flex-row items-center">
-                <a href="/">
-                    <img src="/images/laracasts-logo.svg" alt="logo" class="w-32 flex-none">
-                </a>
-                <ul class="flex ml-0 lg:ml-16 space-x-8 mt-6 lg:mt-0">
+                <ul class="flex ml-0 space-x-8 mt-6 lg:mt-0">
+                    <li><a href="/">Home</a></li>
                     <li><a href="{{ route('genres.index') }}" class="hover:text-gray-400">Genres</a></li>
                 </ul>
             </div>
