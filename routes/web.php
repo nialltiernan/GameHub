@@ -17,5 +17,5 @@ Route::get('', [\App\Http\Controllers\HomeController::class, 'index'])->name('ga
 
 Route::get('games/{id}', [\App\Http\Controllers\GameController::class, 'show'])->name('game.show');
 
-Route::get('genres/', [\App\Http\Controllers\GenreController::class, 'index'])->name('genres.index');
-Route::get('genres/{id}', [\App\Http\Controllers\GenreController::class, 'show'])->name('genres.show');
+Route::get('platforms/', [\App\Http\Controllers\PlatformController::class, 'index'])->name('platforms.index');
+Route::get('platforms/{id}', [\App\Http\Controllers\PlatformController::class, 'show'])->name('platforms.show');

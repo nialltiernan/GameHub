@@ -30,7 +30,6 @@
                 ?>
                 @foreach($genres as $genre => $id)
                     <li class="hover:text-blue-600 transform hover:translate-x-5">
-                        <a href="{{ route('genres.show', ['id' => $id])}}">{{ $genre }}</a>
                     </li>
                 @endforeach
             </ul>
