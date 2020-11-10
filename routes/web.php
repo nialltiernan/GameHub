@@ -14,5 +14,8 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('', [\App\Http\Controllers\HomeController::class, 'index'])->name('gamehub.index');
+
 Route::get('games/{id}', [\App\Http\Controllers\GameController::class, 'show'])->name('game.show');
 
+Route::get('genres/', [\App\Http\Controllers\GenreController::class, 'index'])->name('genres.index');
+Route::get('genres/{id}', [\App\Http\Controllers\GenreController::class, 'show'])->name('genres.show');
