@@ -12,6 +12,8 @@ use Livewire\Component;
 
 class HomePageGames extends Component
 {
+    public $games = [];
+
     private const ROUTE = 'games';
     private const QUERY = '
         fields name, cover.url, rating, platforms.abbreviation, slug;
@@ -21,8 +23,6 @@ class HomePageGames extends Component
             platforms = (48,49,5);
         sort rating desc; 
         limit 12;';
-
-    public $games = [];
 
     public function loadGames(GetApiHeaders $headers)
     {
