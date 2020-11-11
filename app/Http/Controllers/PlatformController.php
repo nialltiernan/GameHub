@@ -6,7 +6,6 @@ use App\Services\IGDB\GetApiHeaders;
 use App\Services\IGDB\GetEndpoint;
 use App\ViewModels\GamesViewModel;
 use App\ViewModels\PlatformsViewModel;
-use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Http;
 
 class PlatformController extends Controller
@@ -23,8 +22,8 @@ class PlatformController extends Controller
 
     public function show($id,  GetApiHeaders $headers)
     {
-        $query = sprintf(
-            'fields name, cover.url,rating, platforms.abbreviation;
+        $query = sprintf('
+            fields name, cover.url, aggregated_rating, platforms.abbreviation, slug;
             where platforms = (%s) & aggregated_rating != null;
             sort aggregated_rating desc; 
             limit 15;', $id

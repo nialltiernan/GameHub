@@ -22,6 +22,7 @@ class GamesViewModel extends ViewModel implements Arrayable
             return collect($game)->merge([
                 'coverImageUrl' => $this->getCoverImageUrl($game),
                 'rating' => $this->getRating($game),
+                'aggregated_rating' => $this->getCriticRating($game),
                 'platforms' => $this->getPlatforms($game)
             ]);
         })->toArray();
@@ -43,6 +44,11 @@ class GamesViewModel extends ViewModel implements Arrayable
     private function getRating($game)
     {
         return isset($game['rating']) ? round($game['rating'], 2) : '';
+    }
+
+    private function getCriticRating($game)
+    {
+        return isset($game['aggregated_rating']) ? round($game['aggregated_rating'], 2). '%' : '';
     }
 
     /**

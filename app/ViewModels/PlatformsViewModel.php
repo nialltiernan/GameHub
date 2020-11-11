@@ -10,11 +10,15 @@ class PlatformsViewModel extends ViewModel
 
     public function getPlatforms()
     {
-        return array_flip(Platforms::toArray());
+        $collection = collect(array_flip(Platforms::toArray()));
+        return $collection->transform(function ($item) {
+            return str_replace('_', ' ', $item);
+        });
     }
 
     public function getSelectedPlatform($id)
     {
-        return array_flip(Platforms::toArray())[$id];
+        $enumKey = array_flip(Platforms::toArray())[$id];
+        return str_replace('_', ' ', $enumKey);
     }
 }
