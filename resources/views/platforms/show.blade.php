@@ -2,10 +2,14 @@
 
 @section('content')
     <div class="flex">
-        <div id="sidebar" class="px-6">
+        <div id="sidebar" class="px-8">
             <ul>
                 @foreach($platforms as $id => $platform)
-                    <li class="hover:text-blue-600 transform hover:translate-x-5">
+                    <li @if($id === $platformId)
+                            class="text-blue-600 transform translate-x-5"
+                        @else
+                            class="hover:text-blue-600 transform hover:translate-x-5"
+                        @endif>
                         <a href="{{ route('platforms.show', ['id' => $id]) }}">{{ $platform }}</a>
                     </li>
                 @endforeach

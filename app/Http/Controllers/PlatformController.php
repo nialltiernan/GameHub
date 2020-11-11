@@ -20,7 +20,7 @@ class PlatformController extends Controller
         ]);
     }
 
-    public function show($id,  GetApiHeaders $headers)
+    public function show(int $id,  GetApiHeaders $headers)
     {
         $query = sprintf('
             fields name, cover.url, aggregated_rating, platforms.abbreviation, slug;
@@ -46,6 +46,7 @@ class PlatformController extends Controller
             'games' => $gamesViewModel->data(),
             'platforms' => $platformsViewModel->getPlatforms(),
             'selectedPlatform' => $platformsViewModel->getSelectedPlatform($id),
+            'platformId' => $id
         ]);
     }
 }
