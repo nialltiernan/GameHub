@@ -77,7 +77,7 @@
                         </a>
                     </div>
                 @empty
-                    No screenshots available <p style="font-size:20px">&#129335;</p>
+                    No screenshots available <p style="font-size:50px">&#129335;</p>
                 @endforelse
             </div>
         </div> {{--end images container--}}
