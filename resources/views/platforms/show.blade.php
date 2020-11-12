@@ -2,7 +2,7 @@
 
 @section('content')
     <div class="flex">
-        <div id="sidebar" class="px-8">
+        <div id="sidebar" class="px-8 pt-4 bg-gray-800 rounded">
             <ul>
                 @foreach($platforms as $id => $platform)
                     <li @if($id === $platformId)
@@ -16,7 +16,7 @@
             </ul>
         </div>
 
-        <div class="flex-1">
+        <div class="flex-1 pl-8">
             <h2 class="text-blue-500 uppercase tracking-wide font-semibold">Highest critically rated games of {{ $selectedPlatform }}</h2>
             <livewire:platform-games :platformId="$platformId"></livewire:platform-games>
         </div>
