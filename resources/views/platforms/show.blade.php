@@ -4,7 +4,7 @@
 
 @section('content')
     <div class="flex">
-        <div id="sidebar" class="px-8 pt-4 bg-gray-800 rounded">
+        <div id="sidebar" class="px-8 pt-4 bg-gray-800 rounded hidden lg:block">
             <ul>
                 @foreach($platforms as $id => $platform)
                     <li @if($id === $platformId)
@@ -18,9 +18,9 @@
             </ul>
         </div>
 
-        <div class="flex flex-col justify-around">
-            <button id="hideSideBarButton" onclick="hideSideBar()" class="bg-blue-500 text-lg px-1 py-1 rounded-full">{{'<'}}</button>
-            <button id="showSideBarButton" onclick="showSideBar()" class="bg-blue-500 text-lg px-1 py-1 rounded-full hidden">{{'>'}}</button>
+        <div class="flex flex-col justify-around hidden lg:inline-flex">
+            <button id="hideSideBarButton" onclick="toggleSidebarVisibility()" class="bg-blue-500 text-lg px-1 py-1 rounded-full">{{'<'}}</button>
+            <button id="showSideBarButton" onclick="toggleSidebarVisibility()" class="bg-blue-500 text-lg px-1 py-1 rounded-full hidden">{{'>'}}</button>
         </div>
 
         <div class="flex-1 pl-8">

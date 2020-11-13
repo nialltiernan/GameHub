@@ -21,7 +21,7 @@
                     <input type="text" class="bg-gray-800 text-sm rounded-full pl-4 px-3 py-1 w-64 focus:outline-none focus:shadow-outline" placeholder="Search...">
                 </div>
                 <div class="ml-6">
-                    <a href="#"><img src="/images/avatar.jpg" alt="avatar" class="rounded-full w-8"></a>
+                    <img class="lg:hidden block" src="/images/icons/hamburger.svg" onclick="toggleSidebarVisibility()"/>
                 </div>
             </div>
         </nav>
@@ -43,5 +43,6 @@
     <livewire:scripts />
     <script src="/js/app.js"></script>
     @stack('scripts')
+    @include('javascript.sidebar')
 </body>
 </html>
