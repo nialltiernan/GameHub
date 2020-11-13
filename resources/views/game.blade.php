@@ -33,7 +33,7 @@
                         @if ($game['rating'])
                             <div id="ratingDiv" class="w-16 h-16 bg-gray-800 rounded-full relative text-sm">
                                 @push('scripts')
-                                    @include('partials._rating', [
+                                    @include('javascript.rating', [
                                         'slug' => 'ratingDiv',
                                         'rating' => $game['rating'],
                                         'event' => null

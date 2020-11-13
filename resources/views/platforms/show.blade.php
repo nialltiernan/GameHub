@@ -1,3 +1,5 @@
+@include('javascript.sidebar')
+
 @extends('layouts.app')
 
 @section('content')
@@ -14,6 +16,11 @@
                     </li>
                 @endforeach
             </ul>
+        </div>
+
+        <div class="flex flex-col justify-around">
+            <button id="hideSideBarButton" onclick="hideSideBar()" class="bg-blue-500 text-lg px-1 py-1 rounded-full">{{'<'}}</button>
+            <button id="showSideBarButton" onclick="showSideBar()" class="bg-blue-500 text-lg px-1 py-1 rounded-full hidden">{{'>'}}</button>
         </div>
 
         <div class="flex-1 pl-8">
