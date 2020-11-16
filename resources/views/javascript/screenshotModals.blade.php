@@ -4,8 +4,7 @@
         $('#modal-image').attr('src', screenshot.src);
     }
 
-    function hideModal(modal) {
-        let selector = '#' + modal.id;
+    function hideModal() {
         $('#modal-container').hide();
     }
 </script>
