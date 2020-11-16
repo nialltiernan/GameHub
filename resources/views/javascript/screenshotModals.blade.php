@@ -8,8 +8,18 @@
         });
     }
 
+    document.addEventListener('keydown', (e) => {
+        if (e.code === 'ArrowRight') {
+            nextModal();
+        } else if (e.code === 'ArrowLeft') {
+            previousModal();
+        } else if (e.code === 'Escape') {
+            hideModal();
+        }
+    });
+
     function getHighResolutionSource(sourceUrl) {
-        return sourceUrl.replace('t_720p','t_1080p');
+        return sourceUrl.replace('t_screenshot_med','t_1080p');
     }
 
     function showModal(screenshot) {

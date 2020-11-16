@@ -75,7 +75,7 @@ class GameViewModel extends ViewModel
         return isset($this->game['screenshots']) ?
             collect($this->game['screenshots'])->map(function ($screenshot) {
                 return collect($screenshot)->merge([
-                    'url' => Str::replaceFirst('t_thumb', 't_720p', $screenshot['url']),
+                    'url' => Str::replaceFirst('t_thumb', 't_screenshot_med', $screenshot['url']),
                 ]);
             }) : [];
     }
