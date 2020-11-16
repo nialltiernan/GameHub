@@ -20,12 +20,28 @@
     function nextModal() {
         let modal = $('#modal-image');
         let currentIndex = imageSources.indexOf(modal.attr('src'));
-        modal.attr('src', imageSources[currentIndex + 1]);
+        let newIndex;
+
+        if (currentIndex === imageSources.length - 1) {
+            newIndex = 0;
+        } else {
+            newIndex = currentIndex + 1;
+        }
+
+        modal.attr('src', imageSources[newIndex]);
     }
 
     function previousModal() {
         let modal = $('#modal-image');
         let currentIndex = imageSources.indexOf(modal.attr('src'));
-        modal.attr('src', imageSources[currentIndex - 1]);
+        let newIndex;
+
+        if (currentIndex === 0) {
+            newIndex = imageSources.length - 1
+        } else {
+            newIndex = currentIndex - 1;
+        }
+
+        modal.attr('src', imageSources[newIndex]);
     }
 </script>
