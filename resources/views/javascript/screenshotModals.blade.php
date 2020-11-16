@@ -4,13 +4,17 @@
 
     window.onload = function () {
         $("img[id^=screenshot]").each(function (index, element) {
-            imageSources.push(element.src);
+            imageSources.push(getHighResolutionSource(element.src));
         });
+    }
+
+    function getHighResolutionSource(sourceUrl) {
+        return sourceUrl.replace('t_720p','t_1080p');
     }
 
     function showModal(screenshot) {
         $('#modal-container').show();
-        $('#modal-image').attr('src', screenshot.src);
+        $('#modal-image').attr('src', getHighResolutionSource(screenshot.src));
     }
 
     function hideModal() {
