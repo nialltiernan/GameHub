@@ -1,7 +1,9 @@
 @include('javascript.screenshotModals')
 
 <div id="modal-container" class="modal-container hidden fixed z-10 left-0 top-0 w-full h-full overflow-auto bg-gray-800 bg-opacity-75">
-    <span class="text-6xl hover:text-gray-500 absolute" style="right: 2rem" onclick="hideModal()">&times;</span>
+    <span class="text-6xl hover:text-gray-500 absolute" style="right: 3.5rem" onclick="hideModal()">&times;</span>
+    <span class="text-6xl hover:text-gray-500" onclick="previousModal()">{{ '<' }}</span>
+    <span class="text-6xl hover:text-gray-500" onclick="nextModal()">{{ '>' }}</span>
     <img id="modal-image" src="" class="w-4/5 mt-10 m-auto" alt="screenshot modal">
 </div>
 
