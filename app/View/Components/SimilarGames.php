@@ -4,7 +4,7 @@ namespace App\View\Components;
 
 use Illuminate\View\Component;
 
-class GameScreenshots extends Component
+class SimilarGames extends Component
 {
 
     public array $game;
@@ -21,6 +21,6 @@ class GameScreenshots extends Component
      */
     public function render()
     {
-        return view('components.game-screenshots');
+        return view('components.similar-games');
     }
 }
