@@ -43,7 +43,7 @@ class GamesViewModel extends ViewModel implements Arrayable
      */
     private function getRating($game)
     {
-        return isset($game['rating']) ? round($game['rating'], 2) : '';
+        return isset($game['rating']) ? round($game['rating'], 2). '%' : '';
     }
 
     private function getCriticRating($game)

@@ -14,19 +14,17 @@ class PlatformGames extends Component
 
     public $games = [];
     public $platformId;
+    public $sort;
+    public $order;
+    public $limit;
 
     private const ROUTE = 'games';
-    private const QUERY = '
-        fields name, cover.url, aggregated_rating, platforms.abbreviation, slug;
-        where platforms = (%s) & aggregated_rating != null;
-        sort aggregated_rating desc; 
-        limit 12;';
 
     public function loadGames(GetApiHeaders $headers)
     {
         $viewModelData = Cache::remember($this->getCacheKey(), 1440, function () use ($headers) {
             $gameData = Http::withHeaders($headers->fetch())
-                ->withBody(sprintf(self::QUERY, $this->platformId), 'raw')
+                ->withBody($this->getQuery(), 'raw')
                 ->post(GetEndpoint::fetch(self::ROUTE))
                 ->json();
 
@@ -44,6 +42,48 @@ class PlatformGames extends Component
 
     private function getCacheKey(): string
     {
-        return sprintf('platform-games_%s', $this->platformId);
+        return sprintf(
+            'platform_%s_sort_%s_order_%s_limit_%s',
+            $this->platformId,
+            $this->sort,
+            $this->order,
+            $this->limit
+        );
+    }
+
+    private function getQuery(): string
+    {
+        if ($this->sort === 'rating') {
+            return $this->getQuerySortedByRating();
+        }
+        return $this->getQuerySortedByAggregatedRating();
+    }
+
+    private function getQuerySortedByAggregatedRating()
+    {
+        return sprintf(
+            'fields name, cover.url, aggregated_rating, platforms.abbreviation, slug;
+            where platforms = (%s) & aggregated_rating != null;
+            sort %s %s; 
+            limit %s;',
+            $this->platformId,
+            $this->sort,
+            $this->order,
+            $this->limit
+        );
+    }
+
+    private function getQuerySortedByRating()
+    {
+        return sprintf(
+            'fields name, cover.url, rating, platforms.abbreviation, slug;
+            where platforms = (%s) & rating != null;
+            sort %s %s; 
+            limit %s;',
+            $this->platformId,
+            $this->sort,
+            $this->order,
+            $this->limit
+        );
     }
 }
