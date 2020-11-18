@@ -7,6 +7,5 @@
         <x-game-screenshots :game="$game"></x-game-screenshots>
 
         <x-similar-games :game="$game"></x-similar-games>
-
-    </div> {{--end container--}}
+    </div>
 @endsection

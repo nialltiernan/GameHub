@@ -16,9 +16,13 @@
         {{ $game['name'] }}
     </a>
 
-    @if($game['platforms'] !== '')
+    @if ($game['platforms'])
         <div class="text-gray-400 mt-1">
-            {{ $game['platforms'] }}
+            @foreach($game['platforms'] as $id => $abbreviation)
+                <a href="{{ route('platforms.show', ['id' => $id]) }}" class="hover:text-blue-600">
+                    {{ $abbreviation }}@if(!$loop->last),@endif
+                </a>
+            @endforeach
         </div>
     @endif
 </div>

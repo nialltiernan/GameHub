@@ -35,10 +35,10 @@ class GameViewModel extends ViewModel
             'rating' => self::formatRating($this->game),
             'publisher' => $this->getPublisher(),
             'genres' => $this->getGenres(),
-            'platforms' => self::formatPlatforms($this->game),
+            'platforms' => self::getPlatforms($this->game),
             'screenshots' => $this->getScreenshots(),
             'similar_games' => $this->getSimilarGames(),
-            'social_links' => $this->getSocialLinks()
+            'social_links' => $this->getSocialLinks(),
         ])->toArray();
     }
 
@@ -53,9 +53,20 @@ class GameViewModel extends ViewModel
         return isset($game['rating']) ? $game['rating'] / 100 : '';
     }
 
-    private static function formatPlatforms($game)
+    private static function getPlatforms($game)
     {
-        return isset($game['platforms']) ? collect($game['platforms'])->pluck('abbreviation')->implode(', ') : '';
+        if (!isset($game['platforms'])) {
+            return [];
+        }
+
+        $platforms = [];
+        foreach ($game['platforms'] as $platform) {
+            if (isset($platform['abbreviation'])) {
+                $platforms[$platform['id']] = $platform['abbreviation'];
+            }
+        }
+
+        return $platforms;
     }
 
     private function getPublisher()
@@ -87,7 +98,7 @@ class GameViewModel extends ViewModel
                 return collect($similarGame)->merge([
                     'url' => self::convertUrlThumbnailToBigCover($similarGame),
                     'rating' => self::formatRating($similarGame),
-                    'platforms' => self::formatPlatforms($similarGame)
+                    'platforms' => self::getPlatforms($similarGame)
                 ]);
             }) : [];
     }

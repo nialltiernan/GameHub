@@ -22,7 +22,13 @@
             &middot;
             <span>{{ $game['publisher'] }}</span>
             &middot;
-            <span>{{ $game['platforms'] }}</span>
+            <span>
+                @foreach($game['platforms'] as $id => $abbreviation)
+                    <a href="{{ route('platforms.show', ['id' => $id]) }}" class="hover:text-blue-600">
+                        {{ $abbreviation }}@if(!$loop->last),@endif
+                    </a>
+                @endforeach
+            </span>
         </div>
         <div class="flex flex-wrap items-center mt-8">
             <div class="flex items-center">

@@ -57,6 +57,17 @@ class GamesViewModel extends ViewModel implements Arrayable
      */
     private function getPlatforms($game)
     {
-        return isset($game['platforms']) ? collect($game['platforms'])->pluck('abbreviation')->implode(', ') : '';
+        if (!isset($game['platforms'])) {
+            return [];
+        }
+
+        $platforms = [];
+        foreach ($game['platforms'] as $platform) {
+            if (isset($platform['abbreviation'])) {
+                $platforms[$platform['id']] = $platform['abbreviation'];
+            }
+        }
+
+        return $platforms;
     }
 }
