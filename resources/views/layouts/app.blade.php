@@ -38,6 +38,5 @@
     <livewire:scripts />
     <script src="/js/app.js"></script>
     @stack('scripts')
-    @include('javascript.sidebar')
 </body>
 </html>
