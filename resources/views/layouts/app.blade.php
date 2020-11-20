@@ -18,9 +18,6 @@
             </div>
             <div class="flex items-center mt-6 lg:mt-0">
                 <livewire:search-dropdown></livewire:search-dropdown>
-                <div class="ml-6">
-                    <img class="lg:hidden block" src="/images/icons/hamburger.svg" onclick="toggleSidebarVisibility()"/>
-                </div>
             </div>
         </nav>
     </header>
