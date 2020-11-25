@@ -2,6 +2,7 @@
 
 namespace App\Http\Livewire;
 
+use App\Services\Cache\GetTimeToLife;
 use App\Services\IGDB\GetApiHeaders;
 use App\Services\IGDB\GetEndpoint;
 use App\ViewModels\GamesViewModel;
@@ -22,7 +23,7 @@ class PlatformGames extends Component
 
     public function loadGames(GetApiHeaders $headers)
     {
-        $viewModelData = Cache::remember($this->getCacheKey(), 1440, function () use ($headers) {
+        $viewModelData = Cache::remember($this->getCacheKey(), GetTimeToLife::fetch(), function () use ($headers) {
             $gameData = Http::withHeaders($headers->fetch())
                 ->withBody($this->getQuery(), 'raw')
                 ->post(GetEndpoint::fetch(self::ROUTE))
