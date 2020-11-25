@@ -12,14 +12,22 @@
         <nav class="container mx-auto flex flex-col lg:flex-row  items-center justify-between px-4 py-6">
             <div class="flex flex-col lg:flex-row items-center">
                 <ul class="flex ml-0 space-x-8 mt-6 lg:mt-0">
-                    <li><a href="/">Home</a></li>
+                    <li><a href="/" class="hover:text-gray-400">Home</a></li>
                     <li><a href="{{ route('platforms.index') }}" class="hover:text-gray-400">Platforms</a></li>
                 </ul>
             </div>
             <div class="flex items-center mt-6 lg:mt-0">
-                <livewire:search-dropdown></livewire:search-dropdown>
+                @if (Auth::check())
+                    <a href="{{ route('auth.logout') }}" class="mr-5 hover:text-gray-400">Logout</a>
+                @else
+                    <a href="{{ route('auth.showLogin') }}" class="mr-5 hover:text-gray-400">Login</a>
+                    <a href="{{ route('auth.showRegister') }}" class="mr-5 hover:text-gray-400">Register</a>
+                @endif
+                <livewire:search-dropdown/>
             </div>
         </nav>
+
+
     </header>
 
     <main class="py-8">

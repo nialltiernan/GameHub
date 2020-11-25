@@ -19,3 +19,11 @@ Route::get('games/{id}', [\App\Http\Controllers\GameController::class, 'show'])-
 
 Route::get('platforms/', [\App\Http\Controllers\PlatformController::class, 'index'])->name('platforms.index');
 Route::get('platforms/{id}', [\App\Http\Controllers\PlatformController::class, 'show'])->name('platforms.show');
+
+Route::get('login', [\App\Http\Controllers\AuthController::class, 'showLogin'])->name('auth.showLogin');
+Route::post('login', [\App\Http\Controllers\AuthController::class, 'login'])->name('auth.login');
+
+Route::get('register', [\App\Http\Controllers\AuthController::class, 'showRegister'])->name('auth.showRegister');
+Route::post('register', [\App\Http\Controllers\AuthController::class, 'register'])->name('auth.register');
+
+Route::get('logout', [\App\Http\Controllers\AuthController::class, 'logout'])->name('auth.logout');

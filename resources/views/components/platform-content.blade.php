@@ -56,5 +56,5 @@
         <img class="lg:hidden block mr-10" src="/images/icons/hamburger.svg" onclick="toggleSidebarVisibility()"/>
     </div>
 
-    <livewire:platform-games :platformId="$platformId" :sort="$sort" :order="$order" :limit="$limit"></livewire:platform-games>
+    <livewire:platform-games :platformId="$platformId" :sort="$sort" :order="$order" :limit="$limit"/>
 </div>
