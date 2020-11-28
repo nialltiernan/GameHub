@@ -2,7 +2,7 @@
 
 namespace App\Rawg\Resources;
 
-use App\Rawg\Exceptions\ApiException;
+use App\Rawg\ApiException;
 use App\Rawg\Filters\OrderingFilter;
 use App\Rawg\Response;
 
