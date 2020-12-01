@@ -2,36 +2,29 @@
 
 namespace App\Http\Livewire;
 
+use App\Rawg\DateRange;
+use App\Rawg\Filters\GamesFilter;
 use App\Services\Cache\GetTimeToLife;
-use App\Services\IGDB\GetApiHeaders;
-use App\Services\IGDB\GetEndpoint;
+use App\Services\RAWG\ClientRetriever;
 use App\ViewModels\GamesViewModel;
 use Illuminate\Support\Facades\Cache;
-use Illuminate\Support\Facades\Date;
-use Illuminate\Support\Facades\Http;
 use Livewire\Component;
 
 class HomePageGames extends Component
 {
-    public $games = [];
+    public array $games = [];
 
-    private const ROUTE = 'games';
-    private const QUERY = '
-        fields name, cover.url, rating, platforms.abbreviation, slug;
-        where
-            rating >= 80 &
-            release_dates.date > %s &
-            platforms = (48,49,5);
-        sort rating desc; 
-        limit 12;';
-
-    public function loadGames(GetApiHeaders $headers)
+    public function loadGames(ClientRetriever $clientRetriever)
     {
-        $viewModelData = Cache::remember('home-page-games', GetTimeToLife::fetch(), function () use ($headers) {
-            $gameData = Http::withHeaders($headers->fetch())
-                ->withBody(sprintf(self::QUERY, Date::now()->subYear()->timestamp), 'raw')
-                ->post(GetEndpoint::fetch(self::ROUTE))
-                ->json();
+        $viewModelData = Cache::remember('home-page-games', GetTimeToLife::fetch(), function () use ($clientRetriever) {
+            $client = $clientRetriever->execute();
+            $filter = new GamesFilter();
+            $filter
+                ->setPageSize(6)
+                ->setDates([DateRange::create(now()->subtract(1, 'year'), now())])
+                ->setOrdering('-rating');
+
+            $gameData = $client->games()->getGames($filter)->getData()['results'];
 
             $viewModel = new GamesViewModel($gameData);
             return $viewModel->data();
