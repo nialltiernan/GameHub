@@ -9,11 +9,7 @@
         {{ $game['name'] }}
     </a>
 
-    <div class="mt-2">
-        @foreach($game['platforms'] as $platformId => $platform)
-            <a href="{{ route('platforms.show', ['id' => $platformId]) }}" class="hover:text-blue-200">
-                {{ $platform }}@if (!$loop->last),@endif
-            </a>
-        @endforeach
-    </div>
+    @if ($game['platforms'])
+        <x-platform-links :platforms="$game['platforms']"/>
+    @endif
 </div>

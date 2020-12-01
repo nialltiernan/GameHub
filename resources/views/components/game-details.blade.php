@@ -14,7 +14,7 @@
             &middot;
             <span>
                 @foreach($game['platforms'] as $platformId => $platform)
-                    <a href="{{ route('platforms.show', ['id' => $platformId]) }}" class="hover:text-blue-300">
+                    <a href="{{ route('platforms.show', ['id' => $platformId]) }}" class="hover:text-blue-600">
                         {{ $platform }}@if (!$loop->last),@endif
                     </a>
                 @endforeach
