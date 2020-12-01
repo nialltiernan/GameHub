@@ -6,7 +6,7 @@ use Spatie\ViewModels\ViewModel;
 
 class SimilarGamesViewModel extends ViewModel
 {
-    private $games;
+    private array $games;
 
     public function __construct($games)
     {
