@@ -11,13 +11,13 @@
 
     <div class="images-container border-b border-gray-300 pb-12 mt-8">
         <h2 class="text-blue-500 uppercase tracking-wide font-semibold">Screenshots</h2>
-        <div class="grid grid-cols-1 md:grid-cols-2 gap-12 mt-8">
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-12 mt-8">
             @forelse($screenshots as $index => $screenshot)
                 <div>
                     <img
                         id="screenshot_{{ $index }}"
                         src="{{ $screenshot }}"
-                        class="hover:opacity-75 transition ease-in-out duration-150"
+                        class="hover:opacity-75"
                         alt="screenshot"
                         onclick="showModal(this)"
                     >
