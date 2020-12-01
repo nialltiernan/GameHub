@@ -2,7 +2,6 @@
 
 namespace App\ViewModels;
 
-use Illuminate\Support\Str;
 use Spatie\ViewModels\ViewModel;
 
 class GameViewModel extends ViewModel
@@ -22,9 +21,7 @@ class GameViewModel extends ViewModel
             'rating' => $this->getRating(),
             'publisher' => $this->getPublisher(),
             'genres' => $this->getGenres(),
-            'platforms' => self::getPlatforms($this->game),
-            'screenshots' => $this->getScreenshots(),
-            'similar_games' => $this->getSimilarGames(),
+            'platforms' => $this->getPlatforms(),
             'social_links' => $this->getSocialLinks(),
             'youtube_link' => $this->getYouTubeLink()
         ])->toArray();
@@ -35,14 +32,15 @@ class GameViewModel extends ViewModel
         return $this->game['metacritic'] / 100;
     }
 
-    private static function formatRating($game)
-    {
-        return isset($game['rating']) ? $game['rating'] / 100 : '';
-    }
 
-    private static function getPlatforms($game)
+    private function getPlatforms()
     {
-        return collect($game['platforms'])->pluck('platform.name')->implode(', ');
+        $platforms = [];
+        foreach ($this->game['platforms'] as $platform) {
+            $platforms[$platform['platform']['id']] = $platform['platform']['name'];
+        }
+
+        return $platforms;
     }
 
     private function getPublisher()
@@ -55,34 +53,9 @@ class GameViewModel extends ViewModel
         return isset($this->game['genres']) ? collect($this->game['genres'])->pluck('name')->implode(', ') : '';
     }
 
-    private function getScreenshots()
-    {
-        return isset($this->game['screenshots']) ?
-            collect($this->game['screenshots'])->map(function ($screenshot) {
-                return collect($screenshot)->merge([
-                    'url' => Str::replaceFirst('t_thumb', 't_screenshot_med', $screenshot['url']),
-                ]);
-            }) : [];
-    }
-
-    private function getSimilarGames()
-    {
-        return isset($this->game['similar_games']) ?
-            collect($this->game['similar_games'])->map(function ($similarGame) {
-                return collect($similarGame)->merge([
-                    'url' => self::convertUrlThumbnailToBigCover($similarGame),
-                    'rating' => self::formatRating($similarGame),
-                    'platforms' => self::getPlatforms($similarGame)
-                ]);
-            }) : [];
-    }
-
     private function getSocialLinks()
     {
         $links = [];
-        if (isset($this->game['website'])) {
-            $links['home'] = $this->game['website'];
-        }
         if (isset($this->game['reddit_url'])) {
             $links['reddit'] = $this->game['reddit_url'];
         }

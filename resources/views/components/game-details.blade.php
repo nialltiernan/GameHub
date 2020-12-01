@@ -1,7 +1,11 @@
 <div class="game-details border-b border-gray-800 pb-12 flex flex-col lg:flex-row">
     <div class="xl:mr-64">
         <h2 class="font-semibold text-4xl leading-tight mt-1">
-            {{ $game['name'] }}
+            @isset($game['website'])
+                <a href="{{ $game['website'] }}" target="_blank" class="hover:text-gray-400">{{ $game['name'] }}</a>
+            @else
+                {{ $game['name'] }}
+            @endisset
         </h2>
         <div class="text-gray-400">
             <span>{{ $game['genres'] }}</span>
@@ -9,7 +13,11 @@
             <span>{{ $game['publisher'] }}</span>
             &middot;
             <span>
-                {{ $game['platforms'] }}
+                @foreach($game['platforms'] as $platformId => $platform)
+                    <a href="{{ route('platforms.show', ['id' => $platformId]) }}" class="hover:text-blue-200">
+                        {{ $platform }}@if (!$loop->last),@endif
+                    </a>
+                @endforeach
             </span>
         </div>
         <div class="flex flex-wrap items-center mt-8">
@@ -29,9 +37,6 @@
 
             <div class="flex items-center space-x-4 mt-4 sm:mt-0 sm:ml-6">
                 @foreach($game['social_links'] as $category => $link)
-                    @if ($category === 'home')
-                        @continue
-                    @endif
                     <a href="{{ $link }}" target="_blank">
                         <img class="h-8 transform hover:scale-150" src="/images/icons/{{ $category }}.svg" alt="{{ $category }}">
                     </a>
