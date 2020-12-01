@@ -1,21 +1,7 @@
 <div class="game-details border-b border-gray-800 pb-12 flex flex-col lg:flex-row">
-    <div class="flex-none">
-        @if (isset($game['social_links']['home']))
-            <a href="{{ $game['social_links']['home'] }}" target="_blank">
-                <img src="{{ $game['coverImageUrl'] }}" alt="cover">
-            </a>
-        @else
-            <img src="{{ $game['coverImageUrl'] }}" alt="cover">
-        @endif
-    </div>
-
-    <div class="lg:ml-12 xl:mr-64">
+    <div class="xl:mr-64">
         <h2 class="font-semibold text-4xl leading-tight mt-1">
-            @if (isset($game['social_links']['home']))
-                <a href="{{ $game['social_links']['home'] }}" target="_blank">{{ $game['name'] }}</a>
-            @else
-                {{ $game['name'] }}
-            @endif
+            {{ $game['name'] }}
         </h2>
         <div class="text-gray-400">
             <span>{{ $game['genres'] }}</span>
@@ -23,11 +9,7 @@
             <span>{{ $game['publisher'] }}</span>
             &middot;
             <span>
-                @foreach($game['platforms'] as $id => $abbreviation)
-                    <a href="{{ route('platforms.show', ['id' => $id]) }}" class="hover:text-blue-600">
-                        {{ $abbreviation }}@if(!$loop->last),@endif
-                    </a>
-                @endforeach
+                {{ $game['platforms'] }}
             </span>
         </div>
         <div class="flex flex-wrap items-center mt-8">
@@ -56,15 +38,13 @@
                 @endforeach
             </div>
 
-            <p class="mt-12">{{ $game['summary'] }}</p>
+            <p class="mt-12">{{ $game['description_raw'] }}</p>
 
-            @if (isset($game['videos'][0]['video_id']))
-                <div class="mt-12">
-                    <a href="https://www.youtube.com/watch?v={{ $game['videos'][0]['video_id'] }}" class="inline-flex bg-blue-500 text-white font-semibold px-4 py-4 hover:bg-blue-600 rounded transition ease-in-out duration-150">
-                        <span>Play Trailer</span>
-                    </a>
-                </div>
-            @endif
+            <div class="mt-12">
+                <a href="{{ $game['youtube_link'] }}" class="inline-flex bg-blue-500 text-white font-semibold px-4 py-4 hover:bg-blue-600 rounded transition ease-in-out duration-150">
+                    <span>Play Video</span>
+                </a>
+            </div>
         </div>
     </div>
 </div>

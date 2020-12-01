@@ -2,29 +2,17 @@
 
     let imageSources = [];
 
-    window.onload = function () {
-        $("img[id^=screenshot]").each(function (index, element) {
-            imageSources.push(getHighResolutionSource(element.src));
+    function initModalArray() {
+        $("img[id^=screenshot_]").each(function (index, element) {
+            imageSources.push(element.src);
         });
     }
 
-    document.addEventListener('keydown', (e) => {
-        if (e.code === 'ArrowRight') {
-            nextModal();
-        } else if (e.code === 'ArrowLeft') {
-            previousModal();
-        } else if (e.code === 'Escape') {
-            hideModal();
-        }
-    });
-
-    function getHighResolutionSource(sourceUrl) {
-        return sourceUrl.replace('t_screenshot_med','t_1080p');
-    }
-
     function showModal(screenshot) {
+        initModalArray();
+
         $('#modal-container').show();
-        $('#modal-image').attr('src', getHighResolutionSource(screenshot.src));
+        $('#modal-image').attr('src', screenshot.src);
     }
 
     function hideModal() {
@@ -58,4 +46,15 @@
 
         modal.attr('src', imageSources[newIndex]);
     }
+
+    document.addEventListener('keydown', (e) => {
+        if (e.code === 'ArrowRight') {
+            nextModal();
+        } else if (e.code === 'ArrowLeft') {
+            previousModal();
+        } else if (e.code === 'Escape') {
+            hideModal();
+        }
+    });
+
 </script>

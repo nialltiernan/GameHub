@@ -8,18 +8,6 @@ use Spatie\ViewModels\ViewModel;
 class GameViewModel extends ViewModel
 {
 
-    private const LINK_OFFICIAL = 1;
-    private const LINK_WIKIA = 2;
-    private const LINK_WIKIPEDIA = 3;
-    private const LINK_FACEBOOK = 4;
-    private const LINK_TWITTER = 5;
-    private const LINK_TWITCH = 6;
-    private const LINK_INSTAGRAM = 8;
-    private const LINK_YOUTUBE = 9;
-    private const LINK_STEAM = 13;
-    private const LINK_REDDIT = 14;
-    private const LINK_DISCORD = 18;
-
     
     private $game;
 
@@ -31,21 +19,20 @@ class GameViewModel extends ViewModel
     public function data()
     {
         return collect($this->game)->merge([
-            'coverImageUrl' => self::convertUrlThumbnailToBigCover($this->game),
-            'rating' => self::formatRating($this->game),
+            'rating' => $this->getRating(),
             'publisher' => $this->getPublisher(),
             'genres' => $this->getGenres(),
             'platforms' => self::getPlatforms($this->game),
             'screenshots' => $this->getScreenshots(),
             'similar_games' => $this->getSimilarGames(),
             'social_links' => $this->getSocialLinks(),
+            'youtube_link' => $this->getYouTubeLink()
         ])->toArray();
     }
 
-    private static function convertUrlThumbnailToBigCover($game)
+    private function getRating()
     {
-        return isset($game['cover']['url']) ?
-            Str::replaceFirst('t_thumb', 't_cover_big', $game['cover']['url']) : '/images/game-not-found.png';
+        return $this->game['metacritic'] / 100;
     }
 
     private static function formatRating($game)
@@ -55,25 +42,12 @@ class GameViewModel extends ViewModel
 
     private static function getPlatforms($game)
     {
-        if (!isset($game['platforms'])) {
-            return [];
-        }
-
-        $platforms = [];
-        foreach ($game['platforms'] as $platform) {
-            if (isset($platform['abbreviation'])) {
-                $platforms[$platform['id']] = $platform['abbreviation'];
-            }
-        }
-
-        return $platforms;
+        return collect($game['platforms'])->pluck('platform.name')->implode(', ');
     }
 
     private function getPublisher()
     {
-        return isset($this->game['involved_companies'][0]['company']['name']) ?
-            $this->game['involved_companies'][0]['company']['name'] :
-            '';
+        return collect($this->game['publishers'])->pluck('name')->implode(', ');
     }
 
     private function getGenres(): string
@@ -105,39 +79,21 @@ class GameViewModel extends ViewModel
 
     private function getSocialLinks()
     {
-        if (!isset($this->game['websites'])) {
-            return [];
-        }
-        $linkCategories = collect($this->game['websites'])->pluck('url', 'category')->sortKeys();
-
         $links = [];
-        foreach ($linkCategories as $category => $link) {
-            if ($category === self::LINK_OFFICIAL) {
-                $links['home'] = $link;
-            } elseif ($category === self::LINK_WIKIA) {
-                $links['wikia'] = $link;
-            } elseif ($category === self::LINK_WIKIPEDIA) {
-                $links['wikipedia'] = $link;
-            } elseif ($category === self::LINK_FACEBOOK) {
-                $links['facebook'] = $link;
-            } elseif ($category === self::LINK_TWITTER) {
-                $links['twitter'] = $link;
-            } elseif ($category === self::LINK_TWITCH) {
-                $links['twitch'] = $link;
-            } elseif ($category === self::LINK_INSTAGRAM) {
-                $links['instagram'] = $link;
-            } elseif ($category === self::LINK_YOUTUBE) {
-                $links['youtube'] = $link;
-            } elseif ($category === self::LINK_STEAM) {
-                $links['steam'] = $link;
-            } elseif ($category === self::LINK_REDDIT) {
-                $links['reddit'] = $link;
-            } elseif ($category === self::LINK_DISCORD) {
-                $links['discord'] = $link;
-            }
+        if (isset($this->game['website'])) {
+            $links['home'] = $this->game['website'];
         }
-
+        if (isset($this->game['reddit_url'])) {
+            $links['reddit'] = $this->game['reddit_url'];
+        }
+        if (isset($this->game['metacritic_url'])) {
+            $links['metacritic'] = $this->game['metacritic_url'];
+        }
         return $links;
+    }
 
+    private function getYouTubeLink()
+    {
+        return isset($this->game['video']) ? sprintf('https://www.youtube.com/watch?v=%s', $this->game['video']) : '';
     }
 }

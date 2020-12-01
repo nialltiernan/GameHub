@@ -34,5 +34,9 @@ return [
         'api_endpoint' => env('IGDB_API_ENDPOINT'),
         'client_id' => env('IGDB_CLIENT_ID'),
         'authorization' => sprintf('Bearer %s', env('IGDB_ACCESS_TOKEN'))
+    ],
+
+    'rawg' => [
+        'api_key' => env('RAWG_API_KEY'),
     ]
 ];

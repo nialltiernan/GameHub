@@ -27,3 +27,5 @@ Route::get('register', [\App\Http\Controllers\AuthController::class, 'showRegist
 Route::post('register', [\App\Http\Controllers\AuthController::class, 'register'])->name('auth.register');
 
 Route::get('logout', [\App\Http\Controllers\AuthController::class, 'logout'])->name('auth.logout');
+
+Route::get('rawg', [\App\Http\Controllers\RawgController::class, 'index'])->name('rawg.index');

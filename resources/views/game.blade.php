@@ -4,8 +4,8 @@
     <div class="container mx-auto px-4">
         <x-game-details :game="$game"></x-game-details>
 
-        <x-game-screenshots :game="$game"></x-game-screenshots>
+        <livewire:game-screenshots :game-id="$game['id']"/>
 
-        <x-similar-games :game="$game"></x-similar-games>
+        <livewire:similar-games :game-id="$game['id']" />
     </div>
 @endsection
