@@ -17,9 +17,19 @@ class SimilarGamesViewModel extends ViewModel
     {
         return collect($this->games)->map(function ($game) {
             return collect($game)->merge([
-                'url' => $game['background_image'],
+                'image_url' => $game['background_image'],
+                'platforms' => self::getPlatforms($game)
             ]);
         })->toArray();
     }
 
+    private function getPlatforms($game)
+    {
+        $platforms = [];
+        foreach ($game['platforms'] as $platform) {
+            $platforms[$platform['platform']['id']] = $platform['platform']['name'];
+        }
+
+        return $platforms;
+    }
 }

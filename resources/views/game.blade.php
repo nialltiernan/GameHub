@@ -2,7 +2,7 @@
 
 @section('content')
     <div class="container mx-auto px-4">
-        <x-game-details :game="$game"></x-game-details>
+        <x-game-details :game="$game" />
 
         <livewire:game-screenshots :game-id="$game['id']"/>
 
