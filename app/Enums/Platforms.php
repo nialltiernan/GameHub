@@ -12,4 +12,15 @@ class Platforms extends Enum
     public const PLAYSTATION_5 = ['display_name' => 'PlayStation 5', 'id' => 187];
     public const XBOX_ONE = ['display_name' => 'Xbox One', 'id' => 1];
     public const NINTENDO_SWITCH = ['display_name' => 'Nintendo Switch', 'id' => 7];
+
+    public static function getPlatformName($id): string
+    {
+        foreach (self::values() as $enum) {
+            $platform = $enum->getValue();
+            if ($platform['id'] === $id) {
+                return $platform['display_name'];
+            }
+        }
+        return '';
+    }
 }

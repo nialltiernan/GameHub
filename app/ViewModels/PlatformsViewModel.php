@@ -8,17 +8,13 @@ use Spatie\ViewModels\ViewModel;
 class PlatformsViewModel extends ViewModel
 {
 
-    public function getPlatforms()
+    public function getPlatforms(): array
     {
-        $collection = collect(array_flip(Platforms::toArray()));
-        return $collection->transform(function ($item) {
-            return str_replace('_', ' ', $item);
-        });
-    }
-
-    public function getSelectedPlatform($id)
-    {
-        $enumKey = array_flip(Platforms::toArray())[$id];
-        return str_replace('_', ' ', $enumKey);
+        $platforms = [];
+        foreach (Platforms::values() as $enum) {
+            $platform = $enum->getValue();
+            $platforms[$platform['id']] = $platform['display_name'];
+        }
+        return $platforms;
     }
 }

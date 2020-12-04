@@ -2,32 +2,32 @@
 
 namespace App\Http\Livewire;
 
+use App\Rawg\Filters\GamesFilter;
 use App\Services\Cache\GetTimeToLife;
-use App\Services\IGDB\GetApiHeaders;
-use App\Services\IGDB\GetEndpoint;
+use App\Services\RAWG\ClientRetriever;
 use App\ViewModels\GamesViewModel;
 use Illuminate\Support\Facades\Cache;
-use Illuminate\Support\Facades\Http;
 use Livewire\Component;
 
 class PlatformGames extends Component
 {
 
-    public $games = [];
-    public $platformId;
-    public $sort;
-    public $order;
-    public $limit;
+    public array $games = [];
+    public int $platformId;
+    public string $order;
+    public int $limit;
 
-    private const ROUTE = 'games';
-
-    public function loadGames(GetApiHeaders $headers)
+    public function loadGames(ClientRetriever $clientRetriever)
     {
-        $viewModelData = Cache::remember($this->getCacheKey(), GetTimeToLife::fetch(), function () use ($headers) {
-            $gameData = Http::withHeaders($headers->fetch())
-                ->withBody($this->getQuery(), 'raw')
-                ->post(GetEndpoint::fetch(self::ROUTE))
-                ->json();
+        $viewModelData = Cache::remember($this->getCacheKey(), GetTimeToLife::fetch(), function () use ($clientRetriever) {
+            $client = $clientRetriever->execute();
+            $filter = new GamesFilter();
+            $filter
+                ->setPageSize($this->limit)
+                ->setPlatforms([$this->platformId])
+                ->setOrdering($this->order);
+
+            $gameData = $client->games()->getGames($filter)->getData()['results'];
 
             $viewModel = new GamesViewModel($gameData);
             return $viewModel->data();
@@ -44,45 +44,8 @@ class PlatformGames extends Component
     private function getCacheKey(): string
     {
         return sprintf(
-            'platform_%s_sort_%s_order_%s_limit_%s',
+            'platform_%s_order_%s_limit_%s',
             $this->platformId,
-            $this->sort,
-            $this->order,
-            $this->limit
-        );
-    }
-
-    private function getQuery(): string
-    {
-        if ($this->sort === 'rating') {
-            return $this->getQuerySortedByRating();
-        }
-        return $this->getQuerySortedByAggregatedRating();
-    }
-
-    private function getQuerySortedByAggregatedRating()
-    {
-        return sprintf(
-            'fields name, cover.url, aggregated_rating, platforms.abbreviation, slug;
-            where platforms = (%s) & aggregated_rating != null;
-            sort %s %s; 
-            limit %s;',
-            $this->platformId,
-            $this->sort,
-            $this->order,
-            $this->limit
-        );
-    }
-
-    private function getQuerySortedByRating()
-    {
-        return sprintf(
-            'fields name, cover.url, rating, platforms.abbreviation, slug;
-            where platforms = (%s) & rating != null;
-            sort %s %s; 
-            limit %s;',
-            $this->platformId,
-            $this->sort,
             $this->order,
             $this->limit
         );
