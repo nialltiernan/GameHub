@@ -2,7 +2,7 @@
 
     <div class="relative inline-block">
         <a href="{{ route('game.show',['id' => $game['id']]) }}">
-            <img src="{{ $game['image_url'] }}" alt="game cover" class="hover:opacity-75">
+            <img src="{{ $game['image_url'] }}" alt="game cover" class="hover:opacity-75" style="max-height: 215px">
         </a>
 
         @if (isset($game['slug']))
