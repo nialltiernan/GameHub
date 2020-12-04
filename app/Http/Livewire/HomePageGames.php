@@ -2,6 +2,7 @@
 
 namespace App\Http\Livewire;
 
+use App\Enums\Platforms;
 use App\Rawg\DateRange;
 use App\Rawg\Filters\GamesFilter;
 use App\Services\Cache\GetTimeToLife;
@@ -20,7 +21,14 @@ class HomePageGames extends Component
             $client = $clientRetriever->execute();
             $filter = new GamesFilter();
             $filter
-                ->setPageSize(6)
+                ->setPageSize(9)
+                ->setPlatforms([
+                    Platforms::PC['id'],
+                    Platforms::PLAYSTATION_4['id'],
+                    Platforms::PLAYSTATION_5['id'],
+                    Platforms::XBOX_ONE['id'],
+                    Platforms::NINTENDO_SWITCH['id'],
+                ])
                 ->setDates([DateRange::create(now()->subtract(1, 'year'), now())])
                 ->setOrdering('-rating');
 
