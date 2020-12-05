@@ -8,10 +8,19 @@
             @endisset
         </h2>
         <div class="text-gray-400">
-            <span>{{ $game['genres'] }}</span>
-            &middot;
-            <span>{{ $game['publisher'] }}</span>
-            &middot;
+
+            @if($game['genres'])
+                <span>{{ $game['genres'] }}</span>&middot;
+            @endisset
+
+            @if($game['publisher'])
+                <span>{{ $game['publisher'] }}</span>&middot;
+            @endisset
+
+            @if($game['released'])
+                <span>{{ $game['released'] }}</span>&middot;
+            @endisset
+
             <span>
                 @foreach($game['platforms'] as $platformId => $platform)
                     <a href="{{ route('platforms.show', ['id' => $platformId]) }}" class="hover:text-blue-600">
