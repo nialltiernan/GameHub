@@ -15,18 +15,23 @@ class GamesViewModel extends ViewModel implements Arrayable
         $this->games = $games;
     }
 
-    public function data()
+    public function data(): array
     {
         return collect($this->games)->map(function ($game) {
             return collect($game)->merge([
-                'image_url' => $game['background_image'],
+                'image_url' => $this->getCroppedImageUrl($game),
                 'rating' => $this->getRating($game),
                 'platforms' => $this->getPlatforms($game)
             ]);
         })->toArray();
     }
 
-    private function getPlatforms($game)
+    private function getCroppedImageUrl($game)
+    {
+        return str_replace('/media/games/','/media/crop/600/400/games/', $game['background_image']);
+    }
+
+    private function getPlatforms($game): array
     {
         $platforms = [];
         foreach ($game['platforms'] as $platform) {
@@ -36,7 +41,7 @@ class GamesViewModel extends ViewModel implements Arrayable
         return $platforms;
     }
 
-    private function getRating($game)
+    private function getRating($game): float
     {
         return ($game['rating'] / 5) * 100;
     }
