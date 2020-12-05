@@ -2,6 +2,7 @@
 
 namespace App\ViewModels;
 
+use App\Services\RAWG\UrlConverter;
 use Illuminate\Contracts\Support\Arrayable;
 use Spatie\ViewModels\ViewModel;
 
@@ -19,17 +20,11 @@ class GamesViewModel extends ViewModel implements Arrayable
     {
         return collect($this->games)->map(function ($game) {
             return collect($game)->merge([
-                'image_url' => $this->getCroppedImageUrl($game),
+                'image_url' => UrlConverter::cropImage600x400($game['background_image']),
                 'rating' => $this->getRating($game),
                 'platforms' => $this->getPlatforms($game)
             ]);
         })->toArray();
-    }
-
-    private function getCroppedImageUrl($game)
-    {
-        $url = str_replace('/media/games/','/media/crop/600/400/games/', $game['background_image']);
-        return str_replace('/media/screenshots/', '/media/crop/600/400/screenshots/', $url);
     }
 
     private function getPlatforms($game): array

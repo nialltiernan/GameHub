@@ -8,8 +8,7 @@ use App\Rawg\Config;
 
 class ClientRetriever
 {
-
-    public function execute()
+    public function execute(): ApiClient
     {
         $config = new Config(config('services.rawg.api_key'));
         return new ApiClient($config);

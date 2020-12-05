@@ -2,6 +2,7 @@
 
 namespace App\ViewModels;
 
+use App\Services\RAWG\UrlConverter;
 use Spatie\ViewModels\ViewModel;
 
 class ScreenshotsViewModel extends ViewModel
@@ -16,7 +17,7 @@ class ScreenshotsViewModel extends ViewModel
     public function data(): array
     {
         return collect($this->screenshots)->map(function ($item) {
-            return str_replace('/media/screenshots/','/media/crop/600/400/screenshots/', $item['image']);
+            return UrlConverter::cropImage600x400($item['image']);
         })->toArray();
     }
 }
