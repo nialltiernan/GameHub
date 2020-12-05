@@ -7,15 +7,14 @@ use Spatie\ViewModels\ViewModel;
 class GameViewModel extends ViewModel
 {
 
-    
-    private $game;
+    private array $game;
 
     public function __construct($game)
     {
         $this->game = $game;
     }
 
-    public function data()
+    public function data(): array
     {
         return collect($this->game)->merge([
             'rating' => $this->getRating(),
@@ -27,13 +26,12 @@ class GameViewModel extends ViewModel
         ])->toArray();
     }
 
-    private function getRating()
+    private function getRating(): float
     {
         return $this->game['metacritic'] / 100;
     }
 
-
-    private function getPlatforms()
+    private function getPlatforms(): array
     {
         $platforms = [];
         foreach ($this->game['platforms'] as $platform) {
@@ -43,7 +41,7 @@ class GameViewModel extends ViewModel
         return $platforms;
     }
 
-    private function getPublisher()
+    private function getPublisher(): string
     {
         return collect($this->game['publishers'])->pluck('name')->implode(', ');
     }
@@ -53,7 +51,7 @@ class GameViewModel extends ViewModel
         return isset($this->game['genres']) ? collect($this->game['genres'])->pluck('name')->implode(', ') : '';
     }
 
-    private function getSocialLinks()
+    private function getSocialLinks(): array
     {
         $links = [];
         if (isset($this->game['reddit_url'])) {
@@ -65,7 +63,7 @@ class GameViewModel extends ViewModel
         return $links;
     }
 
-    private function getYouTubeLink()
+    private function getYouTubeLink(): string
     {
         return isset($this->game['video']) ? sprintf('https://www.youtube.com/watch?v=%s', $this->game['video']) : '';
     }

@@ -17,7 +17,7 @@
                     <img
                         id="screenshot_{{ $index }}"
                         src="{{ $screenshot }}"
-                        class="hover:opacity-75"
+                        class="hover:opacity-75 transition ease-in-out duration-150"
                         alt="screenshot"
                         onclick="showModal(this)"
                     >

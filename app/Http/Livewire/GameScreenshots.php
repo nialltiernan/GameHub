@@ -4,6 +4,7 @@ namespace App\Http\Livewire;
 
 use App\Rawg\Filters\OrderingFilter;
 use App\Services\RAWG\ClientRetriever;
+use App\ViewModels\ScreenshotsViewModel;
 use Livewire\Component;
 
 class GameScreenshots extends Component
@@ -15,9 +16,11 @@ class GameScreenshots extends Component
     {
         $client = $clientRetriever->execute();
         $orderingFilter = new OrderingFilter();
-        $data = $client->games()->getScreenshots($this->gameId, $orderingFilter)->getData();
+        $screenshots = $client->games()->getScreenshots($this->gameId, $orderingFilter)->getData()['results'];
 
-        $this->screenshots = collect($data['results'])->pluck('image')->toArray();
+        $viewModel = new ScreenshotsViewModel($screenshots);
+
+        $this->screenshots = $viewModel->data();
     }
 
     public function render()
