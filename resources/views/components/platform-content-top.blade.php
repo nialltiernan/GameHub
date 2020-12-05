@@ -31,5 +31,5 @@
         </label>
     </form>
 
-    <img class="lg:hidden block mr-10" src="/images/icons/hamburger.svg" onclick="toggleSidebarVisibility()"/>
+    <img class="lg:hidden block mr-10" src="/images/icons/hamburger.svg" onclick="toggleSidebarVisibility()" alt="toggleSidebarButton"/>
 </div>
