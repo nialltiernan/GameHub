@@ -6,8 +6,8 @@ use Illuminate\View\Component;
 
 class PlatformSidebar extends Component
 {
-    public $platforms;
-    public $platformId;
+    public array $platforms;
+    public int $platformId;
 
     public function __construct($platforms, $platformId)
     {
