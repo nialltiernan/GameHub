@@ -10,15 +10,15 @@
         <div class="text-gray-400">
 
             @if($game['genres'])
-                <span>{{ $game['genres'] }}</span>&middot;
+                <span>{{ $game['genres'] }}</span> &middot;
             @endisset
 
             @if($game['publisher'])
-                <span>{{ $game['publisher'] }}</span>&middot;
+                <span>{{ $game['publisher'] }}</span> &middot;
             @endisset
 
             @if($game['released'])
-                <span>{{ $game['released'] }}</span>&middot;
+                <span>{{ $game['released'] }}</span> &middot;
             @endisset
 
             <span>
@@ -54,11 +54,13 @@
 
             <p class="mt-12">{{ $game['description_raw'] }}</p>
 
-            <div class="mt-12">
-                <a href="{{ $game['youtube_link'] }}" class="inline-flex bg-blue-500 text-white font-semibold px-4 py-4 hover:bg-blue-600 rounded transition ease-in-out duration-150">
-                    <span>Play Video</span>
-                </a>
-            </div>
+            @if ($game['youtube_link'])
+                <div class="mt-12">
+                    <a href="{{ $game['youtube_link'] }}" class="inline-flex bg-blue-500 text-white font-semibold px-4 py-4 hover:bg-blue-600 rounded transition ease-in-out duration-150">
+                        <span>Play Video</span>
+                    </a>
+                </div>
+            @endif
         </div>
     </div>
 </div>

@@ -65,6 +65,7 @@ class GameViewModel extends ViewModel
 
     private function getYouTubeLink(): string
     {
-        return isset($this->game['video']) ? sprintf('https://www.youtube.com/watch?v=%s', $this->game['video']) : '';
+        // TODO fix this!
+        return isset($this->game['clip']['video']) ? sprintf('https://www.youtube.com/watch?v=%s', $this->game['video']) : '';
     }
 }
