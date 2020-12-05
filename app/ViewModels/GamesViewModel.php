@@ -28,7 +28,8 @@ class GamesViewModel extends ViewModel implements Arrayable
 
     private function getCroppedImageUrl($game)
     {
-        return str_replace('/media/games/','/media/crop/600/400/games/', $game['background_image']);
+        $url = str_replace('/media/games/','/media/crop/600/400/games/', $game['background_image']);
+        return str_replace('/media/screenshots/', '/media/crop/600/400/screenshots/', $url);
     }
 
     private function getPlatforms($game): array

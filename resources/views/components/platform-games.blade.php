@@ -1,7 +1,7 @@
 <div class="game mt-8">
     <div class="relative inline-block">
         <a href="{{ route('game.show',['id' => $game['id']]) }}">
-            <img src="{{ $game['image_url'] }}" alt="game cover" class="hover:opacity-75">
+            <img src="{{ $game['image_url'] }}" alt="game cover" class="hover:opacity-75 transition ease-in-out duration-150">
         </a>
 
         @if ($game['rating'])
