@@ -12,6 +12,8 @@ class PlatformContentTop extends Component
     public int $limit;
     public array $orderOptions;
     public string $order;
+    public array $sortOptions;
+    public string $sort;
 
     public function __construct(
         string $title,
@@ -19,7 +21,9 @@ class PlatformContentTop extends Component
         array $limitOptions,
         int $limit,
         array $orderOptions,
-        string $order
+        string $order,
+        array $sortOptions,
+        string $sort
     ) {
         $this->title = $title;
         $this->platformId = $platformId;
@@ -27,6 +31,8 @@ class PlatformContentTop extends Component
         $this->limit = $limit;
         $this->orderOptions = $orderOptions;
         $this->order = $order;
+        $this->sortOptions = $sortOptions;
+        $this->sort = $sort;
     }
 
     /**

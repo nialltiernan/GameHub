@@ -15,6 +15,7 @@ class PlatformGames extends Component
     public array $games = [];
     public int $platformId;
     public string $order;
+    public string $sort;
     public int $limit;
 
     public function loadGames(ClientRetriever $clientRetriever)
@@ -25,7 +26,7 @@ class PlatformGames extends Component
             $filter
                 ->setPageSize($this->limit)
                 ->setPlatforms([$this->platformId])
-                ->setOrdering($this->order);
+                ->setOrdering($this->getOrder());
 
             $gameData = $client->games()->getGames($filter)->getData()['results'];
 
@@ -36,11 +37,6 @@ class PlatformGames extends Component
         $this->games = $viewModelData;
     }
 
-    public function render()
-    {
-        return view('livewire.platform-games');
-    }
-
     private function getCacheKey(): string
     {
         return sprintf(
@@ -49,5 +45,18 @@ class PlatformGames extends Component
             $this->order,
             $this->limit
         );
+    }
+
+    private function getOrder(): string
+    {
+        if ($this->order === 'desc') {
+            return sprintf('-%s', $this->sort);
+        }
+        return $this->sort;
+    }
+
+    public function render()
+    {
+        return view('livewire.platform-games');
     }
 }

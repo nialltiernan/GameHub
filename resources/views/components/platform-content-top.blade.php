@@ -17,6 +17,19 @@
             </select>
         </label>
 
+        <label class="pr-2">
+            Sort by
+            <select name="sort" class="text-blue-500 rounded">
+                @foreach($sortOptions as $value => $name)
+                    @if ($value === $sort)
+                        <option value="{{ $value }}" selected>{{ $name }}</option>
+                    @else
+                        <option value="{{ $value }}">{{ $name }}</option>
+                    @endif
+                @endforeach
+            </select>
+        </label>
+
         <label class="pr-8">
             Order
             <select name="order" class="text-blue-500 rounded">

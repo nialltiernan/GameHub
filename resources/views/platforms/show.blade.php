@@ -15,9 +15,11 @@
                 :limit="$limit"
                 :orderOptions="$orderOptions"
                 :order="$order"
+                :sortOptions="$sortOptions"
+                :sort="$sort"
             />
 
-            <livewire:platform-games :platformId="$platformId" :order="$order" :limit="$limit"/>
+            <livewire:platform-games :platformId="$platformId" :order="$order" :sort="$sort" :limit="$limit"/>
         </div>
     </div>
 @endsection
