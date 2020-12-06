@@ -11,8 +11,8 @@
             @forelse($searchResults as $game)
                 <li class="border-b border-gray-700">
                     <a href="{{ route('game.show', ['id' => $game['id']]) }}" class="block hover:bg-gray-700 px-3 py-3 flex items-center transition ease-in-out duration-150">
-                        @isset($game['cover']['url'])
-                            <img class="w-10" src="{{ $game['cover']['url'] }}">
+                        @isset($game['image_url'])
+                            <img class="w-10" src="{{ $game['image_url'] }}">
                         @endisset
                         <span class="ml-4">{{ $game['name'] }}</span>
                     </a>
