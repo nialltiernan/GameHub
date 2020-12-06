@@ -11,7 +11,6 @@ use Livewire\Component;
 
 class PlatformGames extends Component
 {
-
     public array $games = [];
     public int $platformId;
     public string $order;
@@ -32,6 +31,15 @@ class PlatformGames extends Component
 
             $viewModel = new GamesViewModel($gameData);
             return $viewModel->data();
+        });
+
+        collect($viewModelData)->filter(function ($game) {
+            return $game['rating'];
+        })->each(function ($game) {
+            $this->emit('gameWithRatingAdded', [
+                'slug' => $game['slug'],
+                'rating' => $game['rating'],
+            ]);
         });
 
         $this->games = $viewModelData;

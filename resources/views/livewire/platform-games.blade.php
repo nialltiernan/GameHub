@@ -9,3 +9,7 @@
         @endforelse
     </div>
 </div>
+
+@push('scripts')
+    @include('javascript.ratingLivewire')
+@endpush
