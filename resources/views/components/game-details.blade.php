@@ -56,7 +56,11 @@
 
             @if ($game['youtube_link'])
                 <div class="mt-12">
-                    <a href="{{ $game['youtube_link'] }}" class="inline-flex bg-blue-500 text-white font-semibold px-4 py-4 hover:bg-blue-600 rounded transition ease-in-out duration-150">
+                    <a
+                        href="{{ $game['youtube_link'] }}"
+                        class="inline-flex bg-blue-500 text-white font-semibold px-4 py-4 hover:bg-blue-600 rounded transition ease-in-out duration-150"
+                        target="_blank"
+                    >
                         <span>Play Video</span>
                     </a>
                 </div>

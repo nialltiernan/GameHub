@@ -9,7 +9,7 @@ class GameController extends Controller
 {
     public function show($id, ClientRetriever $clientRetriever)
     {
-        $client = $clientRetriever->execute();
+        $client = $clientRetriever->executeNoAuth();
 
         $data = $client->games()->getGame($id)->getData();
 

@@ -13,4 +13,10 @@ class ClientRetriever
         $config = new Config(config('services.rawg.api_key'));
         return new ApiClient($config);
     }
+
+    public function executeNoAuth(): ApiClient
+    {
+        $config = new Config('');
+        return new ApiClient($config);
+    }
 }

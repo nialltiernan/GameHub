@@ -2,8 +2,6 @@
 
 namespace App\Http\Livewire;
 
-use App\Rawg\ApiClient;
-use App\Rawg\Config;
 use App\Services\RAWG\ClientRetriever;
 use App\ViewModels\SimilarGamesViewModel;
 use Livewire\Component;
@@ -16,8 +14,7 @@ class SimilarGames extends Component
 
     public function loadSimilarGames(ClientRetriever $clientRetriever)
     {
-        $config = new Config('');
-        $client = new ApiClient($config);
+        $client = $clientRetriever->executeNoAuth();
         $data = $client->games()->getSuggested($this->gameId)->getData()['results'];
         $viewModel = new SimilarGamesViewModel($data);
         $this->games = $viewModel->data();
