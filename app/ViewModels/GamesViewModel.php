@@ -37,7 +37,7 @@ class GamesViewModel extends ViewModel implements Arrayable
     {
         $platforms = [];
         foreach ($game['platforms'] as $platform) {
-            $platforms[$platform['platform']['id']] = $platform['platform']['name'];
+            $platforms[$platform['platform']['name']] = $platform['platform']['id'];
         }
 
         return $platforms;

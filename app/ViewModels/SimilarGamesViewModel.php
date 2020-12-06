@@ -34,7 +34,7 @@ class SimilarGamesViewModel extends ViewModel
     {
         $platforms = [];
         foreach ($game['platforms'] as $platform) {
-            $platforms[$platform['platform']['id']] = $platform['platform']['name'];
+            $platforms[$platform['platform']['name']] = $platform['platform']['id'];
         }
 
         return $platforms;
