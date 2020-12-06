@@ -18,10 +18,16 @@ class SimilarGamesViewModel extends ViewModel
     {
         return collect($this->games)->map(function ($game) {
             return collect($game)->merge([
-                'image_url' => UrlConverter::cropImage600x400($game['background_image']),
+                'image_url' => $this->getImageUrl($game),
                 'platforms' => self::getPlatforms($game)
             ]);
         })->toArray();
+    }
+
+    private function getImageUrl($game): string
+    {
+        return $game['background_image'] ?
+            UrlConverter::cropImage600x400($game['background_image']) : '/images/game-not-found.png';
     }
 
     private function getPlatforms($game): array

@@ -20,11 +20,17 @@ class GamesViewModel extends ViewModel implements Arrayable
     {
         return collect($this->games)->map(function ($game) {
             return collect($game)->merge([
-                'image_url' => UrlConverter::cropImage600x400($game['background_image']),
+                'image_url' => $this->getImageUrl($game),
                 'rating' => $this->getRating($game),
                 'platforms' => $this->getPlatforms($game)
             ]);
         })->toArray();
+    }
+
+    private function getImageUrl($game): string
+    {
+        return $game['background_image'] ?
+            UrlConverter::cropImage600x400($game['background_image']) : '/images/game-not-found.png';
     }
 
     private function getPlatforms($game): array
