@@ -48,6 +48,9 @@ abstract class Resource
 
         $queryParams['key'] = $this->config->getApiKey();
         $queryParams['lang'] = $this->config->getLanguage();
+
+        $headers['User-Agent'] = config('app.name');
+
         try {
             $response = $this->httpClient->request("GET", $fullUrl, [
                 'query' => $queryParams,

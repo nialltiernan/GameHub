@@ -37,7 +37,7 @@
     <footer class="border-t border-gray-800">
         <div class="container mx-auto px-4 py-6">
             Powered By
-            <a target="_blank" href="https://api-docs.igdb.com/#about" class="underline hover:text-gray-400">IGDB API</a>,
+            <a target="_blank" href="https://rawg.io/apidocs" class="underline hover:text-gray-400">RAWG API</a>,
             <a target="_blank" href="https://laravel.com/" class="underline hover:text-gray-400">Laravel</a> and
             <a target="_blank" href="https://tailwindcss.com/" class="underline hover:text-gray-400">Tailwind</a>. Inspired by
             <a target="_blank" href="https://laracasts.com/series/build-a-video-game-aggregator/" class="underline hover:text-gray-400">Laracasts</a>
