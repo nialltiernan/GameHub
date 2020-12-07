@@ -1,31 +1,27 @@
 <?php
 
+use App\Http\Controllers\AuthController;
+use App\Http\Controllers\FeedbackController;
+use App\Http\Controllers\GameController;
+use App\Http\Controllers\HomeController;
+use App\Http\Controllers\PlatformController;
 use Illuminate\Support\Facades\Route;
 
-/*
-|--------------------------------------------------------------------------
-| Web Routes
-|--------------------------------------------------------------------------
-|
-| Here is where you can register web routes for your application. These
-| routes are loaded by the RouteServiceProvider within a group which
-| contains the "web" middleware group. Now create something great!
-|
-*/
+Route::get('', [HomeController::class, 'index'])->name('gamehub.index');
 
-Route::get('', [\App\Http\Controllers\HomeController::class, 'index'])->name('gamehub.index');
+Route::get('games/{id}', [GameController::class, 'show'])->name('game.show');
 
-Route::get('games/{id}', [\App\Http\Controllers\GameController::class, 'show'])->name('game.show');
+Route::get('platforms/', [PlatformController::class, 'index'])->name('platforms.index');
+Route::get('platforms/{id}', [PlatformController::class, 'show'])->name('platforms.show');
 
-Route::get('platforms/', [\App\Http\Controllers\PlatformController::class, 'index'])->name('platforms.index');
-Route::get('platforms/{id}', [\App\Http\Controllers\PlatformController::class, 'show'])->name('platforms.show');
+Route::get('login', [AuthController::class, 'showLogin'])->name('auth.showLogin');
+Route::post('login', [AuthController::class, 'login'])->name('auth.login');
 
-Route::get('login', [\App\Http\Controllers\AuthController::class, 'showLogin'])->name('auth.showLogin');
-Route::post('login', [\App\Http\Controllers\AuthController::class, 'login'])->name('auth.login');
+Route::get('register', [AuthController::class, 'showRegister'])->name('auth.showRegister');
+Route::post('register', [AuthController::class, 'register'])->name('auth.register');
 
-Route::get('register', [\App\Http\Controllers\AuthController::class, 'showRegister'])->name('auth.showRegister');
-Route::post('register', [\App\Http\Controllers\AuthController::class, 'register'])->name('auth.register');
+Route::get('logout', [AuthController::class, 'logout'])->name('auth.logout');
 
-Route::get('logout', [\App\Http\Controllers\AuthController::class, 'logout'])->name('auth.logout');
-
-Route::get('rawg', [\App\Http\Controllers\RawgController::class, 'index'])->name('rawg.index');
+Route::get('feedback', [FeedbackController::class, 'index'])->name('feedback.index')->middleware('admin');
+Route::get('feedback/create', [FeedbackController::class, 'create'])->name('feedback.create');
+Route::post('feedback', [FeedbackController::class, 'store'])->name('feedback.store');

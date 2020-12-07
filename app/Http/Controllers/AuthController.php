@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\User;
+use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
@@ -29,7 +30,7 @@ class AuthController extends Controller
         return view('auth.register');
     }
 
-    public function register(Request $request)
+    public function register(Request $request): RedirectResponse
     {
         $request->validate([
             'name' => 'required',
@@ -46,12 +47,12 @@ class AuthController extends Controller
         $credentials = $request->only('email', 'password');
         Auth::attempt($credentials);
 
-        return redirect('')->with('loggedIn', 'You have registered an account!');
+        return redirect()->route('gamehub.index')->with('loggedIn', 'You have registered an account!');
     }
 
-    public function logout()
+    public function logout(): RedirectResponse
     {
         Auth::logout();
-        return redirect()->intended('')->with('loggedOut', 'You have logged out');
+        return redirect()->route('gamehub.index')->with('loggedOut', 'You have logged out');
     }
 }

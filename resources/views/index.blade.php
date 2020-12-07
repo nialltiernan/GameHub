@@ -7,6 +7,8 @@
             <div>{{ session('loggedIn') }}</div>
         @elseif(session('loggedOut'))
             <div>{{ session('loggedOut') }}</div>
+        @elseif(session('feedbackReceived'))
+            <div>{{ session('feedbackReceived') }}</div>
         @endif
 
         <h2 class="text-blue-500 uppercase tracking-wide font-semibold">Most loved games this year</h2>

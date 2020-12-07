@@ -18,6 +18,9 @@
             </div>
             <div class="flex items-center mt-6 lg:mt-0">
                 @if (Auth::check())
+                    @if (Auth::user()->is_admin)
+                        <a href="{{ route('feedback.index') }}" class="mr-5 hover:text-gray-400">Feedback</a>
+                    @endif
                     <a href="{{ route('auth.logout') }}" class="mr-5 hover:text-gray-400">Logout</a>
                 @else
                     <a href="{{ route('auth.showLogin') }}" class="mr-5 hover:text-gray-400">Login</a>
@@ -40,7 +43,8 @@
             <a target="_blank" href="https://rawg.io/apidocs" class="underline hover:text-gray-400">RAWG API</a>,
             <a target="_blank" href="https://laravel.com/" class="underline hover:text-gray-400">Laravel</a> and
             <a target="_blank" href="https://tailwindcss.com/" class="underline hover:text-gray-400">Tailwind</a>. Inspired by
-            <a target="_blank" href="https://laracasts.com/series/build-a-video-game-aggregator/" class="underline hover:text-gray-400">Laracasts</a>
+            <a target="_blank" href="https://laracasts.com/series/build-a-video-game-aggregator/" class="underline hover:text-gray-400">Laracasts</a>. Please
+            <a href="{{ route('feedback.create') }}" class="underline hover:text-gray-400">leave some feedback</a>.
         </div>
     </footer>
     <livewire:scripts />

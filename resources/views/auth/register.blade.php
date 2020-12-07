@@ -4,20 +4,20 @@
 
 <div class="container flex justify-evenly">
     <div>
-        <h1 class="text-blue-500 uppercase tracking-wide font-semibold">Create Account</h1>
+        <h1 class="text-blue-500 uppercase tracking-wide font-semibold mb-2">Create Account</h1>
         <form action="{{ route('auth.register') }}" method="POST">
             @csrf
             <table>
                 <tr>
                     <td>Name</td>
                     <td>
-                        <input name="name" placeholder="Full name" autofocus required class="text-black"  value="{{ old('name') }}">
+                        <input name="name" placeholder=" Full name" autofocus required class="text-black"  value="{{ old('name') }}">
                     </td>
                 </tr>
                 <tr>
                     <td>Email</td>
                     <td>
-                        <input name="email" type="email" placeholder="email" required class="text-black"  value="{{ old('email') }}">
+                        <input name="email" type="email" placeholder=" email" required class="text-black"  value="{{ old('email') }}">
                         @error('email')
                             <div class="text-red-200">{{ $message }}</div>
                         @enderror
@@ -26,7 +26,7 @@
                 <tr>
                     <td>Password</td>
                     <td>
-                        <input name="password" type="password" placeholder="password" required class="text-black" >
+                        <input name="password" type="password" placeholder=" password" required class="text-black" >
                         @error('password')
                             <div class="text-red-200">{{ $message }}</div>
                         @enderror
