@@ -50,6 +50,7 @@
                         <img class="h-8 transform hover:scale-150" src="/images/icons/{{ $category }}.svg" alt="{{ $category }}">
                     </a>
                 @endforeach
+                    <livewire:franchise-link :game="$game['name']"/>
             </div>
 
             <p class="mt-12">{{ $game['description_raw'] }}</p>

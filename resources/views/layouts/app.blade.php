@@ -39,12 +39,11 @@
 
     <footer class="border-t border-gray-800">
         <div class="container mx-auto px-4 py-6">
-            Powered By
-            <a target="_blank" href="https://rawg.io/apidocs" class="underline hover:text-gray-400">RAWG API</a>,
-            <a target="_blank" href="https://laravel.com/" class="underline hover:text-gray-400">Laravel</a> and
-            <a target="_blank" href="https://tailwindcss.com/" class="underline hover:text-gray-400">Tailwind</a>. Inspired by
-            <a target="_blank" href="https://laracasts.com/series/build-a-video-game-aggregator/" class="underline hover:text-gray-400">Laracasts</a>. Please
-            <a href="{{ route('feedback.create') }}" class="underline hover:text-gray-400">leave some feedback</a>.
+            Powered by <a target="_blank" href="https://rawg.io/apidocs" class="underline hover:text-gray-400">RAWG API</a>.
+            Inspired by <a target="_blank" href="https://laracasts.com/series/build-a-video-game-aggregator/" class="underline hover:text-gray-400">Laracasts</a>.
+            Icons made by <a target="_blank" href="https://www.flaticon.com/authors/iconixar" title="iconixar" class="underline hover:text-gray-400">iconixar</a>
+            from <a target="_blank" href="https://www.flaticon.com/" title="Flaticon" class="underline hover:text-gray-400">flaticon</a>.
+            Feedback welcome <a href="{{ route('feedback.create') }}" class="underline hover:text-gray-400">here</a>!
         </div>
     </footer>
     <livewire:scripts />
