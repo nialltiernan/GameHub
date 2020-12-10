@@ -21,8 +21,7 @@ class GameViewModel extends ViewModel
             'publisher' => $this->getPublisher(),
             'genres' => $this->getGenres(),
             'platforms' => $this->getPlatforms(),
-            'social_links' => $this->getSocialLinks(),
-            'youtube_link' => $this->getYouTubeLink()
+            'social_links' => $this->getSocialLinks()
         ])->toArray();
     }
 
@@ -54,6 +53,9 @@ class GameViewModel extends ViewModel
     private function getSocialLinks(): array
     {
         $links = [];
+        if (isset($this->game['clip']['video'])) {
+            $links['youtube'] = $this->getYouTubeLink();
+        }
         if (isset($this->game['reddit_url'])) {
             $links['reddit'] = $this->game['reddit_url'];
         }
@@ -65,7 +67,6 @@ class GameViewModel extends ViewModel
 
     private function getYouTubeLink(): string
     {
-        return isset($this->game['clip']['video']) ?
-            sprintf('https://www.youtube.com/watch?v=%s', $this->game['clip']['video']) : '';
+        return sprintf('https://www.youtube.com/watch?v=%s', $this->game['clip']['video']);
     }
 }

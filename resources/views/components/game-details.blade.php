@@ -1,11 +1,11 @@
 <div class="game-details border-b border-gray-800 pb-12 flex flex-col lg:flex-row">
-    <div class="xl:mr-64">
+    <div>
         <h2 class="font-semibold text-4xl leading-tight mt-1">
-            @isset($game['website'])
+            @if(isset($game['website']) && $game['website'])
                 <a href="{{ $game['website'] }}" target="_blank" class="hover:text-gray-400">{{ $game['name'] }}</a>
             @else
                 {{ $game['name'] }}
-            @endisset
+            @endif
         </h2>
         <div class="text-gray-400">
 
@@ -54,18 +54,6 @@
             </div>
 
             <p class="mt-12">{{ $game['description_raw'] }}</p>
-
-            @if ($game['youtube_link'])
-                <div class="mt-12">
-                    <a
-                        href="{{ $game['youtube_link'] }}"
-                        class="inline-flex bg-blue-500 text-white font-semibold px-4 py-4 hover:bg-blue-600 rounded transition ease-in-out duration-150"
-                        target="_blank"
-                    >
-                        <span>Play Video</span>
-                    </a>
-                </div>
-            @endif
         </div>
     </div>
 </div>
