@@ -56,10 +56,10 @@ class GameViewModel extends ViewModel
         if (isset($this->game['clip']['video'])) {
             $links['youtube'] = $this->getYouTubeLink();
         }
-        if (isset($this->game['reddit_url'])) {
+        if ($this->game['reddit_url']) {
             $links['reddit'] = $this->game['reddit_url'];
         }
-        if (isset($this->game['metacritic_url'])) {
+        if ($this->game['metacritic_url']) {
             $links['metacritic'] = $this->game['metacritic_url'];
         }
         return $links;
