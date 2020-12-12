@@ -3,28 +3,23 @@
 namespace App\Http\Controllers;
 
 use App\Enums\Platforms;
-use App\ViewModels\PlatformsViewModel;
 use Illuminate\Http\Request;
 
 class PlatformController extends Controller
 {
     public function index()
     {
-        $viewModel = new PlatformsViewModel();
-
-        return view('platforms.index', ['platforms' => $viewModel->getPlatforms()]);
+        return view('platforms.index', ['platforms' => Platforms::getIdToNameMappings()]);
     }
 
     public function show(Request $request, int $id)
     {
-        $viewModel = new PlatformsViewModel();
-
         $sort = $request->input('sort', 'rating');
         $order = $request->input('order', 'desc');
         $title = $this->getTitle($sort, $order, $id);
 
         return view('platforms.show', [
-            'platforms' => $viewModel->getPlatforms(),
+            'platforms' => Platforms::getIdToNameMappings(),
             'title' => $title,
             'platformId' => $id,
             'limit' => (int) $request->input('limit', 12),

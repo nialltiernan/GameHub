@@ -75,4 +75,14 @@ class Platforms extends Enum
         }
         return '';
     }
+
+    public static function getIdToNameMappings(): array
+    {
+        $platforms = [];
+        foreach (self::values() as $enum) {
+            $platform = $enum->getValue();
+            $platforms[$platform['id']] = $platform['display_name'];
+        }
+        return $platforms;
+    }
 }
