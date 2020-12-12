@@ -18,7 +18,7 @@
                      Feedback<br>
                      <textarea
                         name="comment"
-                        class="text-black rounded"
+                        class="text-black rounded w-56 md:w-full"
                         placeholder=" Place your feedback here"
                         rows="4"
                         cols="50"
