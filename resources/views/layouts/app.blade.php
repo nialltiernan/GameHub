@@ -14,6 +14,7 @@
                 <ul class="flex ml-0 space-x-8 mt-6 lg:mt-0">
                     <li><a href="/" class="hover:text-gray-400">Home</a></li>
                     <li><a href="{{ route('platforms.index') }}" class="hover:text-gray-400">Platforms</a></li>
+                    <li><a href="{{ route('genres.index') }}" class="hover:text-gray-400">Genres</a></li>
                 </ul>
             </div>
             <div class="flex flex-col lg:flex-row items-center">
