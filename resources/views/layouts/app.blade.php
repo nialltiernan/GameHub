@@ -33,6 +33,11 @@
 
     </header>
 
+{{--    <div class="block md:hidden">Tailwind all</div>--}}
+{{--    <div class="hidden md:block lg:hidden">Tailwind medium</div>--}}
+{{--    <div class="hidden lg:block 2xl:hidden">Tailwind large</div>--}}
+{{--    <div class="hidden 2xl:block">Tailwind large 2x</div>--}}
+
     <main class="py-8">
         @yield('content')
     </main>

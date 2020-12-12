@@ -44,10 +44,10 @@
                 @endif
             </div>
 
-            <div class="flex items-center space-x-4 mt-4 sm:mt-0 sm:ml-6">
+            <div class="flex items-center space-x-4 ml-4">
                 @foreach($game['social_links'] as $category => $link)
                     <a href="{{ $link }}" target="_blank">
-                        <img class="h-8 transform hover:scale-150" src="/images/icons/{{ $category }}.svg" alt="{{ $category }}">
+                        <img class="h-10 transform hover:scale-150" src="/images/icons/{{ $category }}.svg" alt="{{ $category }}">
                     </a>
                 @endforeach
                     <livewire:franchise-link :game="$game['name']"/>
