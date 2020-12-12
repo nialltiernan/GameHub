@@ -16,7 +16,7 @@
                     <li><a href="{{ route('platforms.index') }}" class="hover:text-gray-400">Platforms</a></li>
                 </ul>
             </div>
-            <div class="flex items-center mt-6 lg:mt-0">
+            <div class="flex flex-col lg:flex-row items-center">
                 @if (Auth::check())
                     @if (Auth::user()->is_admin)
                         <a href="{{ route('feedback.index') }}" class="mr-5 hover:text-gray-400">Feedback</a>
