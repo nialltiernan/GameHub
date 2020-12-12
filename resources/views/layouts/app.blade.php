@@ -29,8 +29,6 @@
                 <livewire:search-dropdown/>
             </div>
         </nav>
-
-
     </header>
 
 {{--    <div class="block md:hidden">Tailwind all</div>--}}
