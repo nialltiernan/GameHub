@@ -6,7 +6,20 @@
     <div class="flex">
 
         <x-genre-sidebar :genres="$genres" :genre-id="$genreId"/>
+        <div class="flex-1 pl-8">
 
-        <livewire:genre-games :genre-id="$genreId" :order="$order" :sort="$sort" :limit="$limit" />
+            <x-genre-content-top
+                :title="$title"
+                :genre-id="$genreId"
+                :limitOptions="$limitOptions"
+                :limit="$limit"
+                :orderOptions="$orderOptions"
+                :order="$order"
+                :sortOptions="$sortOptions"
+                :sort="$sort"
+            />
+
+            <livewire:genre-games :genre-id="$genreId" :order="$order" :sort="$sort" :limit="$limit" />
+        </div>
     </div>
 @endsection

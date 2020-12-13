@@ -27,6 +27,17 @@ class Genres extends Enum
     public const EDUCATIONAL = ['display_name' => 'Educational', 'id' => 34];
     public const CARD = ['display_name' => 'Card', 'id' => 17];
 
+    public static function getDisplayName($id): string
+    {
+        foreach (self::values() as $enum) {
+            $genre = $enum->getValue();
+            if ($genre['id'] === $id) {
+                return $genre['display_name'];
+            }
+        }
+        return '';
+    }
+
     public static function getIdToNameMappings(): array
     {
         $genres = [];

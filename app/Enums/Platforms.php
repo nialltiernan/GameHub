@@ -65,7 +65,7 @@ class Platforms extends Enum
     public const SEGA_32X = ['display_name' => 'SEGA 32X', 'id' => 117];
     public const SEGA_MASTER_SYSTEM = ['display_name' => 'SEGA Master System', 'id' => 74];
 
-    public static function getPlatformName($id): string
+    public static function getDisplayName($id): string
     {
         foreach (self::values() as $enum) {
             $platform = $enum->getValue();
