@@ -3,8 +3,8 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    @inject('titleCreator', '\App\Services\HTML\TitleCreator')
-    <title>{{ $titleCreator->execute()  }}</title>
+    @inject('titleFactory', '\App\Services\HTML\TitleFactory')
+    <title>{{ $titleFactory->create() }}</title>
     <link rel="stylesheet" href="/css/app.css">
     <livewire:styles />
 </head>
