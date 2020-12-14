@@ -3,6 +3,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="keywords" content="video games playstation xbox pc screenshots">
     @inject('titleFactory', '\App\Services\Html\TitleFactory')
     <title>{{ $titleFactory->create() }}</title>
     <link rel="stylesheet" href="/css/app.css">
