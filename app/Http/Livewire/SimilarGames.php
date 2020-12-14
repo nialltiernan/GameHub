@@ -2,7 +2,7 @@
 
 namespace App\Http\Livewire;
 
-use App\Services\RAWG\ClientRetriever;
+use App\Services\Rawg\ClientRetriever;
 use App\ViewModels\SimilarGamesViewModel;
 use Livewire\Component;
 

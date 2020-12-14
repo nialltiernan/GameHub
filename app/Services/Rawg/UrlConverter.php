@@ -1,7 +1,7 @@
 <?php
 declare(strict_types=1);
 
-namespace App\Services\RAWG;
+namespace App\Services\Rawg;
 
 class UrlConverter
 {

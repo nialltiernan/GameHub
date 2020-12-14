@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Services\RAWG\ClientRetriever;
+use App\Services\Rawg\ClientRetriever;
 use App\ViewModels\GameViewModel;
 
 class GameController extends Controller

@@ -1,7 +1,7 @@
 <?php
 declare(strict_types=1);
 
-namespace App\Services\HTML;
+namespace App\Services\Html;
 
 use App\Enums\Genres;
 use App\Enums\Platforms;

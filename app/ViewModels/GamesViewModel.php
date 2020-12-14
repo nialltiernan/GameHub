@@ -2,7 +2,7 @@
 
 namespace App\ViewModels;
 
-use App\Services\RAWG\UrlConverter;
+use App\Services\Rawg\UrlConverter;
 use Illuminate\Contracts\Support\Arrayable;
 use Spatie\ViewModels\ViewModel;
 

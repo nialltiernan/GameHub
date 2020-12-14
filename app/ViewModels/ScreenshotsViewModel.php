@@ -2,7 +2,7 @@
 
 namespace App\ViewModels;
 
-use App\Services\RAWG\UrlConverter;
+use App\Services\Rawg\UrlConverter;
 use Spatie\ViewModels\ViewModel;
 
 class ScreenshotsViewModel extends ViewModel

@@ -3,7 +3,7 @@
 namespace App\Http\Livewire;
 
 use App\Rawg\Filters\GamesFilter;
-use App\Services\RAWG\ClientRetriever;
+use App\Services\Rawg\ClientRetriever;
 use App\ViewModels\SearchResultsViewModel;
 use Livewire\Component;
 

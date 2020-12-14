@@ -6,7 +6,7 @@ use App\Enums\Platforms;
 use App\Rawg\DateRange;
 use App\Rawg\Filters\GamesFilter;
 use App\Services\Cache\GetTimeToLife;
-use App\Services\RAWG\ClientRetriever;
+use App\Services\Rawg\ClientRetriever;
 use App\ViewModels\GamesViewModel;
 use Illuminate\Support\Facades\Cache;
 use Livewire\Component;

@@ -3,7 +3,7 @@
 namespace App\Http\Livewire;
 
 use App\Rawg\Filters\OrderingFilter;
-use App\Services\RAWG\ClientRetriever;
+use App\Services\Rawg\ClientRetriever;
 use App\ViewModels\ScreenshotsViewModel;
 use Livewire\Component;
 
