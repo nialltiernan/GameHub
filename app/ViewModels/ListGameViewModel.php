@@ -17,8 +17,17 @@ class ListGameViewModel extends ViewModel
 
     public function data(): array
     {
+        if (isset($this->game['redirect'])) {
+            return [];
+        }
         return collect($this->game)->merge([
-            'image_url' => UrlConverter::resizeImage420($this->game['background_image']),
+            'image_url' => $this->getImageUrl()
         ])->toArray();
+    }
+
+    private function getImageUrl(): string
+    {
+        return isset($this->game['background_image']) ?
+            UrlConverter::resizeImage420($this->game['background_image']) : '/images/game-not-found.png';
     }
 }

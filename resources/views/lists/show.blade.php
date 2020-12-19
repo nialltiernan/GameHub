@@ -28,15 +28,7 @@
                    onclick="return confirm('Are you sure?')">
            </form>
 
-           <form action="{{ route('listGame.store', ['user' => Auth::user(), 'list' => $list]) }}" method="post">
-               @csrf
-               <input name="gameId" placeholder=" Game ID" class="text-black"/>
-               <input type="hidden" name="gameListId" value="{{ $list->id }}">
-               <input
-                       type="submit"
-                       class="bg-blue-500 text-white font-semibold px-2 py-2 hover:bg-blue-600 rounded"
-                       value="+">
-           </form>
+
        </div>
    </div>
 @endsection

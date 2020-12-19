@@ -3,7 +3,7 @@
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\FeedbackController;
 use App\Http\Controllers\GameController;
-use App\Http\Controllers\GameListController;
+use App\Http\Controllers\ListGameController;
 use App\Http\Controllers\ListController;
 use App\Http\Controllers\GenreController;
 use App\Http\Controllers\HomeController;
@@ -35,8 +35,8 @@ Route::middleware('auth')->group(function () {
     Route::post('users/{user}/lists/', [ListController::class, 'store'])->name('lists.store');
     Route::delete('users/{user}/lists/{list}', [ListController::class, 'destroy'])->name('lists.destroy');
 
-    Route::post('users/{user}/lists/{list}', [GameListController::class, 'store'])->name('listGame.store');
-    Route::delete('users/{user}/lists/{list}/{listGame}', [GameListController::class, 'destroy'])->name('listGame.destroy');
+    Route::post('users/{user}/lists/{list}', [ListGameController::class, 'store'])->name('listGame.store');
+    Route::delete('users/{user}/lists/{list}/{listGame}', [ListGameController::class, 'destroy'])->name('listGame.destroy');
 
 });
 

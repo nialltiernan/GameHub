@@ -1,5 +1,5 @@
 <div wire:init="loadGames">
-    @if($game)
+    @isset($game['id'])
         <img src="{{ $game['image_url'] }}" alt="game cover" class="hover:opacity-75 transition ease-in-out duration-150">
 
         <a href="{{ route('game.show',['id' => $game['id']]) }}">{{ $game['name'] }}</a>

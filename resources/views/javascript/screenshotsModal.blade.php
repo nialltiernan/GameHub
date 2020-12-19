@@ -25,12 +25,12 @@
     function showModal(screenshot) {
         initModalArray();
 
-        $('#modal-container').show();
+        $('#screenshots-modal').show();
         $('#modal-image').attr('src', getHighResolutionSource(screenshot.src));
     }
 
     function hideModal() {
-        $('#modal-container').hide();
+        $('#screenshots-modal').hide();
     }
 
     function nextModal() {

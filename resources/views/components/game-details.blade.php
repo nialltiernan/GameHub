@@ -1,4 +1,6 @@
 <div class="game-details border-b border-gray-800 pb-12 flex flex-col lg:flex-row">
+    <x-add-to-list-modal :game-id="$game['id']"/>
+
     <div>
         <h2 class="font-semibold text-4xl leading-tight mt-1">
             @if(isset($game['website']) && $game['website'])
@@ -51,9 +53,7 @@
                     </a>
                 @endforeach
                     @if (Auth::check())
-                        <a href="{{ '#' }}">
-                            <img class="h-8 transform hover:scale-150" src="/images/icons/plus.svg" alt="addToList">
-                        </a>
+                        <img class="h-8 transform hover:scale-150" src="/images/icons/plus.svg" alt="addToList" onclick="showAddToListModal()">
                     @endif
                     <livewire:franchise-link :game="$game['name']"/>
             </div>

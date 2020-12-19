@@ -1,8 +1,8 @@
 <div wire:init="loadScreenshots">
 
-    @include('javascript.screenshotModals')
+    @include('javascript.screenshotsModal')
 
-    <div id="modal-container" class="modal-container hidden fixed z-10 left-0 top-0 w-full h-full overflow-auto bg-gray-800 bg-opacity-75">
+    <div id="screenshots-modal" class="hidden fixed z-10 left-0 top-0 w-full h-full overflow-auto bg-gray-800 bg-opacity-75">
         <span class="text-6xl hover:text-gray-500 absolute" style="right: 3.5rem" onclick="hideModal()">&times;</span>
         <span class="text-6xl hover:text-gray-500 fixed" style="top: 50%; left: 2rem" onclick="previousModal()">{{ '<' }}</span>
         <span class="text-6xl hover:text-gray-500 absolute" style="top: 50%; right: 2rem" onclick="nextModal()">{{ '>' }}</span>

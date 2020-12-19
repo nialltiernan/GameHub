@@ -8,7 +8,7 @@ use App\Models\User;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 
-class GameListController extends Controller
+class ListGameController extends Controller
 {
 
     public function store(User $user, GameList $list, Request $request): RedirectResponse
