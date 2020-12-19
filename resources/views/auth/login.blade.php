@@ -16,7 +16,7 @@
                     <tr>
                         <td>Email</td>
                         <td>
-                            <input name="email" type="email" class="text-black" autofocus placeholder=" email" value="{{ old('email') }}"><br>
+                            <input name="email" type="email" class="text-black" autofocus required placeholder=" email" value="{{ old('email') }}"><br>
                             @error('email')
                                 <div class="text-red-200">{{ $message }}</div>
                             @enderror
@@ -25,7 +25,7 @@
                     <tr>
                         <td>Password</td>
                         <td>
-                            <input name="password" type="password" class="text-black" placeholder=" password"><br>
+                            <input name="password" type="password" class="text-black" required placeholder=" password"><br>
                             @error('password')
                                 <div class="text-red-200">{{ $message }}</div>
                             @enderror

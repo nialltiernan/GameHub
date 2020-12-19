@@ -50,6 +50,11 @@
                         <img class="h-10 transform hover:scale-150" src="/images/icons/{{ $category }}.svg" alt="{{ $category }}">
                     </a>
                 @endforeach
+                    @if (Auth::check())
+                        <a href="{{ '#' }}">
+                            <img class="h-8 transform hover:scale-150" src="/images/icons/plus.svg" alt="addToList">
+                        </a>
+                    @endif
                     <livewire:franchise-link :game="$game['name']"/>
             </div>
 

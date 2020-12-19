@@ -24,6 +24,7 @@
                     @if (Auth::user()->is_admin)
                         <a href="{{ route('feedback.index') }}" class="mr-5 hover:text-gray-400">Feedback</a>
                     @endif
+                    <a href="{{ route('lists.index', ['user' => Auth::user()]) }}" class="mr-5 hover:text-gray-400">My Lists</a>
                     <a href="{{ route('auth.logout') }}" class="mr-5 hover:text-gray-400">Logout</a>
                 @else
                     <a href="{{ route('auth.showLogin') }}" class="mr-5 hover:text-gray-400">Login</a>
@@ -48,6 +49,7 @@
             Powered by <a target="_blank" href="https://rawg.io/apidocs" class="underline hover:text-gray-400">RAWG API</a>.
             Inspired by <a target="_blank" href="https://laracasts.com/series/build-a-video-game-aggregator/" class="underline hover:text-gray-400">Laracasts</a>.
             Icons made by <a target="_blank" href="https://www.flaticon.com/authors/iconixar" title="iconixar" class="underline hover:text-gray-400">iconixar</a>
+            and <a href="https://www.flaticon.com/authors/pixel-perfect" title="Pixel perfect" class="underline hover:text-gray-400">Pixel perfect</a>
             from <a target="_blank" href="https://www.flaticon.com/" title="Flaticon" class="underline hover:text-gray-400">flaticon</a>.
             Feedback welcome <a href="{{ route('feedback.create') }}" class="underline hover:text-gray-400">here</a>!
         </div>
