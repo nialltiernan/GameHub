@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\GameList;
+use App\Models\ListGame;
 use App\Models\User;
 use Auth;
 use Illuminate\Http\RedirectResponse;
@@ -38,10 +39,17 @@ class ListController extends Controller
             return redirect()->route('gamehub.index');
         }
 
-        GameList::create([
+        $list = GameList::create([
             'user_id' => $user->id,
             'name' => $request->name
         ]);
+
+        if ($request->gameId) {
+            ListGame::create([
+                'game_list_id' => $list->id,
+                'game_id' => $request->gameId,
+            ]);
+        }
 
         return redirect()
             ->route('lists.index', ['user' => $user])

@@ -52,9 +52,15 @@
                         <img class="h-10 transform hover:scale-150" src="/images/icons/{{ $category }}.svg" alt="{{ $category }}">
                     </a>
                 @endforeach
-                    @if (Auth::check())
-                        <img class="h-8 transform hover:scale-150" src="/images/icons/plus.svg" alt="addToList" onclick="showAddToListModal()">
-                    @endif
+                    <form onsubmit="return false">
+                        <input
+                            title="Add to list"
+                            type="image"
+                            src="/images/icons/plus.svg"
+                            onclick="showAddToListModal()"
+                            class="h-8 transform hover:scale-150"
+                        >
+                    </form>
                     <livewire:franchise-link :game="$game['name']"/>
             </div>
 
