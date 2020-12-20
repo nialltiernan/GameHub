@@ -17,6 +17,8 @@ class ListGameSeeder extends Seeder
         ListGame::factory(15)->create([
             'game_list_id' => 1
         ]);
-        ListGame::factory(5)->create();
+        ListGame::factory(5)->create([
+            'game_list_id' => 25
+        ]);
     }
 }

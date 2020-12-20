@@ -11,9 +11,9 @@
                     <input type="hidden" name="gameId" value="{{ $gameId }}">
                     <input type="hidden" name="gameListId" value="{{ $list->id }}">
                     <input
-                            type="submit"
-                            class="bg-blue-500 text-white font-semibold px-2 py-2 hover:bg-blue-600 rounded"
-                            value="{{ $list->name }}">
+                        type="submit"
+                        class="bg-blue-500 text-white font-semibold px-2 py-2 hover:bg-blue-600 rounded my-2"
+                        value="{{ $list->name }}">
                 </form>
             @endforeach
 
