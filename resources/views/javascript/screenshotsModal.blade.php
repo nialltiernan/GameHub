@@ -4,11 +4,11 @@
 
     document.addEventListener('keydown', (e) => {
         if (e.code === 'ArrowRight') {
-            nextModal();
+            nextScreenshotModal();
         } else if (e.code === 'ArrowLeft') {
-            previousModal();
+            previousScreenshotModal();
         } else if (e.code === 'Escape') {
-            hideModal();
+            hideScreenshotModal();
         }
     });
 
@@ -22,18 +22,18 @@
         return sourceUrl.replace('/media/crop/600/400/screenshots/','/media/screenshots/');
     }
 
-    function showModal(screenshot) {
+    function showScreenshotModal(screenshot) {
         initModalArray();
 
         $('#screenshots-modal').show();
         $('#modal-image').attr('src', getHighResolutionSource(screenshot.src));
     }
 
-    function hideModal() {
+    function hideScreenshotModal() {
         $('#screenshots-modal').hide();
     }
 
-    function nextModal() {
+    function nextScreenshotModal() {
         let modal = $('#modal-image');
         let currentIndex = imageSources.indexOf(modal.attr('src'));
         let newIndex;
@@ -47,7 +47,7 @@
         modal.attr('src', imageSources[newIndex]);
     }
 
-    function previousModal() {
+    function previousScreenshotModal() {
         let modal = $('#modal-image');
         let currentIndex = imageSources.indexOf(modal.attr('src'));
         let newIndex;
