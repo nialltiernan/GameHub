@@ -11,6 +11,6 @@
             >
                 {{ $platform }}
             </a>
-    @endforeach
+        @endforeach
     </div>
 @endsection
