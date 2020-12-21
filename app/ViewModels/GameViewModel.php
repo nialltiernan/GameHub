@@ -45,9 +45,13 @@ class GameViewModel extends ViewModel
         return collect($this->game['publishers'])->pluck('name')->implode(', ');
     }
 
-    private function getGenres(): string
+    private function getGenres(): array
     {
-        return isset($this->game['genres']) ? collect($this->game['genres'])->pluck('name')->implode(', ') : '';
+        $genres = [];
+        foreach ($this->game['genres'] as $genre) {
+            $genres[$genre['id']] = $genre['name'];
+        }
+        return $genres;
     }
 
     private function getSocialLinks(): array

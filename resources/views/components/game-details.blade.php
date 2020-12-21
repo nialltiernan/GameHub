@@ -11,12 +11,16 @@
         </h2>
         <div class="text-gray-400">
 
-            @if($game['genres'])
-                <span>{{ $game['genres'] }}</span> &middot;
-            @endisset
+            <span>
+                @foreach($game['genres'] as $genreId => $genre)
+                     <a href="{{ route('genres.show', ['id' => $genreId]) }}" class="hover:text-blue-600">
+                        {{ $genre }}@if (!$loop->last),@endif
+                     </a>
+                @endforeach
+            </span>
 
             @if($game['publisher'])
-                <span>{{ $game['publisher'] }}</span> &middot;
+                &middot; <span>{{ $game['publisher'] }}</span> &middot;
             @endisset
 
             @if($game['released'])
