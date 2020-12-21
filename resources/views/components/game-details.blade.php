@@ -38,7 +38,7 @@
         <div class="flex flex-wrap items-center mt-8">
             <div class="flex items-center">
                 @if ($game['rating'])
-                    <div id="ratingDiv" class="w-16 h-16 bg-gray-800 rounded-full relative text-sm">
+                    <div id="ratingDiv" class="w-16 h-16 bg-gray-800 rounded-full relative text-sm mr-4">
                         @push('scripts')
                             @include('javascript.rating', [
                                 'slug' => 'ratingDiv',
@@ -50,7 +50,7 @@
                 @endif
             </div>
 
-            <div class="flex items-center space-x-4 ml-4">
+            <div class="flex items-center space-x-4">
                 @foreach($game['social_links'] as $category => $link)
                     <a href="{{ $link }}" target="_blank">
                         <img class="h-10 transform hover:scale-150" src="/images/icons/{{ $category }}.svg" alt="{{ $category }}">
