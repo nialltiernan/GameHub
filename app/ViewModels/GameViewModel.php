@@ -7,6 +7,8 @@ use Spatie\ViewModels\ViewModel;
 class GameViewModel extends ViewModel
 {
 
+    private const DESCRIPTION_PREVIEW_LENGTH = 450;
+
     private array $game;
 
     public function __construct($game)
@@ -21,7 +23,8 @@ class GameViewModel extends ViewModel
             'publisher' => $this->getPublisher(),
             'genres' => $this->getGenres(),
             'platforms' => $this->getPlatforms(),
-            'social_links' => $this->getSocialLinks()
+            'social_links' => $this->getSocialLinks(),
+            'description' => $this->getDescription()
         ])->toArray();
     }
 
@@ -72,5 +75,12 @@ class GameViewModel extends ViewModel
     private function getYouTubeLink(): string
     {
         return sprintf('https://www.youtube.com/watch?v=%s', $this->game['clip']['video']);
+    }
+
+    private function getDescription(): array
+    {
+        $preview = substr($this->game['description_raw'], 0, self::DESCRIPTION_PREVIEW_LENGTH);
+        $preview .= '... ';
+        return ['preview' => $preview, 'full' => $this->game['description_raw']];
     }
 }
