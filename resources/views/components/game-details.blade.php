@@ -12,16 +12,16 @@
             </h2>
             <div class="text-gray-400">
 
-            <span>
-                @foreach($game['genres'] as $genreId => $genre)
-                    <a href="{{ route('genres.show', ['id' => $genreId]) }}" class="hover:text-blue-600">
-                        {{ $genre }}@if (!$loop->last),@endif
-                     </a>
-                @endforeach
-            </span>
+                <span>
+                    @foreach($game['genres'] as $genreId => $genre)
+                        <a href="{{ route('genres.show', ['id' => $genreId]) }}" class="hover:text-blue-600">
+                            {{ $genre }}@if (!$loop->last),@endif
+                         </a>
+                    @endforeach
+                </span>
 
                 @if($game['publisher'])
-                &middot; <span>{{ $game['publisher'] }}</span> &middot;
+                    &middot; <span>{{ $game['publisher'] }}</span> &middot;
                 @endisset
 
                 @if($game['released'])
@@ -29,12 +29,12 @@
                 @endisset
 
                 <span>
-                @foreach($game['platforms'] as $platformId => $platform)
+                    @foreach($game['platforms'] as $platformId => $platform)
                         <a href="{{ route('platforms.show', ['id' => $platformId]) }}" class="hover:text-blue-600">
-                        {{ $platform }}@if (!$loop->last),@endif
-                    </a>
+                            {{ $platform }}@if (!$loop->last),@endif
+                        </a>
                     @endforeach
-            </span>
+                </span>
             </div>
         </div>
 

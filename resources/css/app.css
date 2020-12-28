@@ -3,3 +3,28 @@
 @tailwind components;
 
 @tailwind utilities;
+
+@layer base {
+    h1 {
+        @apply text-blue-500 uppercase tracking-wide font-semibold;
+    }
+
+    .button-primary {
+        @apply bg-blue-500 text-white font-bold py-2 px-4 rounded;
+    }
+
+    .text-input {
+        @apply bg-gray-800 text-sm rounded pl-4 px-3 py-1 w-64;
+    }
+
+    .index-grid {
+        @apply bg-gray-500 mr-4 pl-4 py-4 text-lg rounded transform w-full mb-4;
+    }
+
+    .game-grid {
+        @apply mt-8 text-sm grid grid-cols-1 gap-x-12 gap-y-6 border-b border-gray-800 pb-16 pr-8
+    }
+    .hidden-modal {
+        @apply hidden fixed z-10 left-0 top-0 w-full h-full overflow-auto bg-gray-800;
+    }
+}

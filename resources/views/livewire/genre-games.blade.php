@@ -1,5 +1,5 @@
 <div wire:init="loadGames">
-    <div class="mt-8 popular-games text-sm grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-x-12 gap-y-6 border-b border-gray-800 pb-16 pr-8">
+    <div class="game-grid md:grid-cols-2 lg:grid-cols-4 ">
         @forelse($games as $game)
             <x-platform-games :game="$game" />
         @empty

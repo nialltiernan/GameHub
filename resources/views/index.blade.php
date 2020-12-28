@@ -11,7 +11,7 @@
             <div>{{ session('feedbackReceived') }}</div>
         @endif
 
-        <h2 class="text-blue-500 uppercase tracking-wide font-semibold">Most loved games this year</h2>
+        <h1>Most loved games this year</h1>
         <livewire:home-page-games/>
     </div>
 @endsection

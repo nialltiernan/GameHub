@@ -2,7 +2,7 @@
     <input
         wire:model.debounce.300ms="search"
         type="text"
-        class="bg-gray-800 text-sm rounded-full pl-4 px-3 py-1 w-64 focus:outline-none focus:shadow-outline"
+        class="text-input focus:outline-none focus:shadow-outline rounded-2xl"
         placeholder="Search..."
     >
 

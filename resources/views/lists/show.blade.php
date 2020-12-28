@@ -9,13 +9,11 @@
        @endif
 
        <div class="flex justify-between">
-           <h2 class="text-blue-500 uppercase tracking-wide font-semibold">
-               {{ $list->name }}
-           </h2>
+           <h1>{{ $list->name }}</h1>
 
            <div class="flex">
                <form action="{{ route('lists.index', ['user' => Auth::user()]) }}">
-                   <input type="submit" value="Back" class="bg-blue-500 text-white font-semibold px-2 py-2 hover:bg-blue-600 rounded mr-4" />
+                   <input type="submit" value="Back" class="button-primary hover:bg-blue-700 mr-4" />
                </form>
 
                <form action="{{ route('lists.destroy', ['user' => Auth::user(), 'list' => $list]) }}" method="post">
@@ -31,7 +29,7 @@
 
        </div>
 
-       <div class="mt-8 popular-games text-sm grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-x-12 gap-y-6 border-b border-gray-800 pb-16 pr-8">
+       <div class="game-grid md:grid-cols-2 lg:grid-cols-4 ">
            @forelse($listGameIdToGameIds as $listGameId => $gameId)
                <livewire:list-game :game-id="$gameId" :list="$list" :list-game-id="$listGameId"/>
            @empty

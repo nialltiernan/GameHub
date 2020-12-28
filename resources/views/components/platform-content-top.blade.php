@@ -1,7 +1,5 @@
 <div class="flex justify-between">
-    <h2 class="text-blue-500 uppercase tracking-wide font-semibold">
-        {{ $title }}
-    </h2>
+    <h1>{{ $title }}</h1>
 
     <form method="get" action="{{ route('platforms.show', ['id' => $platformId]) }}" onchange="this.submit()">
         <label class="pr-2">

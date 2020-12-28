@@ -1,4 +1,4 @@
-<div id="add-to-list-modal" class="hidden fixed z-10 left-0 top-0 w-full h-full overflow-auto bg-gray-800" style="--bg-opacity: 0.90">
+<div id="add-to-list-modal" class="hidden-modal" style="--bg-opacity: 0.90">
 
     @include('javascript.addToListModal')
 
@@ -14,7 +14,7 @@
                             <input type="hidden" name="gameListId" value="{{ $list->id }}">
                             <input
                                 type="submit"
-                                class="bg-blue-500 text-white font-semibold px-2 py-2 hover:bg-blue-600 rounded mr-2 my-2"
+                                class="button-primary hover:bg-blue-700 mr-2 my-2"
                                 value="{{ $list->name }}">
                         </form>
                     @endforeach
@@ -23,10 +23,10 @@
                     <form action="{{ route('lists.store', ['user' => Auth::user()]) }}" method="post" class="inline">
                         @csrf
                         <input type="hidden" name="gameId" value="{{ $gameId }}">
-                        <input name="name" class="text-black" placeholder=" New list name">
+                        <input name="name" class="text-input focus:outline-none focus:shadow-outline" placeholder="New list name">
                         <input
                             type="submit"
-                            class="bg-blue-500 text-white font-semibold px-2 py-2 hover:bg-blue-600 rounded mr-2 my-2"
+                            class="button-primary hover:bg-blue-700 mr-2 my-2"
                             value="Save">
                     </form>
                 </div>

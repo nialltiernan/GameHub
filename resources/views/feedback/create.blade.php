@@ -3,14 +3,14 @@
 @section('content')
    <div class="container flex justify-evenly">
       <div>
-         <h1 class="text-blue-500 uppercase tracking-wide font-semibold mb-2">Please leave some feedback</h1>
+         <h1 class="mb-2">Please leave some feedback</h1>
          <form action="{{ route('feedback.store') }}" method="POST">
             @csrf
             <table>
                <tr>
                   <td>
                      Email (optional)<br>
-                     <input name="email" type="email" class="text-black" autofocus placeholder=" email">
+                     <input name="email" type="email" class="text-input focus:outline-none focus:shadow-outline" autofocus placeholder="email">
                   </td>
                </tr>
                <tr>
@@ -18,8 +18,8 @@
                      Feedback<br>
                      <textarea
                         name="comment"
-                        class="text-black rounded w-56 md:w-full"
-                        placeholder=" Place your feedback here"
+                        class="text-input focus:outline-none focus:shadow-outline md:w-full"
+                        placeholder="Place your feedback here"
                         rows="4"
                         cols="50"
                         maxlength="255"
@@ -29,7 +29,7 @@
                </tr>
                <tr>
                   <td>
-                     <input type="submit" class="bg-blue-500 text-white font-semibold px-2 py-2 hover:bg-blue-600 rounded">
+                     <input type="submit" class="button-primary hover:bg-blue-700 ">
                   </td>
                </tr>
             </table>
