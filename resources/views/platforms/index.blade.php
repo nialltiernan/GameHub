@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
-    <div class="container mx-auto px-8 flex flex-wrap">
+    <div class="container mx-auto px-8 flex flex-wrap justify-center">
         @foreach($platforms as $id => $platform)
             <a class="
                     bg-gray-500 mr-4 pl-4 py-4 text-lg rounded
