@@ -678,6 +678,60 @@ h1 {
   background-color: rgba(45, 55, 72, var(--bg-opacity));
 }
 
+.notification-container {
+  transition-property: opacity;
+  transition-duration: 1000ms;
+  transition-timing-function: cubic-bezier(0, 0, 0.2, 1);
+}
+
+.notification-success {
+  position: absolute;
+  left: 0;
+  right: 0;
+  z-index: 50;
+  --bg-opacity: 1;
+  background-color: #38a169;
+  background-color: rgba(56, 161, 105, var(--bg-opacity));
+  padding-top: 0.5rem;
+  padding-bottom: 0.5rem;
+  border-radius: 0.25rem;
+  font-size: 1.25rem;
+  display: flex;
+  justify-content: center;
+}
+
+.notification-information {
+  position: absolute;
+  left: 0;
+  right: 0;
+  z-index: 50;
+  --bg-opacity: 1;
+  background-color: #3182ce;
+  background-color: rgba(49, 130, 206, var(--bg-opacity));
+  padding-top: 0.5rem;
+  padding-bottom: 0.5rem;
+  border-radius: 0.25rem;
+  font-size: 1.25rem;
+  display: flex;
+  justify-content: center;
+}
+
+.notification-warning {
+  position: absolute;
+  left: 0;
+  right: 0;
+  z-index: 50;
+  --bg-opacity: 1;
+  background-color: #d69e2e;
+  background-color: rgba(214, 158, 46, var(--bg-opacity));
+  padding-top: 0.5rem;
+  padding-bottom: 0.5rem;
+  border-radius: 0.25rem;
+  font-size: 1.25rem;
+  display: flex;
+  justify-content: center;
+}
+
 .container {
   width: 100%;
 }

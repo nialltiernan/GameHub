@@ -2,12 +2,9 @@
 
 @section('content')
     <div class="container flex justify-evenly">
-        <div>
-            @if (session('failure'))
-                <div>
-                    {{ session('failure') }}
-                </div>
-            @endif
+        <div class="relative">
+
+            <x-login-notifications />
 
             <h1 class="mb-2">Login</h1>
             <form action="{{ route('auth.login') }}" method="POST">

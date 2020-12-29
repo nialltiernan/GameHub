@@ -1,12 +1,9 @@
 @extends('layouts.app')
 
 @section('content')
-   <div class="container mx-auto px-8">
-       @if (session('gameRemoved'))
-           <div>{{ session('gameRemoved') }}</div>
-       @elseif (session('gameAdded'))
-           <div>{{ session('gameAdded') }}</div>
-       @endif
+   <div class="container mx-auto px-8 relative">
+
+       <x-list-game-notifications />
 
        <div class="flex justify-between">
            <h1>{{ $list->name }}</h1>

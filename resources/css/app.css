@@ -27,4 +27,21 @@
     .hidden-modal {
         @apply hidden fixed z-10 left-0 top-0 w-full h-full overflow-auto bg-gray-800;
     }
+
+    .notification-container {
+        @apply transition-opacity duration-1000 ease-out;
+    }
+
+    .notification-success {
+        @apply absolute left-0 right-0 z-50 bg-green-600 py-2 rounded text-xl flex justify-center;
+    }
+
+    .notification-information {
+        @apply absolute left-0 right-0 z-50 bg-blue-600 py-2 rounded text-xl flex justify-center;
+    }
+
+    .notification-warning {
+        @apply absolute left-0 right-0 z-50 bg-yellow-600 py-2 rounded text-xl flex justify-center;
+    }
+
 }

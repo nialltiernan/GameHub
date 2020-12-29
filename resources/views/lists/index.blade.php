@@ -1,13 +1,9 @@
 @extends('layouts.app')
 
 @section('content')
-    <div class="container mx-auto px-8">
+    <div class="container mx-auto px-8 relative">
 
-        @if (session('listCreated'))
-            <div>{{ session('listCreated') }}</div>
-        @elseif (session('listDeleted'))
-            <div>{{ session('listDeleted') }}</div>
-        @endif
+        <x-list-notifications />
 
         <div class="flex flex-col md:flex-row">
             <div class="md:w-2/3">
@@ -38,7 +34,5 @@
                 </form>
             </div>
         </div>
-
-
     </div>
 @endsection
