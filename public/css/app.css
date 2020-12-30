@@ -722,8 +722,24 @@ h1 {
   right: 0;
   z-index: 50;
   --bg-opacity: 1;
-  background-color: #d69e2e;
-  background-color: rgba(214, 158, 46, var(--bg-opacity));
+  background-color: #ecc94b;
+  background-color: rgba(236, 201, 75, var(--bg-opacity));
+  padding-top: 0.5rem;
+  padding-bottom: 0.5rem;
+  border-radius: 0.25rem;
+  font-size: 1.25rem;
+  display: flex;
+  justify-content: center;
+}
+
+.notification-warning-severe {
+  position: absolute;
+  left: 0;
+  right: 0;
+  z-index: 50;
+  --bg-opacity: 1;
+  background-color: #e53e3e;
+  background-color: rgba(229, 62, 62, var(--bg-opacity));
   padding-top: 0.5rem;
   padding-bottom: 0.5rem;
   border-radius: 0.25rem;

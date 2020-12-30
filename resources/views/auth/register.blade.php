@@ -2,44 +2,35 @@
 
 @section('content')
 
-<div class="container flex justify-evenly">
-    <div>
-        <h1 class="mb-2">Create Account</h1>
-        <form action="{{ route('auth.register') }}" method="POST">
+    <div class="container flex flex-col mx-auto">
+
+
+        <x-registration-notifications />
+
+        <h1 class="mb-5 mx-auto">Create Account</h1>
+
+        <form action="{{ route('auth.register') }}" method="POST" class="flex flex-col mx-auto mb-2">
             @csrf
-            <table>
-                <tr>
-                    <td>Name</td>
-                    <td>
-                        <input name="name" placeholder="Full name" autofocus required class="text-input focus:outline-none focus:shadow-outline"  value="{{ old('name') }}">
-                    </td>
-                </tr>
-                <tr>
-                    <td>Email</td>
-                    <td>
-                        <input name="email" type="email" placeholder="email" required class="text-input focus:outline-none focus:shadow-outline"  value="{{ old('email') }}">
-                        @error('email')
-                            <div class="text-red-200">{{ $message }}</div>
-                        @enderror
-                    </td>
-                </tr>
-                <tr>
-                    <td>Password</td>
-                    <td>
-                        <input name="password" type="password" placeholder="password" required class="text-input focus:outline-none focus:shadow-outline" >
-                        @error('password')
-                            <div class="text-red-200">{{ $message }}</div>
-                        @enderror
-                    </td>
-                </tr>
-                <tr>
-                    <td>
-                        <input type="submit" class="button-primary hover:bg-blue-700 ">
-                    </td>
-                </tr>
-            </table>
+
+            <label class="mb-2">Name</label>
+            <input name="name" placeholder="Full name" autofocus required
+                   class="text-input focus:outline-none focus:shadow-outline mb-2" value="{{ old('name') }}">
+
+            <label class="mb-2">Email</label>
+            <input name="email" type="email" placeholder="email" required
+                   class="text-input focus:outline-none focus:shadow-outline mb-2" value="{{ old('email') }}">
+
+            <label class="mb-2">Password</label>
+            <input name="password" type="password" placeholder="password" required
+                   class="text-input focus:outline-none focus:shadow-outline">
+
+            <input type="submit" class="button-primary hover:bg-blue-700 mt-5">
         </form>
+
+        <div class="mx-auto text-sm">
+            Already a member? Login
+            <a href="{{ route('auth.showLogin') }}" class="underline hover:text-gray-400">here</a>.
+        </div>
     </div>
-</div>
 
 @endsection
