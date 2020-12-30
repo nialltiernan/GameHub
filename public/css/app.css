@@ -722,8 +722,8 @@ h1 {
   right: 0;
   z-index: 50;
   --bg-opacity: 1;
-  background-color: #ecc94b;
-  background-color: rgba(236, 201, 75, var(--bg-opacity));
+  background-color: #d69e2e;
+  background-color: rgba(214, 158, 46, var(--bg-opacity));
   padding-top: 0.5rem;
   padding-bottom: 0.5rem;
   border-radius: 0.25rem;

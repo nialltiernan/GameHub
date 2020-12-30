@@ -46,7 +46,7 @@
 </main>
 
 <footer class="border-t border-gray-800">
-    <div class="container mx-auto px-4 py-6">
+    <div class="container mx-auto px-4 py-6 text-sm">
         Content provided by <a target="_blank" href="https://rawg.io/apidocs" class="underline hover:text-gray-400">RAWG API</a>.
         Inspired by <a target="_blank" href="https://laracasts.com/series/build-a-video-game-aggregator/" class="underline hover:text-gray-400">Laracasts</a>.
         Icons made by <a target="_blank" href="https://www.flaticon.com/authors/iconixar" title="iconixar" class="underline hover:text-gray-400">iconixar</a>,
