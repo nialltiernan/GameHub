@@ -21,7 +21,7 @@
                 </span>
 
                 @if($game['publisher'])
-                    &middot; <span>{{ $game['publisher'] }}</span> &middot;
+                &middot; <span>{{ $game['publisher'] }}</span> &middot;
                 @endisset
 
                 @if($game['released'])
@@ -69,7 +69,8 @@
 
                     @foreach($game['social_links'] as $category => $link)
                         <a href="{{ $link }}" target="_blank">
-                            <img class="h-10 transform hover:scale-150" src="/images/icons/{{ $category }}.svg" alt="{{ $category }}">
+                            <img class="h-10 transform hover:scale-150" src="/images/icons/{{ $category }}.svg"
+                                 alt="{{ $category }}">
                         </a>
                     @endforeach
                 </div>
@@ -77,6 +78,6 @@
         </div>
     </div>
 
-    <x-game-description :preview="$game['description']['preview']" :full="$game['description']['full']" />
+    <x-game-description :preview="$game['description']['preview']" :full="$game['description']['full']"/>
 
 </div>

@@ -8,14 +8,15 @@
                 <div>
                     <h2 class="font-semibold text-4xl leading-tight mt-1">Add game to...</h2>
                     @foreach(Auth::user()->lists as $list)
-                        <form action="{{ route('listGame.store', ['user' => Auth::user(), 'list' => $list]) }}" method="post" class="inline">
+                        <form action="{{ route('listGame.store', ['user' => Auth::user(), 'list' => $list]) }}"
+                              method="post" class="inline">
                             @csrf
                             <input type="hidden" name="gameId" value="{{ $gameId }}">
                             <input type="hidden" name="gameListId" value="{{ $list->id }}">
                             <input
-                                type="submit"
-                                class="button-primary hover:bg-blue-700 mr-2 my-2"
-                                value="{{ $list->name }}">
+                                    type="submit"
+                                    class="button-primary hover:bg-blue-700 mr-2 my-2"
+                                    value="{{ $list->name }}">
                         </form>
                     @endforeach
 
@@ -23,11 +24,12 @@
                     <form action="{{ route('lists.store', ['user' => Auth::user()]) }}" method="post" class="inline">
                         @csrf
                         <input type="hidden" name="gameId" value="{{ $gameId }}">
-                        <input name="name" class="text-input focus:outline-none focus:shadow-outline" placeholder="New list name">
+                        <input name="name" class="text-input focus:outline-none focus:shadow-outline"
+                               placeholder="New list name">
                         <input
-                            type="submit"
-                            class="button-primary hover:bg-blue-700 mr-2 my-2"
-                            value="Save">
+                                type="submit"
+                                class="button-primary hover:bg-blue-700 mr-2 my-2"
+                                value="Save">
                     </form>
                 </div>
 
@@ -42,7 +44,8 @@
                 <div>
                     <h2 class="font-semibold text-4xl m-auto align-middle">
                         <a href="{{ route('auth.showLogin') }}" class="underline hover:text-gray-400">Login</a> or
-                        <a href="{{ route('auth.showRegister') }}" class="underline hover:text-gray-400">register</a> to create lists
+                        <a href="{{ route('auth.showRegister') }}" class="underline hover:text-gray-400">register</a> to
+                        create lists
                     </h2>
                 </div>
 

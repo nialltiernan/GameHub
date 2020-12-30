@@ -3,7 +3,7 @@
 @section('content')
     <div class="container mx-auto px-8 relative">
 
-        <x-list-notifications />
+        <x-list-notifications/>
 
         <div class="flex flex-col md:flex-row">
             <div class="md:w-2/3">
@@ -29,7 +29,8 @@
                 <h1>Create a new list</h1>
                 <form action="{{ route('lists.store', ['user' => Auth::user()]) }}" method="post">
                     @csrf
-                    <input type="text" name="name" class="text-input focus:outline-none focus:shadow-outline" required placeholder="Task name">
+                    <input type="text" name="name" class="text-input focus:outline-none focus:shadow-outline" required
+                       placeholder="Task name">
                     <input type="submit" class="button-primary hover:bg-blue-700 mt-2" value="Create">
                 </form>
             </div>

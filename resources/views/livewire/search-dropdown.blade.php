@@ -10,7 +10,8 @@
         <ul>
             @forelse($searchResults as $game)
                 <li class="border-b border-gray-700">
-                    <a href="{{ route('game.show', ['id' => $game['id']]) }}" class="block hover:bg-gray-700 px-3 py-3 flex items-center transition ease-in-out duration-150">
+                    <a href="{{ route('game.show', ['id' => $game['id']]) }}"
+                       class="block hover:bg-gray-700 px-3 py-3 flex items-center transition ease-in-out duration-150">
                         @isset($game['image_url'])
                             <img class="w-10" src="{{ $game['image_url'] }}">
                         @endisset
