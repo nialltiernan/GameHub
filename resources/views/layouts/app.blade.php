@@ -59,5 +59,6 @@
 <livewire:scripts/>
 <script src="/js/app.js"></script>
 @stack('scripts')
+@include('javascript.imageEasterEgg')
 </body>
 </html>
