@@ -29,7 +29,7 @@
     }
 
     function isEasterEggEvent(code) {
-        return ['Enter', 'ShiftLeft', 'ShiftRight', 'AltLeft'].includes(code);
+        return ['Enter', 'ShiftLeft', 'ShiftRight', 'AltLeft', 'AltRight'].includes(code);
     }
 
     function getAnimation(code) {
@@ -41,6 +41,8 @@
             return 'ping'
         } else if (code === 'AltLeft') {
             return 'pulse'
+        } else if (code === 'AltRight') {
+            return 'kaa'
         }
     }
 
@@ -67,9 +69,17 @@
     }
 
     function applyAnimations(animation) {
-        $('img').each(function () {
-            $(this).addClass('animate-' + animation)
-        })
+        let images = $('img');
+
+        if (animation === 'kaa') {
+            images.each(function () {
+                $(this).attr('src','/images/kaa.gif');
+            })
+        } else {
+            images.each(function () {
+                $(this).addClass('animate-' + animation)
+            });
+        }
     }
 
 </script>
