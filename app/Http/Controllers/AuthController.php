@@ -20,7 +20,7 @@ class AuthController extends Controller
         $credentials = $request->only('email', 'password');
 
         if (Auth::attempt($credentials)) {
-            return redirect()->intended('')->with('loggedIn', 'You have logged in');
+            return redirect()->route('gamehub.index')->with('loggedIn', sprintf('Welcome back, %s', Auth::user()->name));
         }
         return redirect()->route('auth.showLogin')->with('failure', 'You have entered invalid credentials');
     }
@@ -47,7 +47,47 @@ class AuthController extends Controller
         $credentials = $request->only('email', 'password');
         Auth::attempt($credentials);
 
-        return redirect()->route('gamehub.index')->with('loggedIn', 'You have registered an account!');
+        return redirect()->route('gamehub.index')->with('accountCreated', 'Great, you have registered an account!');
+    }
+
+    public function showChangeEmail()
+    {
+        return view('auth.change-email');
+    }
+
+    public function changeEmail(Request $request): RedirectResponse
+    {
+        $request->validate([
+            'email' => 'required|email|unique:users',
+            'emailConfirmation' => 'same:email',
+        ]);
+
+        $user = Auth::user();
+
+        $user->email = $request->email;
+        $user->save();
+
+        return redirect()->route('account.index')->with('emailChanged', 'Email address changed');
+    }
+
+    public function showChangePassword()
+    {
+        return view('auth.change-password');
+    }
+
+    public function changePassword(Request $request): RedirectResponse
+    {
+        $request->validate([
+            'password' => 'required|min:6',
+            'passwordConfirmation' => 'same:password',
+        ]);
+
+        $user = Auth::user();
+
+        $user->password = Hash::make($request->password);
+        $user->save();
+
+        return redirect()->route('account.index')->with('passwordChanged', 'Password changed');
     }
 
     public function logout(): RedirectResponse

@@ -6,7 +6,15 @@
 
 @layer base {
     h1 {
-        @apply text-blue-500 uppercase tracking-wide font-semibold;
+        @apply text-blue-500 uppercase tracking-wide font-semibold text-2xl;
+    }
+
+    h2 {
+        @apply text-blue-500 uppercase tracking-wide font-semibold text-xl;
+    }
+
+    h3 {
+        @apply text-blue-500 uppercase tracking-wide font-semibold text-lg;
     }
 
     .button-primary {

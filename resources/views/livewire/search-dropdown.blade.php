@@ -1,4 +1,4 @@
-<div class="relative">
+<div class="relative mr-5 my-3 lg:my-0">
     <input
         wire:model.debounce.300ms="search"
         type="text"

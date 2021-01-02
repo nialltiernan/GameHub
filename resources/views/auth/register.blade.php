@@ -24,7 +24,7 @@
             <input name="password" type="password" placeholder="password" required
                    class="text-input focus:outline-none focus:shadow-outline">
 
-            <input type="submit" class="button-primary hover:bg-blue-700 mt-5">
+            <input type="submit" class="button-primary hover:bg-blue-700 mt-5" value="Register">
         </form>
 
         <div class="mx-auto text-sm">

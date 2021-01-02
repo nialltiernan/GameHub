@@ -11,27 +11,31 @@
 </head>
 <body class="bg-gray-900 text-white">
 <header class="border-b border-gray-800">
-    <nav class="container mx-auto flex flex-col lg:flex-row  items-center justify-between px-4 py-6">
+    <nav class="container mx-auto flex flex-col lg:flex-row  items-center justify-between px-4 py-3 md:py-4">
         <div class="flex flex-col lg:flex-row items-center">
-            <ul class="flex ml-0 space-x-8 mt-6 lg:mt-0">
+            <ul class="flex ml-0 space-x-8">
                 <li><a href="/" class="hover:text-gray-400">Home</a></li>
                 <li><a href="{{ route('platforms.index') }}" class="hover:text-gray-400">Platforms</a></li>
                 <li><a href="{{ route('genres.index') }}" class="hover:text-gray-400">Genres</a></li>
             </ul>
         </div>
         <div class="flex flex-col lg:flex-row items-center">
-            @if (Auth::check())
-                @if (Auth::user()->is_admin)
-                    <a href="{{ route('feedback.index') }}" class="mr-5 hover:text-gray-400">Feedback</a>
-                @endif
-                <a href="{{ route('lists.index', ['user' => Auth::user()]) }}" class="mr-5 hover:text-gray-400">My
-                    Lists</a>
-                <a href="{{ route('auth.logout') }}" class="mr-5 hover:text-gray-400">Logout</a>
-            @else
-                <a href="{{ route('auth.showLogin') }}" class="mr-5 hover:text-gray-400">Login</a>
-                <a href="{{ route('auth.showRegister') }}" class="mr-5 hover:text-gray-400">Register</a>
-            @endif
             <livewire:search-dropdown/>
+
+            <div class="flex">
+                @if (Auth::check())
+                    @if (Auth::user()->is_admin)
+                        <a href="{{ route('feedback.index') }}" class="mr-5 hover:text-gray-400">Feedback</a>
+                    @endif
+                    <a href="{{ route('account.index') }}" class="mr-5 hover:text-gray-400">Account</a>
+                    <a href="{{ route('lists.index', ['user' => Auth::user()]) }}" class="mr-5 hover:text-gray-400">Lists</a>
+                    <a href="{{ route('auth.logout') }}" class="mr-5 hover:text-gray-400">Logout</a>
+                @else
+                    <a href="{{ route('auth.showLogin') }}" class="mr-1 hover:text-gray-400">Login</a>
+                    <span> / </span>
+                    <a href="{{ route('auth.showRegister') }}" class="ml-1 hover:text-gray-400">Register</a>
+                @endif
+            </div>
         </div>
     </nav>
 </header>
