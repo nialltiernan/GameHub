@@ -43,9 +43,8 @@
             <div class="m-auto w-1/2 flex flex-col">
                 <div>
                     <h2 class="font-semibold text-4xl m-auto align-middle">
-                        <a href="{{ route('auth.showLogin') }}" class="underline hover:text-gray-400">Login</a> or
-                        <a href="{{ route('auth.showRegister') }}" class="underline hover:text-gray-400">register</a> to
-                        create lists
+                        <a href="{{ route('auth.showLogin') }}" class="underline hover:text-gray-400">Login</a>
+                        to create lists
                     </h2>
                 </div>
 

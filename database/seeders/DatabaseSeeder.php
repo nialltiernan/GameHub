@@ -14,6 +14,7 @@ class DatabaseSeeder extends Seeder
             FeedbackSeeder::class,
             GameListSeeder::class,
             ListGameSeeder::class,
+            CommentSeeder::class
         ]);
     }
 }

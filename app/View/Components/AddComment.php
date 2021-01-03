@@ -4,8 +4,15 @@ namespace App\View\Components;
 
 use Illuminate\View\Component;
 
-class AccountNotifications extends Component
+class AddComment extends Component
 {
+
+    public int $gameId;
+
+    public function __construct(int $gameId)
+    {
+        $this->gameId = $gameId;
+    }
 
     /**
      * Get the view / contents that represent the component.
@@ -14,6 +21,6 @@ class AccountNotifications extends Component
      */
     public function render()
     {
-        return view('components.account-notifications');
+        return view('components.add-comment');
     }
 }

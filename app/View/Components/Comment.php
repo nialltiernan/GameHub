@@ -2,10 +2,17 @@
 
 namespace App\View\Components;
 
+use App\Models\Comment as CommentModel;
 use Illuminate\View\Component;
 
-class AccountNotifications extends Component
+class Comment extends Component
 {
+    public CommentModel $comment;
+
+    public function __construct(CommentModel $comment)
+    {
+        $this->comment = $comment;
+    }
 
     /**
      * Get the view / contents that represent the component.
@@ -14,6 +21,6 @@ class AccountNotifications extends Component
      */
     public function render()
     {
-        return view('components.account-notifications');
+        return view('components.comment');
     }
 }

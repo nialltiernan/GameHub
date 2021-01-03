@@ -4,7 +4,7 @@ namespace App\View\Components;
 
 use Illuminate\View\Component;
 
-class AccountNotifications extends Component
+class GameNotifications extends Component
 {
 
     /**
@@ -14,6 +14,6 @@ class AccountNotifications extends Component
      */
     public function render()
     {
-        return view('components.account-notifications');
+        return view('components.game-notifications');
     }
 }

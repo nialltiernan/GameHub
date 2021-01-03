@@ -30,7 +30,7 @@
                     </tr>
                     <tr>
                         <td>
-                            <input type="submit" class="button-primary hover:bg-blue-700 ">
+                            <input type="submit" class="button-primary hover:bg-blue-700" value="Give feedback">
                         </td>
                     </tr>
                 </table>

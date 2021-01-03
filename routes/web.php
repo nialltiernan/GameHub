@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\CommentController;
 use App\Http\Controllers\FeedbackController;
 use App\Http\Controllers\GameController;
 use App\Http\Controllers\ListGameController;
@@ -42,6 +43,8 @@ Route::middleware('auth')->group(function () {
 
     Route::get('changePassword', [AuthController::class, 'showChangePassword'])->name('auth.showChangePassword');
     Route::post('changePassword', [AuthController::class, 'changePassword'])->name('auth.changePassword');
+
+    Route::post('comments', [CommentController::class, 'store'])->name('comments.store');
 
     Route::get('users/{user}/lists/', [ListController::class, 'index'])->name('lists.index');
     Route::get('users/{user}/lists/{list}', [ListController::class, 'show'])->name('lists.show');
