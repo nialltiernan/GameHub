@@ -7,7 +7,7 @@
 
         @if (session('loggedIn'))
             <div class="notification-success">
-                {{ session('loggedIn') }} &#129321;
+                {{ session('loggedIn') }} &#129312;
             </div>
 
         @elseif(session('loggedOut'))
@@ -17,7 +17,7 @@
 
         @elseif(session('accountCreated'))
             <div class="notification-success">
-                {{ session('accountCreated') }} &#129312;
+                {{ session('accountCreated') }} &#129321;
             </div>
 
         @elseif(session('accountDeleted'))

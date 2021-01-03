@@ -12,11 +12,11 @@
 
             <label class="mb-2">Email</label>
             <input name="email" type="email" class="text-input focus:outline-none focus:shadow-outline mb-2" autofocus
-                   required placeholder="email" value="{{ old('email') }}">
+                   required placeholder="Email" value="{{ old('email') }}">
 
             <label class="mb-2">Password</label>
             <input name="password" type="password" class="text-input focus:outline-none focus:shadow-outline" required
-                   placeholder="password">
+                   placeholder="Password">
 
             <input type="submit" class="button-primary hover:bg-blue-700 mt-5" value="Login">
         </form>

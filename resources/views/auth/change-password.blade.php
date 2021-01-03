@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
-    <div class="container flex flex-col mx-auto">
+    <div class="container flex flex-col mx-auto relative">
 
         <x-account-notifications />
 
@@ -10,7 +10,7 @@
         <form action="{{ route('auth.changePassword') }}" method="POST" class="flex flex-col mx-auto mb-2">
             @csrf
 
-            <label class="mb-2">Password</label>
+            <label class="mb-2">New Password</label>
             <input name="password" type="password" class="text-input focus:outline-none focus:shadow-outline mb-2" autofocus
                    required placeholder="New password">
 

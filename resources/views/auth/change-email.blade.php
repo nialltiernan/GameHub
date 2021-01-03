@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
-    <div class="container flex flex-col mx-auto">
+    <div class="container flex flex-col mx-auto relative">
 
         <x-account-notifications />
 
@@ -10,7 +10,7 @@
         <form action="{{ route('auth.changeEmail') }}" method="POST" class="flex flex-col mx-auto mb-2">
             @csrf
 
-            <label class="mb-2">Email</label>
+            <label class="mb-2">New Email</label>
             <input name="email" type="email" class="text-input focus:outline-none focus:shadow-outline mb-2" autofocus
                    required placeholder="New email">
 

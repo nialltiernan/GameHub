@@ -12,16 +12,16 @@
         <form action="{{ route('auth.register') }}" method="POST" class="flex flex-col mx-auto mb-2">
             @csrf
 
-            <label class="mb-2">Name</label>
-            <input name="name" placeholder="Full name" autofocus required
-                   class="text-input focus:outline-none focus:shadow-outline mb-2" value="{{ old('name') }}">
+            <label class="mb-2">Username</label>
+            <input name="username" placeholder="Username" autofocus required
+                   class="text-input focus:outline-none focus:shadow-outline mb-2" value="{{ old('username') }}">
 
             <label class="mb-2">Email</label>
-            <input name="email" type="email" placeholder="email" required
+            <input name="email" type="email" placeholder="Email" required
                    class="text-input focus:outline-none focus:shadow-outline mb-2" value="{{ old('email') }}">
 
             <label class="mb-2">Password</label>
-            <input name="password" type="password" placeholder="password" required
+            <input name="password" type="password" placeholder="Password" required
                    class="text-input focus:outline-none focus:shadow-outline">
 
             <input type="submit" class="button-primary hover:bg-blue-700 mt-5" value="Register">
