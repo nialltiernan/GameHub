@@ -24,7 +24,7 @@ class CommentFactory extends Factory
     {
         return [
             'game_id' => $this->faker->numberBetween(0, 25000),
-            'message' => $this->faker->words(3, true),
+            'message' => $this->faker->words(15, true),
             'user_id' => self::factoryForModel(User::class),
         ];
     }

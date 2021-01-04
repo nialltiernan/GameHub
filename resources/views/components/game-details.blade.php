@@ -1,6 +1,4 @@
 <div class="border-b border-gray-800 pb-12">
-    <x-add-to-list-modal :game-id="$game['id']"/>
-
     <div class="flex lg:flex-row justify-between flex-wrap">
         <div class="mb-2">
             <h2 class="font-semibold text-4xl leading-tight mt-1">

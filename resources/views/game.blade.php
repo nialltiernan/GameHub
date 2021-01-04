@@ -5,6 +5,8 @@
 
         <x-game-notifications />
 
+        <x-add-to-list-modal :game-id="$game['id']"/>
+
         <x-game-details :game="$game" />
 
         <livewire:game-screenshots :game-id="$game['id']"/>

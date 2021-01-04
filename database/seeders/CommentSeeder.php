@@ -18,5 +18,9 @@ class CommentSeeder extends Seeder
         Comment::factory(5)->create([
             'game_id' => 339958
         ]);
+        Comment::factory(5)->create([
+            'game_id' => 339958,
+            'user_id' => 1,
+        ]);
     }
 }

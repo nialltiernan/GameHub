@@ -5,13 +5,11 @@
 
        <x-list-game-notifications />
 
-       <div class="flex justify-between">
+       <div class="flex flex-col md:flex-row md:justify-between">
            <h1>{{ $list->name }}</h1>
 
            <div class="flex">
-               <form action="{{ route('lists.index', ['user' => Auth::user()]) }}">
-                   <input type="submit" value="Back" class="button-primary hover:bg-blue-700 mr-4" />
-               </form>
+               <a href="{{ route('lists.index', ['user' => Auth::user()]) }}" class="button-primary hover:bg-blue-700 mr-4">Back</a>
 
                <form action="{{ route('lists.destroy', ['user' => Auth::user(), 'list' => $list]) }}" method="post">
                    @csrf

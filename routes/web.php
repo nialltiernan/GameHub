@@ -45,6 +45,9 @@ Route::middleware('auth')->group(function () {
     Route::post('changePassword', [AuthController::class, 'changePassword'])->name('auth.changePassword');
 
     Route::post('comments', [CommentController::class, 'store'])->name('comments.store');
+    Route::get('comments/{comment}/edit', [CommentController::class, 'edit'])->name('comments.edit');
+    Route::patch('comments/{comment}', [CommentController::class, 'update'])->name('comments.update');
+    Route::delete('comments/{comment}', [CommentController::class, 'destroy'])->name('comments.destroy');
 
     Route::get('users/{user}/lists/', [ListController::class, 'index'])->name('lists.index');
     Route::get('users/{user}/lists/{list}', [ListController::class, 'show'])->name('lists.show');
