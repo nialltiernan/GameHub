@@ -3,65 +3,37 @@
         @include('javascript.hideNotification')
     @endpush
 
-    @if (session('usernameChanged'))
-        <div id="notification-container" class="notification-container">
-            <div class="notification-success">
-                {{ session('usernameChanged') }}
-            </div>
-        </div>
+    <div id="notification-container" class="notification-container">
 
-    @elseif (session('emailChanged'))
-        <div id="notification-container" class="notification-container">
-            <div class="notification-success">
-                {{ session('emailChanged') }}
-            </div>
-        </div>
+        @if (session('usernameChanged'))
+            <div class="notification-success">{{ session('usernameChanged') }}</div>
 
-    @elseif (session('passwordChanged'))
-        <div id="notification-container" class="notification-container">
-            <div class="notification-success">
-                {{ session('passwordChanged') }}
-            </div>
-        </div>
-    @endif
+        @elseif (session('emailChanged'))
+            <div class="notification-success">{{ session('emailChanged') }}</div>
 
-    @error('email')
-        <div id="notification-container" class="notification-container">
-            <div class="notification-warning-severe">
-                {{ $message }}
-            </div>
-        </div>
-    @enderror
+        @elseif (session('passwordChanged'))
+            <div class="notification-success">{{ session('passwordChanged') }}</div>
+        @endif
 
-    @error('emailConfirmation')
-        <div id="notification-container" class="notification-container">
-            <div class="notification-warning-severe">
-                {{ $message }}
-            </div>
-        </div>
-    @enderror
 
-    @error('password')
-        <div id="notification-container" class="notification-container">
-            <div class="notification-warning-severe">
-                {{ $message }}
-            </div>
-        </div>
-    @enderror
+        @error('email')
+            <div class="notification-warning-severe">{{ $message }}</div>
+        @enderror
 
-    @error('passwordConfirmation')
-        <div id="notification-container" class="notification-container">
-            <div class="notification-warning-severe">
-                {{ $message }}
-            </div>
-        </div>
-    @enderror
+        @error('emailConfirmation')
+            <div class="notification-warning-severe">{{ $message }}</div>
+        @enderror
 
-    @error('username')
-        <div id="notification-container" class="notification-container">
-            <div class="notification-warning-severe">
-                {{ $message }}
-            </div>
-        </div>
-    @enderror
+        @error('password')
+            <div class="notification-warning-severe">{{ $message }}</div>
+        @enderror
+
+        @error('passwordConfirmation')
+            <div class="notification-warning-severe">{{ $message }}</div>
+        @enderror
+
+        @error('username')
+            <div class="notification-warning-severe">{{ $message }}</div>
+        @enderror
+    </div>
 </div>

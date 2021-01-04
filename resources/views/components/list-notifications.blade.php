@@ -5,13 +5,11 @@
 
     <div id="notification-container" class="notification-container">
         @if (session('listCreated'))
-            <div class="notification-success">
-                {{ session('listCreated') }}
-            </div>
+            <div class="notification-success">{{ session('listCreated') }}</div>
+
         @elseif (session('listDeleted'))
-            <div class="notification-information">
-                {{ session('listDeleted') }}
-            </div>
+            <div class="notification-information">{{ session('listDeleted') }}</div>
+
         @endif
     </div>
 </div>
