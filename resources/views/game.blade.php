@@ -9,7 +9,7 @@
 
         <x-game-details :game="$game" />
 
-        <livewire:game-screenshots :game-id="$game['id']"/>
+        <livewire:screenshots :game-id="$game['id']"/>
 
         <livewire:comments :game-id="$game['id']"/>
 

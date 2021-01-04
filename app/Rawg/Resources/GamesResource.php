@@ -96,7 +96,7 @@ class GamesResource extends Resource
      * @return Response
      * @throws ApiException
      */
-    public function getArchievements(int $id): Response
+    public function getAchievements(int $id): Response
     {
         return $this->get("/games/$id/achievements");
     }
