@@ -2,7 +2,7 @@
     <span class="w-3/4">{{ $comment->message }}</span>
 
     <span class="text-sm mt-2 md:mt-0 md:ml-5">
-        @if (Auth::user()->is($comment->user))
+        @if (Auth::check() && Auth::user()->is($comment->user))
             You, {{ $comment->created_at->format('M d Y') }}
 
             <div class="inline-block">

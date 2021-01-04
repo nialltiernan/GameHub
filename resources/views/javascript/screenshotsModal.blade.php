@@ -1,6 +1,6 @@
 <script>
 
-    let imageSources = [];
+    let screenshotImageSources = [];
 
     document.addEventListener('keydown', (e) => {
         if (e.code === 'ArrowRight') {
@@ -12,10 +12,12 @@
         }
     });
 
-    function initModalArray() {
+    function initScreenshotModalArray() {
+        console.log('initScreenshotModalArray');
         $("img[id^=screenshot_]").each(function (index, element) {
-            imageSources.push(getHighResolutionSource(element.src));
+            screenshotImageSources.push(getHighResolutionSource(element.src));
         });
+        console.log(screenshotImageSources);
     }
 
     function getHighResolutionSource(sourceUrl) {
@@ -23,10 +25,10 @@
     }
 
     function showScreenshotModal(screenshot) {
-        initModalArray();
+        initScreenshotModalArray();
 
         $('#screenshots-modal').show();
-        $('#modal-image').attr('src', getHighResolutionSource(screenshot.src));
+        $('#screenshot-modal-image').attr('src', getHighResolutionSource(screenshot.src));
     }
 
     function hideScreenshotModal() {
@@ -34,30 +36,30 @@
     }
 
     function nextScreenshotModal() {
-        let modal = $('#modal-image');
-        let currentIndex = imageSources.indexOf(modal.attr('src'));
+        let modal = $('#screenshot-modal-image');
+        let currentIndex = screenshotImageSources.indexOf(modal.attr('src'));
         let newIndex;
 
-        if (currentIndex === imageSources.length - 1) {
+        if (currentIndex === screenshotImageSources.length - 1) {
             newIndex = 0;
         } else {
             newIndex = currentIndex + 1;
         }
 
-        modal.attr('src', imageSources[newIndex]);
+        modal.attr('src', screenshotImageSources[newIndex]);
     }
 
     function previousScreenshotModal() {
-        let modal = $('#modal-image');
-        let currentIndex = imageSources.indexOf(modal.attr('src'));
+        let modal = $('#screenshot-modal-image');
+        let currentIndex = screenshotImageSources.indexOf(modal.attr('src'));
         let newIndex;
 
         if (currentIndex === 0) {
-            newIndex = imageSources.length - 1
+            newIndex = screenshotImageSources.length - 1
         } else {
             newIndex = currentIndex - 1;
         }
 
-        modal.attr('src', imageSources[newIndex]);
+        modal.attr('src', screenshotImageSources[newIndex]);
     }
 </script>

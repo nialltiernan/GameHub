@@ -20,8 +20,8 @@
             <input type="submit" class="button-primary hover:bg-blue-700 mt-2" value="Comment">
         </form>
     @else
-        <h2>
+        <h3>
             <a href="{{ route('auth.showLogin') }}" class="underline hover:text-gray-400">Login</a> to add a comment
-        </h2>
+        </h3>
     @endif
 </div>
