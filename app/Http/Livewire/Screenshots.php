@@ -7,7 +7,7 @@ use App\Services\Rawg\ClientRetriever;
 use App\ViewModels\ScreenshotsViewModel;
 use Livewire\Component;
 
-class GameScreenshots extends Component
+class Screenshots extends Component
 {
     public int $gameId;
     public array $screenshots = [];
@@ -25,6 +25,6 @@ class GameScreenshots extends Component
 
     public function render()
     {
-        return view('livewire.game-screenshots');
+        return view('livewire.screenshots');
     }
 }
