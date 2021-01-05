@@ -13,11 +13,11 @@
                             @csrf
                             <input type="hidden" name="gameId" value="{{ $gameId }}">
                             <input name="name" class="text-input focus:outline-none focus:shadow-outline"
-                                   placeholder="New list name">
+                               placeholder="New list name">
                             <input
-                                    type="submit"
-                                    class="button-primary hover:bg-blue-700 mr-2 my-2"
-                                    value="Save">
+                                type="submit"
+                                class="button-primary hover:bg-blue-700 mr-2 my-2"
+                                value="Save">
                         </form>
                     </div>
                 @else
@@ -30,9 +30,9 @@
                                 <input type="hidden" name="gameId" value="{{ $gameId }}">
                                 <input type="hidden" name="gameListId" value="{{ $list->id }}">
                                 <input
-                                        type="submit"
-                                        class="button-primary hover:bg-blue-700 mr-2 my-2"
-                                        value="{{ $list->name }}">
+                                    type="submit"
+                                    class="button-primary hover:bg-blue-700 mr-2 my-2"
+                                    value="{{ $list->name }}">
                             </form>
                         @endforeach
 
@@ -41,11 +41,11 @@
                             @csrf
                             <input type="hidden" name="gameId" value="{{ $gameId }}">
                             <input name="name" class="text-input focus:outline-none focus:shadow-outline"
-                                   placeholder="New list name">
+                               placeholder="New list name">
                             <input
-                                    type="submit"
-                                    class="button-primary hover:bg-blue-700 mr-2 my-2"
-                                    value="Save">
+                                type="submit"
+                                class="button-primary hover:bg-blue-700 mr-2 my-2"
+                                value="Save">
                         </form>
                     </div>
                 @endif
