@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\AchievementController;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\CommentController;
 use App\Http\Controllers\FeedbackController;
@@ -15,6 +16,7 @@ use Illuminate\Support\Facades\Route;
 Route::get('', [HomeController::class, 'index'])->name('gamehub.index');
 
 Route::get('games/{id}', [GameController::class, 'show'])->name('game.show');
+Route::get('games/{id}/achievements', [AchievementController::class, 'show'])->name('game.achievements');
 
 Route::get('platforms/', [PlatformController::class, 'index'])->name('platforms.index');
 Route::get('platforms/{id}', [PlatformController::class, 'show'])->name('platforms.show');

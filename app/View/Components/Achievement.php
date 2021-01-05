@@ -7,6 +7,7 @@ use Illuminate\View\Component;
 class Achievement extends Component
 {
     public array $achievement;
+    public int $achievementId;
     public string $name;
     public string $description;
     public string $imageUrl;
@@ -15,6 +16,7 @@ class Achievement extends Component
     public function __construct(array $achievement)
     {
         $this->achievement = $achievement;
+        $this->achievementId = $achievement['id'];
         $this->name = $achievement['name'];
         $this->description = $achievement['description'];
         $this->imageUrl = $achievement['image'];

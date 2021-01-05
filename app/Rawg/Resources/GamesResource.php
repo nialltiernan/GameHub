@@ -93,12 +93,13 @@ class GamesResource extends Resource
 
     /**
      * @param int $id
+     * @param PaginationFilter $filter
      * @return Response
      * @throws ApiException
      */
-    public function getAchievements(int $id): Response
+    public function getAchievements(int $id, PaginationFilter $filter): Response
     {
-        return $this->get("/games/$id/achievements");
+        return $this->get("/games/$id/achievements", $filter->toArray());
     }
 
     /**
