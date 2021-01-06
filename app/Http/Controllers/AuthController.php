@@ -17,7 +17,7 @@ class AuthController extends Controller
 
     public function login(Request $request): RedirectResponse
     {
-        $credentials = $request->only('email', 'password');
+        $credentials = $request->only('username', 'password');
 
         if (Auth::attempt($credentials)) {
             return redirect()
@@ -36,17 +36,15 @@ class AuthController extends Controller
     {
         $request->validate([
             'username' => 'required|unique:users',
-            'email' => 'required|email|unique:users',
             'password' => 'required|min:6',
         ]);
 
         User::create([
             'username' => $request->username,
-            'email' => $request->email,
             'password' => Hash::make($request->password),
         ]);
 
-        $credentials = $request->only('email', 'password');
+        $credentials = $request->only('username', 'password');
         Auth::attempt($credentials);
 
         return redirect()->route('gamehub.index')->with('accountCreated', 'Great, you have registered an account!');
@@ -69,26 +67,6 @@ class AuthController extends Controller
         $user->save();
 
         return redirect()->route('account.index')->with('usernameChanged', 'Username changed');
-    }
-
-    public function showChangeEmail()
-    {
-        return view('auth.change-email');
-    }
-
-    public function changeEmail(Request $request): RedirectResponse
-    {
-        $request->validate([
-            'email' => 'required|email|unique:users',
-            'emailConfirmation' => 'same:email',
-        ]);
-
-        $user = Auth::user();
-
-        $user->email = $request->email;
-        $user->save();
-
-        return redirect()->route('account.index')->with('emailChanged', 'Email address changed');
     }
 
     public function showChangePassword()

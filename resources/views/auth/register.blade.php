@@ -7,7 +7,7 @@
 
         <x-registration-notifications />
 
-        <h1 class="mb-5 mx-auto">Create Account</h1>
+        <h1 class="mb-5 mx-auto">Join the club!</h1>
 
         <form action="{{ route('auth.register') }}" method="POST" class="flex flex-col mx-auto mb-2">
             @csrf
@@ -15,10 +15,6 @@
             <label class="mb-2">Username</label>
             <input name="username" placeholder="Username" autofocus required
                    class="text-input focus:outline-none focus:shadow-outline mb-2" value="{{ old('username') }}">
-
-            <label class="mb-2">Email</label>
-            <input name="email" type="email" placeholder="Email" required
-                   class="text-input focus:outline-none focus:shadow-outline mb-2" value="{{ old('email') }}">
 
             <label class="mb-2">Password</label>
             <input name="password" type="password" placeholder="Password" required

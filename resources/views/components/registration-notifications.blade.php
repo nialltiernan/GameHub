@@ -4,7 +4,7 @@
     @endpush
 
     <div id="notification-container" class="notification-container">
-        @error('email')
+        @error('username')
             <div class="notification-warning-severe">{{ $message }}</div>
         @enderror
 

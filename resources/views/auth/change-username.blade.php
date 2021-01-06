@@ -5,7 +5,7 @@
 
         <x-account-notifications />
 
-        <h1 class="mb-5 mx-auto">Change username</h1>
+        <h1 class="mb-5 mx-auto">Change username, {{ Auth::user()->username }}</h1>
 
         <form action="{{ route('auth.changeUsername') }}" method="POST" class="flex flex-col mx-auto mb-2">
             @csrf

@@ -40,9 +40,6 @@ Route::middleware('auth')->group(function () {
     Route::get('changeUsername', [AuthController::class, 'showChangeUsername'])->name('auth.showChangeUsername');
     Route::post('changeUsername', [AuthController::class, 'changeUsername'])->name('auth.changeUsername');
 
-    Route::get('changeEmail', [AuthController::class, 'showChangeEmail'])->name('auth.showChangeEmail');
-    Route::post('changeEmail', [AuthController::class, 'changeEmail'])->name('auth.changeEmail');
-
     Route::get('changePassword', [AuthController::class, 'showChangePassword'])->name('auth.showChangePassword');
     Route::post('changePassword', [AuthController::class, 'changePassword'])->name('auth.changePassword');
 
