@@ -9,7 +9,6 @@ class GameDescription extends Component
     public string $preview;
     public string $full;
 
-
     public function __construct(string $preview, string $full)
     {
         $this->preview = $preview;
@@ -23,6 +22,11 @@ class GameDescription extends Component
      */
     public function render()
     {
-        return view('components.game-description');
+        return view('components.game-description', ['isPreviewRequired' => $this->isPreviewRequired()]);
+    }
+
+    private function isPreviewRequired(): bool
+    {
+        return $this->preview !== $this->full;
     }
 }

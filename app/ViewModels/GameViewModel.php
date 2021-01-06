@@ -80,7 +80,6 @@ class GameViewModel extends ViewModel
     private function getDescription(): array
     {
         $preview = substr($this->game['description_raw'], 0, self::DESCRIPTION_PREVIEW_LENGTH);
-        $preview .= '... ';
         return ['preview' => $preview, 'full' => $this->game['description_raw']];
     }
 }
