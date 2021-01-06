@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Services\Rawg\ClientRetriever;
-use App\ViewModels\GameViewModel;
+use App\View\Models\GameViewModel;
 
 class GameController extends Controller
 {

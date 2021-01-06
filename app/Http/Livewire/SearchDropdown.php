@@ -4,7 +4,7 @@ namespace App\Http\Livewire;
 
 use App\Rawg\Filters\GamesFilter;
 use App\Services\Rawg\ClientRetriever;
-use App\ViewModels\SearchResultsViewModel;
+use App\View\Models\SearchResultsViewModel;
 use Livewire\Component;
 
 class SearchDropdown extends Component

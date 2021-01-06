@@ -3,7 +3,7 @@
 namespace App\Http\Livewire;
 
 use App\Services\Rawg\ClientRetriever;
-use App\ViewModels\SimilarGamesViewModel;
+use App\View\Models\SimilarGamesViewModel;
 use Livewire\Component;
 
 class SimilarGames extends Component

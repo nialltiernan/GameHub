@@ -1,6 +1,6 @@
 <?php
 
-namespace App\ViewModels;
+namespace App\View\Models;
 
 use Spatie\ViewModels\ViewModel;
 

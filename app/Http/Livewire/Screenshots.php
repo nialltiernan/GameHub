@@ -4,7 +4,7 @@ namespace App\Http\Livewire;
 
 use App\Rawg\Filters\OrderingFilter;
 use App\Services\Rawg\ClientRetriever;
-use App\ViewModels\ScreenshotsViewModel;
+use App\View\Models\ScreenshotsViewModel;
 use Livewire\Component;
 
 class Screenshots extends Component

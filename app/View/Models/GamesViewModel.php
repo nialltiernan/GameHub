@@ -1,12 +1,14 @@
 <?php
 
-namespace App\ViewModels;
+namespace App\View\Models;
 
 use App\Services\Rawg\UrlConverter;
+use Illuminate\Contracts\Support\Arrayable;
 use Spatie\ViewModels\ViewModel;
 
-class SimilarGamesViewModel extends ViewModel
+class GamesViewModel extends ViewModel implements Arrayable
 {
+
     private array $games;
 
     public function __construct($games)
@@ -19,7 +21,8 @@ class SimilarGamesViewModel extends ViewModel
         return collect($this->games)->map(function ($game) {
             return collect($game)->merge([
                 'image_url' => $this->getImageUrl($game),
-                'platforms' => self::getPlatforms($game)
+                'rating' => $this->getRating($game),
+                'platforms' => $this->getPlatforms($game)
             ]);
         })->toArray();
     }
@@ -38,5 +41,10 @@ class SimilarGamesViewModel extends ViewModel
         }
 
         return $platforms;
+    }
+
+    private function getRating($game): float
+    {
+        return ($game['rating'] / 5) * 100;
     }
 }

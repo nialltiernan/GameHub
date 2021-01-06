@@ -4,7 +4,7 @@ namespace App\Http\Livewire;
 
 use App\Models\GameList;
 use App\Services\Rawg\ClientRetriever;
-use App\ViewModels\ListGameViewModel;
+use App\View\Models\ListGameViewModel;
 use Livewire\Component;
 
 class ListGame extends Component
