@@ -13,7 +13,7 @@ class FeedbackFactory extends Factory
     public function definition(): array
     {
         return [
-            'comment' => $this->faker->paragraph,
+            'comment' => $this->faker->paragraph(2),
             'email' => $this->faker->email
         ];
     }

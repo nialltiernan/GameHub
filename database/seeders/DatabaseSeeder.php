@@ -15,7 +15,8 @@ class DatabaseSeeder extends Seeder
             GameListSeeder::class,
             ListGameSeeder::class,
             CommentSeeder::class,
-            AffiliateSeeder::class
+            AffiliateSeeder::class,
+            AffiliateLinkSeeder::class,
         ]);
     }
 }
