@@ -22,9 +22,7 @@ class CreateAffiliateLinksTable extends Migration
             $table->json('keywords')->nullable();
             $table->enum('type', [1, 2]);
             $table->string('url');
-            $table->string('image_source')->nullable();
-            $table->integer('image_width')->nullable();
-            $table->integer('image_height')->nullable();
+            $table->json('image_properties')->nullable();
             $table->timestamps();
         });
     }

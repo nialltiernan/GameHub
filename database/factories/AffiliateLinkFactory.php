@@ -32,9 +32,11 @@ class AffiliateLinkFactory extends Factory
             'keywords' => $this->faker->randomElement(self::KEYWORDS),
             'type' => $this->faker->randomElement([AffiliateLinkTypes::TEXT, AffiliateLinkTypes::BANNER]),
             'url' => $this->faker->url,
-            'image_source' => $this->faker->imageUrl(),
-            'image_width' => $this->faker->randomElement(self::IMAGE_DIMENSIONS),
-            'image_height' => $this->faker->randomElement(self::IMAGE_DIMENSIONS),
+            'image_properties' => [
+                'url' => $this->faker->imageUrl(),
+                'width' => $this->faker->randomElement(self::IMAGE_DIMENSIONS),
+                'height' => $this->faker->randomElement(self::IMAGE_DIMENSIONS),
+            ],
         ];
     }
 }

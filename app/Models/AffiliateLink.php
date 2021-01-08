@@ -12,6 +12,7 @@ class AffiliateLink extends Model
 
     protected $casts = [
         'keywords' => 'array',
+        'image_properties' => 'array',
     ];
 
     public function affiliate(): BelongsTo
