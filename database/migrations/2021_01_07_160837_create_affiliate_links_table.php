@@ -23,6 +23,7 @@ class CreateAffiliateLinksTable extends Migration
             $table->enum('type', [1, 2]);
             $table->string('url');
             $table->json('image_properties')->nullable();
+            $table->boolean('is_active')->default(true);
             $table->timestamps();
         });
     }
