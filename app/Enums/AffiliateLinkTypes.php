@@ -9,4 +9,11 @@ class AffiliateLinkTypes extends Enum
 {
     public const TEXT = 1;
     public const BANNER = 2;
+
+    public static function getLinkType(string $linkType): int
+    {
+        $linkType = strtoupper($linkType);
+        $enum = self::$linkType();
+        return $enum->getValue();
+    }
 }

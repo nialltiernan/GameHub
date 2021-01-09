@@ -21,6 +21,9 @@ class AffiliateFactory extends Factory
      */
     public function definition(): array
     {
-        return ['name' => $this->faker->name];
+        return [
+            'name' => $this->faker->name,
+            'company_id' => $this->faker->numberBetween(),
+        ];
     }
 }

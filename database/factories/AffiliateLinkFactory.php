@@ -3,13 +3,26 @@
 namespace Database\Factories;
 
 use App\Enums\AffiliateLinkTypes;
+use App\Enums\BannerShapes;
 use App\Models\Affiliate;
 use App\Models\AffiliateLink;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 class AffiliateLinkFactory extends Factory
 {
-    private const IMAGE_DIMENSIONS = [50, 100, 200, 400, 800];
+    private const IMAGE_PROPERTIES = [
+        ['width' => 300, 'height' => 300, 'shape' => BannerShapes::SQUARE_MEDIUM],
+        ['width' => 50, 'height' => 300, 'shape' => BannerShapes::RECTANGLE_TALL_MEDIUM],
+        ['width' => 300, 'height' => 50, 'shape' => BannerShapes::RECTANGLE_WIDE_MEDIUM],
+    ];
+
+    private const PROMOTIONS = [
+        null,
+        ['start' => '1-Jan-2020', 'end' => '31-Jan-2020'], // past
+        ['start' => '1-Jan-2021', 'end' => '31-Dec-2021'], // present
+        ['start' => '1-Jan-2022', 'end' => '31-Dec-2022'], // future
+    ];
+
     private const KEYWORDS = [
         null,
         ['PlayStation 5', 'Xbox One', 'computer games', 'console'],
@@ -24,19 +37,40 @@ class AffiliateLinkFactory extends Factory
 
     public function definition(): array
     {
+        $linkType = $this->faker->randomElement([AffiliateLinkTypes::TEXT, AffiliateLinkTypes::BANNER]);
+
         return [
             'link_id' => $this->faker->numberBetween(),
             'affiliate_id' => self::factoryForModel(Affiliate::class),
             'name' => $this->faker->name,
-            'description' => $this->faker->paragraph(1),
             'keywords' => $this->faker->randomElement(self::KEYWORDS),
-            'type' => $this->faker->randomElement([AffiliateLinkTypes::TEXT, AffiliateLinkTypes::BANNER]),
+            'type' => $linkType,
             'url' => $this->faker->url,
-            'image_properties' => [
-                'url' => $this->faker->imageUrl(),
-                'width' => $this->faker->randomElement(self::IMAGE_DIMENSIONS),
-                'height' => $this->faker->randomElement(self::IMAGE_DIMENSIONS),
-            ],
+            'image' => $linkType === AffiliateLinkTypes::BANNER ? $this->getImage() : null,
+            'promotion' => $this->getPromotion(),
+        ];
+    }
+
+    private function getImage(): array
+    {
+        $properties = $this->faker->randomElement(self::IMAGE_PROPERTIES);
+        return  [
+            'url' => $this->faker->imageUrl(),
+            'width' => $properties['width'],
+            'height' => $properties['height'],
+            'shape' => $properties['shape'],
+        ];
+    }
+
+    private function getPromotion(): ?array
+    {
+        $promotion = $this->faker->randomElement(self::PROMOTIONS);
+        if (is_null($promotion)) {
+            return null;
+        }
+        return  [
+            'start' => $promotion['start'],
+            'end' => $promotion['end'],
         ];
     }
 }

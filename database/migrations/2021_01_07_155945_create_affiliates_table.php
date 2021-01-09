@@ -17,6 +17,7 @@ class CreateAffiliatesTable extends Migration
             $table->id();
             $table->string('name')->unique();
             $table->boolean('is_active')->default(true);
+            $table->unsignedBigInteger('company_id')->unique();
             $table->timestamps();
         });
     }

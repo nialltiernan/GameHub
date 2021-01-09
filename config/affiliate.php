@@ -1,5 +1,6 @@
 <?php
 
 return [
-    'link_csv_path' => env('AFFILIATE_LINK_CSV_PATH', '/home/niall/Projects/GameHub/storage/app/affiliate/links.csv'),
+    'csv_filename' => env('AFFILIATE_LINK_CSV_FILENAME', 'links.csv'),
+    'csv_file_path' => storage_path('app/affiliate') . '/' . env('AFFILIATE_LINK_CSV_FILENAME', 'links.csv'),
 ];
