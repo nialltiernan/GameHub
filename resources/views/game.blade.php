@@ -23,5 +23,7 @@
         <livewire:comments :game-id="$game['id']"/>
 
         <livewire:similar-games :game-id="$game['id']" />
+
+        <livewire:game-banner-desktop :title="$game['name']"/>
     </div>
 @endsection
