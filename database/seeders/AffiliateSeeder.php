@@ -21,6 +21,7 @@ class AffiliateSeeder extends Seeder
         Affiliate::factory()->create(['name' => 'Green Man Gaming', 'company_id' => 3386711]);
         Affiliate::factory()->create(['name' => 'Kinguin', 'company_id' => 4518745]);
         Affiliate::factory()->create(['name' => 'Second Life', 'company_id' => 4012682]);
+        Affiliate::factory()->create(['name' => 'World of Warships', 'company_id' => 5264062]);
         Affiliate::factory()->create(['name' => 'Voidu B.V.', 'company_id' => 5018082]);
     }
 }

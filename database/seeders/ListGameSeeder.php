@@ -7,7 +7,7 @@ use Illuminate\Database\Seeder;
 
 class ListGameSeeder extends Seeder
 {
-    private const GAME_IDS_WITH_BANNERS = [41494, 278, 50738, 3498, 35629, 437059, 324992, 398402];
+    private const GAME_IDS_WITH_BANNERS = [41494, 278, 50738, 3498, 35629, 437059, 324992, 398402, 41052];
 
     /**
      * Run the database seeds.
