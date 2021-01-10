@@ -25,12 +25,12 @@ class AffiliateLinkFactory extends Factory
 
     private const KEYWORDS = [
         null,
-        ['PlayStation 5', 'Xbox One', 'computer games', 'console'],
+        ['playstation 5', 'xbox one', 'computer games', 'console'],
         ['headphones', 'music', 'audio', 'gaming', 'headset'],
-        ['PC games', 'computer games', 'action', 'strategy', 'simulator'],
-        ['Call of Duty', 'action', 'multiplayer'],
-        ['Cyberpunk 2077', 'rpg', 'single player'],
-        ['Assassin\'s Creed Valhalla', 'action', 'role playing game', 'stealth'],
+        ['pc games', 'computer games', 'action', 'strategy', 'simulator'],
+        ['call of duty', 'action', 'multiplayer'],
+        ['cyberpunk 2077', 'rpg', 'single player'],
+        ['assassin\'s creed valhalla', 'action', 'role playing game', 'stealth'],
     ];
 
     protected string $model = AffiliateLink::class;
