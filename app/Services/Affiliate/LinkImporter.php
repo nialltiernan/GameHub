@@ -61,16 +61,19 @@ class LinkImporter
 
                 $this->console->info('Importing link: ' . $linkId);
 
-                AffiliateLink::create([
-                    'link_id' => $linkId,
-                    'affiliate_id' => Affiliate::whereName($affiliateName)->get()->first()->id,
-                    'name' => $linkName,
-                    'keywords' => explode(', ', $keywords),
-                    'type' => AffiliateLinkTypes::getLinkType($linkType),
-                    'url' => $url,
-                    'image' => $this->getImageProperties($html),
-                    'promotion' => $this->getPromotion($promotionStart, $promotionEnd),
-                ]);
+                AffiliateLink::updateOrCreate(
+                    [
+                        'link_id' => $linkId
+                    ],[
+                        'affiliate_id' => Affiliate::whereName($affiliateName)->get()->first()->id,
+                        'name' => $linkName,
+                        'keywords' => explode(', ', $keywords),
+                        'type' => AffiliateLinkTypes::getLinkType($linkType),
+                        'url' => $url,
+                        'image' => $this->getImageProperties($html),
+                        'promotion' => $this->getPromotion($promotionStart, $promotionEnd),
+                    ]
+                );
 
                 $this->importedLinkIds[] = (int) $row[self::COLUMN_INDEX_LINK_ID];
             } catch (\Exception $exception) {

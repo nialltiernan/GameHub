@@ -40,7 +40,7 @@ class ImportAffiliateLinks extends Command
         $this->preprocessor->execute();
         $this->importer->execute();
 
-        $this->info('==== Finished successfully ====');
+        $this->info('==== Finished ====');
         return 0;
     }
 
