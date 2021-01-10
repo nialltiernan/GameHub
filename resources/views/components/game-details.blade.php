@@ -54,8 +54,6 @@
                 </div>
 
                 <div class="flex items-center space-x-4">
-                    <livewire:franchise-link :game="$game['name']"/>
-
                     <form onsubmit="return false">
                         <input
                             title="Add to list"

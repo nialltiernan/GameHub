@@ -12,6 +12,7 @@ use Illuminate\Database\Eloquent\Relations\BelongsTo;
  * @method static whereNotIn(string $string, array $importedLinkIds)
  * @method static truncate()
  * @method static updateOrCreate(array|string[] $array, array $array1)
+ * @method static where(string $string, int $int)
  */
 class AffiliateLink extends Model
 {
