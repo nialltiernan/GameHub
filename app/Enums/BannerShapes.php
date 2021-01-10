@@ -35,7 +35,7 @@ class BannerShapes extends Enum
             return self::RECTANGLE_WIDE_MEDIUM;
         }
         if ($width < $height) {
-            return self::RECTANGLE_WIDE_MEDIUM;
+            return self::RECTANGLE_TALL_MEDIUM;
         }
         throw new CouldNotGetShapeException();
     }

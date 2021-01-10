@@ -67,7 +67,7 @@ class LinkImporter
                     ],[
                         'affiliate_id' => Affiliate::whereName($affiliateName)->get()->first()->id,
                         'name' => $linkName,
-                        'keywords' => explode(', ', $keywords),
+                        'keywords' => explode(', ', strtolower($keywords)),
                         'type' => AffiliateLinkTypes::getLinkType($linkType),
                         'url' => $url,
                         'image' => $this->getImageProperties($html),

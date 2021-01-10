@@ -14,15 +14,20 @@ class GameListSeeder extends Seeder
      */
     public function run()
     {
+        GameList::factory()->create([
+            'user_id' => 1,
+            'name' => 'Banners'
+        ]);
+
         $lists = ['recently played', 'must haves', 'all time favourites', 'nostalgic feels'];
         foreach ($lists as $list) {
             GameList::factory()->create([
-                'user_id'=>1,
+                'user_id' => 1,
                 'name' => $list
             ]);
         }
-        GameList::factory(20)->create(['user_id'=>1]);
-        GameList::factory(2)->create(['user_id'=>2]);
+
+        GameList::factory(20)->create(['user_id' => 2]);
         GameList::factory()->create();
     }
 }
