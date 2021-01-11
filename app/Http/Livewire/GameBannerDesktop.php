@@ -2,9 +2,9 @@
 
 namespace App\Http\Livewire;
 
+use App\Enums\BannerShapes;
 use App\Models\AffiliateLink;
 use App\Services\Affiliate\FranchiseExtractor;
-use App\Services\Affiliate\GameBannerRetrieverDesktop;
 use Livewire\Component;
 
 class GameBannerDesktop extends Component
@@ -13,10 +13,14 @@ class GameBannerDesktop extends Component
     public string $title;
     public ?AffiliateLink $banner;
 
-    public function loadBanner(FranchiseExtractor $franchiseExtractor, GameBannerRetrieverDesktop $bannerRetriever)
+    public function loadBanner(FranchiseExtractor $franchiseExtractor)
     {
         $franchise = $franchiseExtractor->execute($this->title);
-        $this->banner = $bannerRetriever->execute($franchise);
+
+        $this->banner = AffiliateLink::banner(
+            $franchise,
+            [BannerShapes::RECTANGLE_WIDE, BannerShapes::RECTANGLE_WIDE_LARGE]
+        );
     }
 
     public function render()
