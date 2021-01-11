@@ -17,7 +17,7 @@ class GameBannerDesktop extends Component
     {
         $franchise = $franchiseExtractor->execute($this->title);
 
-        $this->banner = AffiliateLink::banner($franchise, [BannerShapes::RECTANGLE_HORIZONTAL_LARGE]);
+        $this->banner = AffiliateLink::banner([BannerShapes::RECTANGLE_HORIZONTAL_LARGE], $franchise);
     }
 
     public function render()

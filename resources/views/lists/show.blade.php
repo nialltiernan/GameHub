@@ -24,13 +24,16 @@
 
        </div>
 
-       <div class="game-grid md:grid-cols-2 lg:grid-cols-4 ">
-           @forelse($listGameIdToGameIds as $listGameId => $gameId)
-               <livewire:list-game :game-id="$gameId" :list="$list" :list-game-id="$listGameId"/>
-           @empty
-               This list doesn't have any games!
-           @endforelse
-
+       <div class="flex">
+           <div class="game-grid md:grid-cols-2 lg:grid-cols-4 lg:w-4/5">
+               @forelse($listGameIdToGameIds as $listGameId => $gameId)
+                   <livewire:list-game :game-id="$gameId" :list="$list" :list-game-id="$listGameId"/>
+               @empty
+                   This list doesn't have any games!
+               @endforelse
+           </div>
+           <livewire:list-banner-desktop />
        </div>
+
    </div>
 @endsection

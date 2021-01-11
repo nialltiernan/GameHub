@@ -33,25 +33,27 @@ class AffiliateLink extends Model
         return $this->belongsTo(Affiliate::class);
     }
 
-    public static function banner(string $franchise, array $allowedShapes): ?self
+    public static function banner(array $allowedShapes, string $franchise = null): ?self
     {
-        $franchiseLinks = self::where('type', AffiliateLinkTypes::BANNER)
-            ->where('is_active', true)
-            ->whereIn('image->shape', $allowedShapes)
-            ->whereJsonContains('keywords', $franchise)
-            ->get();
+        if ($franchise) {
+            $franchiseLinks = self::where('type', AffiliateLinkTypes::BANNER)
+                ->where('is_active', true)
+                ->whereIn('image->shape', $allowedShapes)
+                ->whereJsonContains('keywords', $franchise)
+                ->get();
 
-        if ($franchiseLinks->isNotEmpty()) {
-            return $franchiseLinks->random();
+            if ($franchiseLinks->isNotEmpty()) {
+                return $franchiseLinks->random();
+            }
         }
 
-        $otherLinks = self::where('type', AffiliateLinkTypes::BANNER)
+        $links = self::where('type', AffiliateLinkTypes::BANNER)
             ->where('is_active', true)
             ->whereIn('image->shape', $allowedShapes)
             ->get();
 
-        if ($otherLinks->isNotEmpty()) {
-            return $otherLinks->random();
+        if ($links->isNotEmpty()) {
+            return $links->random();
         }
 
         return null;
