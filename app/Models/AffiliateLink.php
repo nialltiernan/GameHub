@@ -24,7 +24,8 @@ class AffiliateLink extends Model
     protected $casts = [
         'keywords' => 'array',
         'image' => 'array',
-        'promotion' => 'array',
+        'promotion_start' => 'datetime',
+        'promotion_end' => 'datetime',
     ];
 
     public function affiliate(): BelongsTo

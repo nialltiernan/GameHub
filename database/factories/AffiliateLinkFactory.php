@@ -38,16 +38,17 @@ class AffiliateLinkFactory extends Factory
     public function definition(): array
     {
         $linkType = $this->faker->randomElement([AffiliateLinkTypes::TEXT, AffiliateLinkTypes::BANNER]);
+        $promotion = $this->getPromotion();
 
         return [
             'link_id' => $this->faker->numberBetween(),
             'affiliate_id' => self::factoryForModel(Affiliate::class),
-            'name' => $this->faker->name,
             'keywords' => $this->faker->randomElement(self::KEYWORDS),
             'type' => $linkType,
             'url' => $this->faker->url,
             'image' => $linkType === AffiliateLinkTypes::BANNER ? $this->getImage() : null,
-            'promotion' => $this->getPromotion(),
+            'promotion_start' => $promotion['start'],
+            'promotion_end' => $promotion['end'],
         ];
     }
 
@@ -62,15 +63,12 @@ class AffiliateLinkFactory extends Factory
         ];
     }
 
-    private function getPromotion(): ?array
+    private function getPromotion(): array
     {
         $promotion = $this->faker->randomElement(self::PROMOTIONS);
         if (is_null($promotion)) {
-            return null;
+            return ['start' => null, 'end' => null];
         }
-        return  [
-            'start' => $promotion['start'],
-            'end' => $promotion['end'],
-        ];
+        return  ['start' => $promotion['start'], 'end' => $promotion['end']];
     }
 }

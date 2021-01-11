@@ -15,7 +15,6 @@ class LinkImporter
     private const IMAGE_PROPERTIES_PATTERN = "(<img src=\"(https?:\/\/.*)\" width=\"(\d*)\" height=\"(\d*)\")";
     private const COLUMN_INDEX_AFFILIATE_NAME = 0;
     private const COLUMN_INDEX_LINK_ID = 2;
-    private const COLUMN_INDEX_LINK_NAME = 3;
     private const COLUMN_INDEX_KEYWORDS = 5;
     private const COLUMN_INDEX_LINK_TYPE = 6;
     private const COLUMN_INDEX_HTML = 10;
@@ -51,7 +50,6 @@ class LinkImporter
 
                 $affiliateName = $row[self::COLUMN_INDEX_AFFILIATE_NAME];
                 $linkId = $row[self::COLUMN_INDEX_LINK_ID];
-                $linkName = $row[self::COLUMN_INDEX_LINK_NAME];
                 $keywords = $row[self::COLUMN_INDEX_KEYWORDS];
                 $linkType = $row[self::COLUMN_INDEX_LINK_TYPE];
                 $html = $row[self::COLUMN_INDEX_HTML];
@@ -62,18 +60,19 @@ class LinkImporter
                 $this->console->info('Importing link: ' . $linkId);
 
                 $keywords = explode(', ', strtolower($keywords));
+                $promotion = $this->getPromotion($promotionStart, $promotionEnd);
 
                 AffiliateLink::updateOrCreate(
                     [
                         'link_id' => $linkId
                     ],[
                         'affiliate_id' => Affiliate::whereName($affiliateName)->get()->first()->id,
-                        'name' => $linkName,
                         'keywords' => $keywords !== [''] ? $keywords : null,
                         'type' => AffiliateLinkTypes::getLinkType($linkType),
                         'url' => $url,
                         'image' => $this->getImageProperties($html),
-                        'promotion' => $this->getPromotion($promotionStart, $promotionEnd),
+                        'promotion_start' => $promotion['start'],
+                        'promotion_end' => $promotion['end'],
                     ]
                 );
 
@@ -90,11 +89,6 @@ class LinkImporter
         return array_map('str_getcsv', file(config('affiliate.csv_file_path')));
     }
 
-    /**
-     * @param string $html
-     * @return array|null
-     * @throws \App\Exceptions\CouldNotGetShapeException
-     */
     private function getImageProperties(string $html): ?array
     {
         $matches = [];
@@ -109,15 +103,17 @@ class LinkImporter
         return null;
     }
 
-    private function getPromotion(string $startDateString, string $endDateString): ?array
+    private function getPromotion(string $start, string $end): array
     {
-        if (empty($endDateString)) {
-            return null;
+        if ($end === '') {
+            return ['start' => null, 'end' => null];
         }
 
-        $start = $startDateString ? Carbon::createFromFormat('d-M-Y', $startDateString) : Carbon::now();
-        $end = Carbon::createFromFormat('d-M-Y', $endDateString);
-        return ['start' => $start->format('Y-m-d H:i:s'), 'end' => $end->format('Y-m-d H:i:s')];
+        if ($start === '') {
+            $start = Carbon::now();
+        }
+
+        return ['start' => $start, 'end' => $end];
     }
 
     private function deactivateAnyLinksNotInImport()
