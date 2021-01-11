@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
-    <div class="container mx-auto px-4 relative">
+    <div class="container mx-auto px-3 relative">
 
         <x-home-page-notifications />
 
