@@ -26,6 +26,7 @@
                 @if (Auth::check())
                     @if (Auth::user()->is_admin)
                         <a href="{{ route('feedback.index') }}" class="mr-5 hover:text-gray-400">Feedback</a>
+                        <a href="{{ route('banners.index') }}" class="mr-5 hover:text-gray-400">Banners</a>
                     @endif
                     <a href="{{ route('account.index') }}" class="mr-5 hover:text-gray-400">Account</a>
                     <a href="{{ route('lists.index', ['user' => Auth::user()]) }}" class="mr-5 hover:text-gray-400">Lists</a>

@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\AchievementController;
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\BannerController;
 use App\Http\Controllers\CommentController;
 use App\Http\Controllers\FeedbackController;
 use App\Http\Controllers\GameController;
@@ -60,4 +61,5 @@ Route::middleware('auth')->group(function () {
 
 Route::middleware('admin')->group(function () {
     Route::get('feedback', [FeedbackController::class, 'index'])->name('feedback.index');
+    Route::get('banners', [BannerController::class, 'index'])->name('banners.index');
 });
