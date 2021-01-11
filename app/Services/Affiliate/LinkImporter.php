@@ -61,13 +61,15 @@ class LinkImporter
 
                 $this->console->info('Importing link: ' . $linkId);
 
+                $keywords = explode(', ', strtolower($keywords));
+
                 AffiliateLink::updateOrCreate(
                     [
                         'link_id' => $linkId
                     ],[
                         'affiliate_id' => Affiliate::whereName($affiliateName)->get()->first()->id,
                         'name' => $linkName,
-                        'keywords' => explode(', ', strtolower($keywords)),
+                        'keywords' => $keywords !== [''] ? $keywords : null,
                         'type' => AffiliateLinkTypes::getLinkType($linkType),
                         'url' => $url,
                         'image' => $this->getImageProperties($html),
