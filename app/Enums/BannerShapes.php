@@ -23,7 +23,7 @@ class BannerShapes extends Enum
             if ($width <= 200) {
                 return self::RECTANGLE_HORIZONTAL_SMALL;
             }
-            if ($width >= 500) {
+            if ($width >= 400) {
                 return self::RECTANGLE_HORIZONTAL_LARGE;
             }
             return self::RECTANGLE_HORIZONTAL_MEDIUM;
@@ -33,6 +33,9 @@ class BannerShapes extends Enum
         }
         if ($width >= 400) {
             return self::SQUARE_LARGE;
+        }
+        if ($width <= 125) {
+            return self::SQUARE_SMALL;
         }
         return self::SQUARE_MEDIUM;
     }

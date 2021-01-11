@@ -25,5 +25,6 @@
         <livewire:similar-games :game-id="$game['id']" />
 
         <livewire:game-banner-desktop :title="$game['name']"/>
+        <livewire:game-banner-mobile :title="$game['name']"/>
     </div>
 @endsection
