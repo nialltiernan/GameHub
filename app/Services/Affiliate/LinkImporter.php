@@ -33,7 +33,7 @@ class LinkImporter
 
     public function execute()
     {
-        $csv = $this->loadCsv();
+        $csv = CsvLoader::execute();
 
         array_shift($csv);
 
@@ -82,11 +82,6 @@ class LinkImporter
             }
         }
         $this->deactivateAnyLinksNotInImport();
-    }
-
-    private function loadCsv(): array
-    {
-        return array_map('str_getcsv', file(config('affiliate.csv_file_path')));
     }
 
     private function getImageProperties(string $html): ?array
