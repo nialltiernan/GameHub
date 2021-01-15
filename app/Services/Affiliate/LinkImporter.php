@@ -24,11 +24,13 @@ class LinkImporter
     private const COLUMN_INDEX_RELATIONSHIP_STATUS = 19;
 
     private Console $console;
+    private FranchiseExtractor $franchiseExtractor;
     private array $importedLinkIds = [];
 
     public function __construct(Console $console)
     {
         $this->console = $console;
+        $this->franchiseExtractor = new FranchiseExtractor();
     }
 
     public function execute()
@@ -59,7 +61,7 @@ class LinkImporter
 
                 $this->console->info('Importing link: ' . $linkId);
 
-                $keywords = explode(', ', strtolower($keywords));
+                $keywords = $this->getKeywords($keywords);
                 $promotion = $this->getPromotion($promotionStart, $promotionEnd);
 
                 AffiliateLink::updateOrCreate(
@@ -67,7 +69,7 @@ class LinkImporter
                         'link_id' => $linkId
                     ],[
                         'affiliate_id' => Affiliate::whereName($affiliateName)->get()->first()->id,
-                        'keywords' => $keywords !== [''] ? $keywords : null,
+                        'keywords' => $keywords === [''] ? null : $keywords,
                         'type' => AffiliateLinkTypes::getLinkType($linkType),
                         'url' => $url,
                         'image' => $this->getImageProperties($html),
@@ -114,5 +116,12 @@ class LinkImporter
     private function deactivateAnyLinksNotInImport()
     {
         return AffiliateLink::whereNotIn('link_id', $this->importedLinkIds)->update(['is_active' => false]);
+    }
+
+    private function getKeywords(string $keywords): array
+    {
+        return collect(explode(', ', $keywords))->map(function ($keyword) {
+            return $this->franchiseExtractor->execute($keyword);
+        })->toArray();
     }
 }
