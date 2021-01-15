@@ -6,7 +6,7 @@ namespace App\Services\Affiliate;
 class FranchiseExtractor
 {
 
-    private const KNOWN_BRANDS = ['lego', 'fifa', 'nfl', 'ea sport', 'nba', 'world of warships'];
+    private const KNOWN_BRANDS = ['lego', 'fifa', 'nfl', 'ea sport', 'nba', 'world of warships', 'call of duty'];
     private string $title;
 
     public function execute(string $title): string
