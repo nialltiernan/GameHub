@@ -10,7 +10,7 @@
             <x-achievement :achievement="$achievement" />
         @empty
             <div>
-                No achievements found
+                No achievements found <img class="inline-block h-10" src="/images/icons/achievement-hunter.png">
             </div>
         @endforelse
     </div>
