@@ -7,7 +7,7 @@ echo '#### Pulling code from git ####'
 git pull
 
 echo '#### Installing composer packages ####'
-composer install --optimize-autoloader --no-dev
+/usr/bin/php7.4 /usr/local/bin/composer install --optimize-autoloader --no-dev
 
 echo '#### Running migrations ####'
 php artisan migrate --force
