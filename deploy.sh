@@ -3,7 +3,7 @@
 PHP=/usr/bin/php7.4
 
 echo '#### Moving to project directory ####'
-cd /home/niall/Projects/GameHub
+cd /home/niall/Projects/GameHub || exit
 
 echo '#### Pulling code from git ####'
 git pull
@@ -19,7 +19,6 @@ $PHP artisan config:cache
 
 echo '#### Optimizing route cache ####'
 $PHP artisan route:cache
-
 
 echo '#### Optimizing view cache ####'
 $PHP artisan view:cache
