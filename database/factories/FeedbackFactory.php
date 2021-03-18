@@ -8,7 +8,7 @@ use Illuminate\Database\Eloquent\Factories\Factory;
 class FeedbackFactory extends Factory
 {
 
-    protected string $model = Feedback::class;
+    protected $model = Feedback::class;
 
     public function definition(): array
     {

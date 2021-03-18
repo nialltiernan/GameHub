@@ -13,7 +13,7 @@ class ListGameFactory extends Factory
      *
      * @var string
      */
-    protected string $model = ListGame::class;
+    protected $model = ListGame::class;
 
     /**
      * Define the model's default state.

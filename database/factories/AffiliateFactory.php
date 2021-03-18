@@ -12,7 +12,7 @@ class AffiliateFactory extends Factory
      *
      * @var string
      */
-    protected string $model = Affiliate::class;
+    protected $model = Affiliate::class;
 
     /**
      * Define the model's default state.

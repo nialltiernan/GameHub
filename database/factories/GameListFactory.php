@@ -9,7 +9,7 @@ use Illuminate\Database\Eloquent\Factories\Factory;
 class GameListFactory extends Factory
 {
 
-    protected string $model = GameList::class;
+    protected $model = GameList::class;
 
     /**
      * Define the model's default state.

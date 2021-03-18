@@ -11,9 +11,9 @@ use Illuminate\Database\Eloquent\Factories\Factory;
 class AffiliateLinkFactory extends Factory
 {
     private const IMAGE_PROPERTIES = [
-        ['width' => 300, 'height' => 300, 'shape' => BannerShapes::SQUARE],
-        ['width' => 50, 'height' => 300, 'shape' => BannerShapes::RECTANGLE_TALL],
-        ['width' => 300, 'height' => 50, 'shape' => BannerShapes::RECTANGLE_WIDE],
+        ['width' => 300, 'height' => 300, 'shape' => BannerShapes::SQUARE_MEDIUM],
+        ['width' => 50, 'height' => 300, 'shape' => BannerShapes::RECTANGLE_VERTICAL],
+        ['width' => 300, 'height' => 50, 'shape' => BannerShapes::RECTANGLE_HORIZONTAL_MEDIUM],
     ];
 
     private const PROMOTIONS = [
@@ -33,7 +33,7 @@ class AffiliateLinkFactory extends Factory
         ['assassin\'s creed valhalla', 'action', 'role playing game', 'stealth'],
     ];
 
-    protected string $model = AffiliateLink::class;
+    protected $model = AffiliateLink::class;
 
     public function definition(): array
     {
